@@ -1,10 +1,15 @@
-# Turborepo starter
+# To Demonstrate or Demolish
 
-This is an official npm starter turborepo.
+Sometimes showing how something works helps understand it.
+
+Along with the ability to demolish what has already been made.
+
+This was started from an official npm starter turborepo.
 
 ## What's inside?
 
-This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
+This turborepo uses [npm](https://www.npmjs.com/) as a package manager.
+It includes the following packages/apps:
 
 ### Apps and Packages
 
@@ -29,7 +34,7 @@ This turborepo has some additional tools already setup for you:
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd demo
 npm run build
 ```
 
@@ -38,32 +43,26 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd demo
 npm run dev
 ```
 
-### Remote Caching
+### Build Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
-```
-
+There is a general need for effective build caching. This can be accomplished
+with mature tools like [Bazel](https://bazel.build/) or in a more Turbo specific
+way currently with [Remote
+Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) at the
+build artifact level, or the still in alpha [Turbo
+Pack](https://turbo.build/pack/docs/core-concepts) which is intended to cache
+smaller build artifacts. Both Turbo (repo and pack) approaches seem like they
+are very well integrated with [Vercel the company](https://vercel.com/) and the
+other products thay have like [Next.js](https://vercel.com/solutions/nextjs). It
+isn't clear if the open source tools will stand alone from the other projects
+that Vercel is driving forward.
 ## Useful Links
 
-Learn more about the power of Turborepo:
+#### Turbo Repo
 
 - [Pipelines](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
 - [Caching](https://turbo.build/repo/docs/core-concepts/caching)
@@ -71,3 +70,12 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+#### Bazel
+
+- [Bazel Public About](https://bazel.build/about)
+- [Bazel Basics](https://bazel.build/basics)
+- [When to use Bazel Blog Post](https://earthly.dev/blog/bazel-build/)
+- [Stripe Bazel Blog Post](https://stripe.com/blog/fast-secure-builds-choose-two)
+- [Caching Explained Blog Post Series](https://sluongng.hashnode.dev/series/bazel-caching-explained)
+- [Bazel in CI Blog Post Series](https://sluongng.hashnode.dev/series/bazel-in-ci)
