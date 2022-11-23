@@ -1,5 +1,5 @@
 // import d3 from 'd3';
-const buttonName = ["beep", "bop", "boop"];
+const buttonName = ['beep', 'bop', 'boop']
 export const Button = (props: any) => {
   // return <button>Boop</button>;
   // return buttonName.map(name => <button>{name}</button>)
@@ -10,5 +10,5 @@ export const Button = (props: any) => {
         <button key={name}>{name}</button>
       ))}
     </>
-  );
-};
+  )
+}

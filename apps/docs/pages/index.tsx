@@ -1,4 +1,4 @@
-import { Button } from "@solenoid/ui";
+import { Button } from '@solenoid/ui'
 
 export default function Docs() {
   return (
@@ -6,5 +6,5 @@ export default function Docs() {
       <h1>Docs</h1>
       <Button />
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["@solenoid"],
-};
+  extends: ['@solenoid'],
+}

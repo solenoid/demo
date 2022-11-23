@@ -60,6 +60,7 @@ are very well integrated with [Vercel the company](https://vercel.com/) and the
 other products thay have like [Next.js](https://vercel.com/solutions/nextjs). It
 isn't clear if the open source tools will stand alone from the other projects
 that Vercel is driving forward.
+
 ## Useful Links
 
 #### Turbo Repo
