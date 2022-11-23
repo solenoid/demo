@@ -1,7 +1,7 @@
 {
   "name": "demo",
-  "version": "0.0.0",
   "private": true,
+  "version": "0.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -10,16 +10,21 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write '**/*.{js,json,ts,tsx,md}'"
-  },
-  "devDependencies": {
-    "eslint-config-custom": "*",
-    "prettier": "latest",
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=14.0.0"
+    "type:check": "turbo run type:check",
+    "format": "prettier --write  '**/*.{js,json,ts,tsx,md}'",
+    "format:check": "prettier -c '**/*.{js,json,ts,tsx,md}'"
   },
   "dependencies": {},
-  "packageManager": "npm@8.19.2"
+  "devDependencies": {
+    "@solenoid/eslint-config": "*",
+    "prettier": "2.8.0",
+    "turbo": "1.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@8.19.2",
+  "volta": {
+    "node": "18.12.1"
+  }
 }

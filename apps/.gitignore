@@ -1,0 +1,5 @@
+# Relevant for all apps but not relevant at the top level or for packages
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

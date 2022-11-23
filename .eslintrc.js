@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
-  // This tells ESLint to load the config from the package `eslint-config-custom`
-  extends: ["custom"],
+  // See https://eslint.org/docs/latest/developer-guide/shareable-configs
+  // for npm scoped and prefix naming convention rules
+  extends: ["@solenoid"],
   settings: {
     next: {
       rootDir: ["apps/*/"],
