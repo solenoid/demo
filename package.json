@@ -1,7 +1,9 @@
 {
   "name": "demo",
   "private": true,
+  "license": "ISC",
   "version": "0.0.0",
+  "description": "Turbo Mono Repo Explorations.",
   "workspaces": [
     "apps/*",
     "packages/*"
