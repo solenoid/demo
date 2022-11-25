@@ -1,7 +1,10 @@
+import { Icon, IconNames } from './Icon'
+
 /** Work In Progress */
 export type NavbarTabs = Array<{
   name: string
   slug: string
+  icon?: IconNames
 }>
 
 // TODO think about Navbar Props structure more deeply
@@ -21,7 +24,10 @@ export const Navbar = (props: Props) => {
         {props.tabs.map((d) => (
           <li key={d.slug}>
             {/* TODO figure out routing concerns along with basePath concerns */}
-            <a href={`./${d.slug}`}>{d.name}</a>
+            <a href={`./${d.slug}`}>
+              {d.icon && <Icon iconName={d.icon} />}
+              {d.name}
+            </a>
           </li>
         ))}
       </ul>

@@ -9,6 +9,9 @@
     "lint": "TIMING=1 eslint '**/*.ts*'",
     "type:check": "tsc --noEmit"
   },
+  "dependencies": {
+    "@solenoid/icons": "*"
+  },
   "devDependencies": {
     "@solenoid/eslint-config": "*",
     "@solenoid/tsconfig": "*",

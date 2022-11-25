@@ -1,10 +1,36 @@
-import { Button } from '@solenoid/ui'
+import { Navbar, NavbarTabs } from '@solenoid/ui'
 
-export default function Web() {
+const availableTabs: NavbarTabs = [
+  {
+    name: 'Home',
+    slug: 'home',
+    icon: 'CampgroundSolid',
+  },
+  {
+    name: 'Weather Forecast',
+    slug: 'weather-forecast',
+    icon: 'CloudSunRainSolid',
+  },
+  {
+    name: 'Wastewater Covid',
+    slug: 'wastewater-covid',
+    icon: 'PoopSolid',
+  },
+  {
+    name: 'Youtube Channels',
+    slug: 'youtube-channels',
+    icon: 'Youtube',
+  },
+]
+
+const IndexPage = () => {
   return (
-    <div>
-      <h1>Web</h1>
-      <Button label="Robot says" />
-    </div>
+    <>
+      <Navbar tabs={availableTabs} />
+      <p>Still figuring out general direction.</p>
+      <hr />
+    </>
   )
 }
+
+export default IndexPage
