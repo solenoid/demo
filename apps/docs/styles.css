@@ -53,10 +53,5 @@ body {
 /* end app shared above begin app specific below */
 
 body {
-  background: #eef;
-}
-
-/* TODO consider more deeply techniques like in https://webaim.org/techniques/css/invisiblecontent/ */
-.visuallyhidden {
-  display: none;
+  background: #cfc;
 }

@@ -16,6 +16,20 @@ type Props = {
   activeTab: Slug
 }
 
+const iconPad = 10
+const TabIconStyle = {
+  paddingLeft: iconPad,
+  paddingRight: iconPad,
+  display: 'inline-block',
+  minWidth: `calc(2 * ${iconPad}px + 24px)`,
+}
+const TabIcon = ({ icon }: { icon?: IconNames }) =>
+  icon ? (
+    <Icon style={TabIconStyle} iconName={icon} />
+  ) : (
+    <span style={TabIconStyle}></span>
+  )
+
 /**
  * We can accept a list of available tabs.
  *
@@ -28,21 +42,29 @@ export const Navbar = (props: Props) => {
   const pageName = props.tabs.find(isActiveTab)?.name ?? 'Unknown'
   return (
     <nav aria-label="Navigation Menu">
-      <h2>
-        <Icon iconName="BarsSolid" /> {pageName}
-      </h2>
-      <ul>
+      <h1>
+        <a
+          onClick={(ev) => {
+            console.log(ev)
+          }}
+          style={TabIconStyle}
+        >
+          <Icon iconName="BarsSolid" />
+        </a>
+        {pageName}
+      </h1>
+      <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
         {props.tabs.map((tab) => (
           <li key={tab.slug}>
             {isActiveTab(tab) ? (
               <span className="current">
                 <span className="visuallyhidden">Current Page: </span>
-                {tab.icon && <Icon iconName={tab.icon} />}
+                <TabIcon icon={tab.icon} />
                 {tab.name}
               </span>
             ) : (
               <a href={`./${tab.slug}`}>
-                {tab.icon && <Icon iconName={tab.icon} />}
+                <TabIcon icon={tab.icon} />
                 {tab.name}
               </a>
             )}

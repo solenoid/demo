@@ -8,17 +8,23 @@ type Props = {
 
 // TODO see about https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
 // for a part to the icon alignment puzzle
-const iconHackProps = {
-  style: {
-    display: 'inline-block',
-    'vertical-align': 'middle',
-  },
+const iconPrivateStyle = {
+  display: 'inline-block',
+  verticalAlign: 'middle',
 }
 
 export const Icon = (props: Props) => {
   const { iconName, ...rest } = props
-  return Icons[iconName]({
+  const iconProps = {
     ...rest,
-    ...iconHackProps,
-  })
+    ...{
+      style: {
+        ...iconPrivateStyle,
+        ...rest?.style,
+      },
+    },
+  }
+  return (
+    <span className={`Icon ${iconName}`}>{Icons[iconName](iconProps)}</span>
+  )
 }
