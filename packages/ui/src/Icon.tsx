@@ -10,14 +10,9 @@ type Props = {
 // for a part to the icon alignment puzzle
 const iconHackProps = {
   style: {
-    // The position isn't allowed so we hack further with an as any cast
-    position: 'relative',
-    // TODO make this work across font sizes etc.
-    // started with 18.5 * 0.125 based on article and default font size
-    // adjusted to 3 for a hardcode for now
-    top: 3,
-    bottom: 0,
-  } as any,
+    display: 'inline-block',
+    'vertical-align': 'middle',
+  },
 }
 
 export const Icon = (props: Props) => {

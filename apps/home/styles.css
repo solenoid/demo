@@ -1,0 +1,58 @@
+/*
+  Started from Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#__next {
+  isolation: isolate;
+}
+
+/* above is a modern "reset" using __next id for isolation level */
+
+body {
+  background: #eef;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* TODO consider more deeply techniques like in https://webaim.org/techniques/css/invisiblecontent/ */
+.visuallyhidden {
+  display: none;
+}

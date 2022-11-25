@@ -24,9 +24,10 @@ const availableTabs: NavbarTabs = [
 ]
 
 const IndexPage = () => {
+  const currentSlug = 'home'
   return (
     <>
-      <Navbar tabs={availableTabs} />
+      <Navbar tabs={availableTabs} activeTab={currentSlug} />
       <p>Still figuring out general direction.</p>
       <hr />
     </>
