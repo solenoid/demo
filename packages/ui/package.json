@@ -1,9 +1,10 @@
 {
   "name": "@solenoid/ui",
+  "private": true,
   "version": "0.0.0",
   "description": "Shared UI components across apps.",
-  "main": "./index.tsx",
-  "types": "./index.tsx",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
   "scripts": {
     "lint": "TIMING=1 eslint '**/*.ts*'",
     "type:check": "tsc --noEmit"
