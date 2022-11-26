@@ -60,3 +60,8 @@ body {
 .visuallyhidden {
   display: none;
 }
+
+main {
+  /* debugging layout here */
+  outline: 1px solid #aaa;
+}

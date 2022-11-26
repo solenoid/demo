@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Icon, IconNames } from './Icon'
 
 type Slug = string
@@ -30,6 +31,9 @@ const TabIcon = ({ icon }: { icon?: IconNames }) =>
     <span style={TabIconStyle}></span>
   )
 
+type SidebarState = 'icons-only' | 'icons-and-names' | 'hidden'
+const currentColor = '#40c'
+
 /**
  * We can accept a list of available tabs.
  *
@@ -40,37 +44,54 @@ export const Navbar = (props: Props) => {
   // TODO figure out routing concerns along with basePath concerns
   const isActiveTab = (tab: NavbarTab) => tab.slug === props.activeTab
   const pageName = props.tabs.find(isActiveTab)?.name ?? 'Unknown'
+  const [sidebarState, setSidebarState] = useState<SidebarState>('icons-only')
   return (
-    <nav aria-label="Navigation Menu">
-      <h1>
-        <a
-          onClick={(ev) => {
-            console.log(ev)
-          }}
+    <>
+      <h1 style={{ userSelect: 'none' }}>
+        <span
           style={TabIconStyle}
+          onClick={() => {
+            switch (sidebarState) {
+              case 'icons-and-names':
+                setSidebarState('icons-only')
+                break
+              case 'icons-only':
+                setSidebarState('hidden')
+                break
+              case 'hidden':
+                setSidebarState('icons-and-names')
+                break
+              default:
+                break
+            }
+          }}
         >
           <Icon iconName="BarsSolid" />
-        </a>
+        </span>
         {pageName}
       </h1>
-      <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
-        {props.tabs.map((tab) => (
-          <li key={tab.slug}>
-            {isActiveTab(tab) ? (
-              <span className="current">
-                <span className="visuallyhidden">Current Page: </span>
-                <TabIcon icon={tab.icon} />
-                {tab.name}
-              </span>
-            ) : (
-              <a href={`./${tab.slug}`}>
-                <TabIcon icon={tab.icon} />
-                {tab.name}
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
+      <nav style={{ userSelect: 'none' }} aria-label="Navigation Menu">
+        {sidebarState !== 'hidden' && (
+          <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
+            {props.tabs.map((tab) => (
+              <li key={tab.slug}>
+                {isActiveTab(tab) ? (
+                  <span className="current" style={{ stroke: currentColor }}>
+                    {/* <span className="visuallyhidden">Current Page: </span> */}
+                    <TabIcon icon={tab.icon} />
+                    {sidebarState !== 'icons-and-names' ? tab.name : null}
+                  </span>
+                ) : (
+                  <a href={`./${tab.slug}`}>
+                    <TabIcon icon={tab.icon} />
+                    {sidebarState !== 'icons-and-names' ? tab.name : null}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </nav>
+    </>
   )
 }

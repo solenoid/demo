@@ -28,8 +28,7 @@ const IndexPage = () => {
   return (
     <>
       <Navbar tabs={availableTabs} activeTab={currentSlug} />
-      <p>Still figuring out general direction.</p>
-      <hr />
+      <main>The Main Page contents go here</main>
     </>
   )
 }
