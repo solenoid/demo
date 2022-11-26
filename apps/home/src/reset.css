@@ -41,17 +41,14 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-#__next {
+#app-root {
+  isolation: isolate;
+}
+#page-root {
   isolation: isolate;
 }
 body {
   font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* above is a modern "reset" using __next id for isolation level */
-
-/* end app shared above begin app specific below */
-
-body {
-  background: #cfc;
-}
+/* above is a modern "reset" */

@@ -1,55 +1,49 @@
+'use client'
 import { useState } from 'react'
 import { Icon, IconNames } from './Icon'
 
-type Slug = string
-
-type NavbarTab = {
-  name: string
-  slug: Slug
+// TODO reconsider design when basePath concerns settle down.
+export type NavbarItems = Array<NavbarItem>
+type Path = string
+type NavbarItem = {
+  text: string
+  path: Path
   icon?: IconNames
 }
-/** Work In Progress */
-export type NavbarTabs = Array<NavbarTab>
-
-// TODO think about Navbar Props structure more deeply
 type Props = {
-  tabs: NavbarTabs
-  activeTab: Slug
+  items: NavbarItems
+  currentPath: Path | null
 }
+type SidebarState = 'icons-only' | 'icons-and-names' | 'hidden'
 
+const currentColor = '#40c'
 const iconPad = 10
-const TabIconStyle = {
+const ItemIconStyle = {
   paddingLeft: iconPad,
   paddingRight: iconPad,
   display: 'inline-block',
   minWidth: `calc(2 * ${iconPad}px + 24px)`,
 }
-const TabIcon = ({ icon }: { icon?: IconNames }) =>
+const ItemIcon = ({ icon }: { icon?: IconNames }) =>
   icon ? (
-    <Icon style={TabIconStyle} iconName={icon} />
+    <Icon style={ItemIconStyle} iconName={icon} />
   ) : (
-    <span style={TabIconStyle}></span>
+    <span style={ItemIconStyle}></span>
   )
 
-type SidebarState = 'icons-only' | 'icons-and-names' | 'hidden'
-const currentColor = '#40c'
-
 /**
- * We can accept a list of available tabs.
- *
- * Also need a way to communicate which is active.
- * That respects aria-current="page" or other https://www.w3.org/WAI/tutorials/menus/structure/
+ * We can accept a list of available `items`. The `currentPath` will not be a
+ * link and should be communicated that it is the Current Page.
  */
 export const Navbar = (props: Props) => {
-  // TODO figure out routing concerns along with basePath concerns
-  const isActiveTab = (tab: NavbarTab) => tab.slug === props.activeTab
-  const pageName = props.tabs.find(isActiveTab)?.name ?? 'Unknown'
+  const isCurrent = (item: NavbarItem) => item.path === props.currentPath
+  const pageName = props.items.find(isCurrent)?.text ?? 'Unknown'
   const [sidebarState, setSidebarState] = useState<SidebarState>('icons-only')
   return (
     <>
       <h1 style={{ userSelect: 'none' }}>
         <span
-          style={TabIconStyle}
+          style={ItemIconStyle}
           onClick={() => {
             switch (sidebarState) {
               case 'icons-and-names':
@@ -73,18 +67,18 @@ export const Navbar = (props: Props) => {
       <nav style={{ userSelect: 'none' }} aria-label="Navigation Menu">
         {sidebarState !== 'hidden' && (
           <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
-            {props.tabs.map((tab) => (
-              <li key={tab.slug}>
-                {isActiveTab(tab) ? (
+            {props.items.map((item) => (
+              <li key={item.path}>
+                {isCurrent(item) ? (
                   <span className="current" style={{ stroke: currentColor }}>
                     {/* <span className="visuallyhidden">Current Page: </span> */}
-                    <TabIcon icon={tab.icon} />
-                    {sidebarState !== 'icons-and-names' ? tab.name : null}
+                    <ItemIcon icon={item.icon} />
+                    {sidebarState !== 'icons-and-names' ? item.text : null}
                   </span>
                 ) : (
-                  <a href={`./${tab.slug}`}>
-                    <TabIcon icon={tab.icon} />
-                    {sidebarState !== 'icons-and-names' ? tab.name : null}
+                  <a href={item.path}>
+                    <ItemIcon icon={item.icon} />
+                    {sidebarState !== 'icons-and-names' ? item.text : null}
                   </a>
                 )}
               </li>

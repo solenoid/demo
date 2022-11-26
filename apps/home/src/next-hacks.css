@@ -1,0 +1,17 @@
+/* see the following
+ * https://github.com/vercel/next.js/discussions/41745#discussioncomment-3964086
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents
+ * https://adrianroselli.com/2018/05/display-contents-is-not-a-css-reset.html
+ * https://hidde.blog/more-accessible-markup-with-display-contents/
+ */
+
+/* Until that markup nesting situation settles make a
+ * #page-root inside the outer mess while 
+ * #app-root should be all that's needed outside the mess
+ */
+
+/*
+ [data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}
+*/

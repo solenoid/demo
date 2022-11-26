@@ -10,11 +10,11 @@ export default function Docs() {
       <hr />
       <h2>Navbar</h2>
       <Navbar
-        activeTab="1"
-        tabs={[
-          { name: 'First', slug: '1' },
-          { name: 'Second', slug: '2' },
-          { name: 'Third', slug: '3', icon: 'CampgroundSolid' },
+        currentPath="/1"
+        items={[
+          { text: 'First', path: '/1' },
+          { text: 'Second', path: '/2' },
+          { text: 'Third', path: '/3', icon: 'CampgroundSolid' },
         ]}
       />
       <hr />

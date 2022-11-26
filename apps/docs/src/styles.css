@@ -41,27 +41,14 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-#__next {
-  isolation: isolate;
-}
 body {
   font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* above is a modern "reset" using __next id for isolation level */
+/* above is a modern "reset" skipping isolation level at root */
 
 /* end app shared above begin app specific below */
 
 body {
-  background: #eef;
-}
-
-/* TODO consider more deeply techniques like in https://webaim.org/techniques/css/invisiblecontent/ */
-.visuallyhidden {
-  display: none;
-}
-
-main {
-  /* debugging layout here */
-  outline: 1px solid #aaa;
+  background: #cfc;
 }
