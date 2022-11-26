@@ -6,6 +6,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
+    "clean": "npm exec -y -- rimraf@3.0.2 .turbo",
     "lint": "TIMING=1 eslint '**/*.ts*'",
     "type:check": "tsc --noEmit"
   },

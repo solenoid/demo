@@ -7,6 +7,6 @@
   "types": "./build/index.ts",
   "scripts": {
     "build": "npm exec -y -- @svgr/cli@6.5.1 --typescript --icon 24 --out-dir build -- svg-src",
-    "clean": "npm exec -y -- rimraf@3.0.2 build"
+    "clean": "npm exec -y -- rimraf@3.0.2 .turbo build"
   }
 }

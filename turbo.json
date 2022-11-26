@@ -8,6 +8,9 @@
     "lint": {
       "outputs": []
     },
+    "clean": {
+      "cache": false
+    },
     "type:check": {
       "outputs": []
     },

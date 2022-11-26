@@ -12,6 +12,10 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "clean:check": "git clean -xdn",
+    "clean:self": "npm exec -y -- rimraf@3.0.2 node_modules",
+    "clean:extra": "npm exec -y -- rimraf@3.0.2 apps/home/.vscode apps/**/node_modules packages/**/node_modules",
     "type:check": "turbo run type:check",
     "format": "prettier --write  '**/*.{js,json,ts,tsx,md}'",
     "format:check": "prettier -c '**/*.{js,json,ts,tsx,md}'"
