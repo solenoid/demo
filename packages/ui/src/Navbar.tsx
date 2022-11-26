@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
+import Link from 'next/link'
+import { ComponentType, CSSProperties, ReactNode } from 'react'
 import { Icon, IconNames } from './Icon'
 
 // TODO reconsider design when basePath concerns settle down.
 export type NavbarItems = Array<NavbarItem>
-export type NavbarVisibility = 'icons-only' | 'icons-and-names' | 'hidden'
 type Path = string
 type NavbarItem = {
   text: string
@@ -12,19 +12,22 @@ type NavbarItem = {
 }
 type Props = {
   items: NavbarItems
-  currentPath: Path | null
-  currentVisibility: NavbarVisibility
-  setVisibility: (newVisibility: NavbarVisibility) => void
-  linkComponent?: any // TODO figure out types and sensible solution for this being optional
+  current: Path | null
+  expanded: boolean
+  setExpanded: (expanded: boolean) => void
+  LinkComponent?: ComponentType | typeof Link
+  children?: ReactNode
 }
 
-const currentColor = '#40c'
+const currentColor = '#0055bc'
 const iconPad = 10
+const contractedWidth = `calc(2 * ${iconPad}px + 24px)`
+const expandedWidth = `calc(2 * ${iconPad}px + 24px + 75px)`
 const ItemIconStyle = {
   paddingLeft: iconPad,
   paddingRight: iconPad,
   display: 'inline-block',
-  minWidth: `calc(2 * ${iconPad}px + 24px)`,
+  width: contractedWidth,
 }
 const ItemIcon = ({ icon }: { icon?: IconNames }) =>
   icon ? (
@@ -35,10 +38,13 @@ const ItemIcon = ({ icon }: { icon?: IconNames }) =>
 
 type aRenderType = {
   href: string
+  style: CSSProperties
   children: ReactNode
 }
-const aRender = ({ href, children }: aRenderType) => (
-  <a href={href}>{children}</a>
+const AComponent = ({ href, style, children }: aRenderType) => (
+  <a style={style} href={href}>
+    {children}
+  </a>
 )
 
 /**
@@ -46,28 +52,20 @@ const aRender = ({ href, children }: aRenderType) => (
  * link and should be communicated that it is the Current Page.
  */
 export const Navbar = (props: Props) => {
-  const { currentPath, items, currentVisibility, setVisibility } = props
-  const isCurrent = (item: NavbarItem) => item.path === currentPath
+  const { current, items, expanded, setExpanded, children } = props
+  const isCurrent = (item: NavbarItem) => item.path === current
   const pageName = items.find(isCurrent)?.text ?? 'Unknown'
-  const LinkRender = props?.linkComponent?.render ?? aRender
+  const LinkComponent = props?.LinkComponent ?? AComponent
   return (
     <>
       <h1 style={{ userSelect: 'none' }}>
         <span
           style={ItemIconStyle}
           onClick={() => {
-            switch (currentVisibility) {
-              case 'icons-and-names':
-                setVisibility('icons-only')
-                break
-              case 'icons-only':
-                setVisibility('hidden')
-                break
-              case 'hidden':
-                setVisibility('icons-and-names')
-                break
-              default:
-                break
+            if (expanded) {
+              setExpanded(false)
+            } else {
+              setExpanded(true)
             }
           }}
         >
@@ -75,35 +73,48 @@ export const Navbar = (props: Props) => {
         </span>
         {pageName}
       </h1>
-      <nav style={{ userSelect: 'none' }} aria-label="Navigation Menu">
-        {currentVisibility !== 'hidden' && (
+      <div style={{ display: 'flex' }}>
+        <nav
+          style={{
+            userSelect: 'none',
+            minWidth: expanded ? expandedWidth : contractedWidth,
+          }}
+          aria-label="Navigation Menu"
+        >
           <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
             {items.map((item) => (
               <li key={item.path}>
                 {isCurrent(item) ? (
-                  <span className="current" style={{ stroke: currentColor }}>
+                  <span
+                    className="current"
+                    style={{
+                      color: currentColor,
+                      fill: currentColor,
+                    }}
+                  >
                     {/* <span className="visuallyhidden">Current Page: </span> */}
                     <ItemIcon icon={item.icon} />
-                    {currentVisibility !== 'icons-and-names' ? item.text : null}
+                    {expanded && item.text}
                   </span>
                 ) : (
-                  LinkRender({
-                    href: item.path,
-                    children: (
-                      <>
-                        <ItemIcon icon={item.icon} />
-                        {currentVisibility !== 'icons-and-names'
-                          ? item.text
-                          : null}
-                      </>
-                    ),
-                  })
+                  <LinkComponent
+                    href={item.path}
+                    style={{
+                      display: 'block',
+                      color: '#000',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <ItemIcon icon={item.icon} />
+                    {expanded && item.text}
+                  </LinkComponent>
                 )}
               </li>
             ))}
           </ul>
-        )}
-      </nav>
+        </nav>
+        {children}
+      </div>
     </>
   )
 }

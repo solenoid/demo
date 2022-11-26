@@ -1,22 +1,23 @@
 'use client'
-import { Navbar, NavbarVisibility } from '@solenoid/ui'
+import { Navbar } from '@solenoid/ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import { navItems } from './mainNav'
 
-const AppNavbar = () => {
+const AppNavbar = ({ children }: { children: ReactNode }) => {
   const currentPath = usePathname()
-  const [navbarVisibility, setNavbarVisibility] =
-    useState<NavbarVisibility>('icons-only')
+  const [expanded, setExpanded] = useState(true)
   return (
     <Navbar
       items={navItems}
-      currentPath={currentPath}
-      currentVisibility={navbarVisibility}
-      setVisibility={setNavbarVisibility}
-      linkComponent={Link}
-    />
+      current={currentPath}
+      expanded={expanded}
+      setExpanded={setExpanded}
+      LinkComponent={Link}
+    >
+      {children}
+    </Navbar>
   )
 }
 

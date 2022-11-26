@@ -9,8 +9,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <html lang="en">
       <body>
         <div id="root">
-          <AppNavbar />
-          {children}
+          <AppNavbar>{children}</AppNavbar>
         </div>
       </body>
     </html>

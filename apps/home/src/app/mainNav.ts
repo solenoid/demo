@@ -7,18 +7,18 @@ export const navItems: NavbarItems = [
     icon: 'CampgroundSolid',
   },
   {
-    text: 'Weather Forecast',
-    path: '/weather-forecast',
+    text: 'Weather',
+    path: '/weather',
     icon: 'CloudSunRainSolid',
   },
   {
-    text: 'Wastewater Covid',
-    path: '/wastewater-covid',
+    text: 'Covid',
+    path: '/covid',
     icon: 'PoopSolid',
   },
   {
-    text: 'Youtube Channels',
-    path: '/youtube-channels',
+    text: 'Youtube',
+    path: '/youtube',
     icon: 'Youtube',
   },
 ]
