@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "description": "Shared Icons across apps.",
-  "main": "./build/index.ts",
-  "types": "./build/index.ts",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.ts",
   "scripts": {
-    "build": "npm exec -y -- @svgr/cli@6.5.1 --typescript --icon 24 --out-dir build -- svg-src",
-    "clean": "npm exec -y -- rimraf@3.0.2 .turbo build"
+    "build": "npm exec -y -- @svgr/cli@6.5.1 --typescript --icon 24 --out-dir dist -- svg-src",
+    "clean": "npm exec -y -- rimraf@3.0.2 .turbo dist"
   }
 }
