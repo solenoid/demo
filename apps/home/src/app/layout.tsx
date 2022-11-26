@@ -2,12 +2,16 @@ import { ReactNode } from 'react'
 import '../reset.css'
 // import '../next-hacks.css'
 import '../styles.css'
+import AppNavbar from './AppNavbar'
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <div id="app-root">{children}</div>
+        <div id="root">
+          <AppNavbar />
+          {children}
+        </div>
       </body>
     </html>
   )

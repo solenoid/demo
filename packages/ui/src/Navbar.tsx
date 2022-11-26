@@ -1,9 +1,9 @@
-'use client'
-import { useState } from 'react'
+import { ReactNode } from 'react'
 import { Icon, IconNames } from './Icon'
 
 // TODO reconsider design when basePath concerns settle down.
 export type NavbarItems = Array<NavbarItem>
+export type NavbarVisibility = 'icons-only' | 'icons-and-names' | 'hidden'
 type Path = string
 type NavbarItem = {
   text: string
@@ -13,8 +13,10 @@ type NavbarItem = {
 type Props = {
   items: NavbarItems
   currentPath: Path | null
+  currentVisibility: NavbarVisibility
+  setVisibility: (newVisibility: NavbarVisibility) => void
+  linkComponent?: any // TODO figure out types and sensible solution for this being optional
 }
-type SidebarState = 'icons-only' | 'icons-and-names' | 'hidden'
 
 const currentColor = '#40c'
 const iconPad = 10
@@ -31,29 +33,38 @@ const ItemIcon = ({ icon }: { icon?: IconNames }) =>
     <span style={ItemIconStyle}></span>
   )
 
+type aRenderType = {
+  href: string
+  children: ReactNode
+}
+const aRender = ({ href, children }: aRenderType) => (
+  <a href={href}>{children}</a>
+)
+
 /**
  * We can accept a list of available `items`. The `currentPath` will not be a
  * link and should be communicated that it is the Current Page.
  */
 export const Navbar = (props: Props) => {
-  const isCurrent = (item: NavbarItem) => item.path === props.currentPath
-  const pageName = props.items.find(isCurrent)?.text ?? 'Unknown'
-  const [sidebarState, setSidebarState] = useState<SidebarState>('icons-only')
+  const { currentPath, items, currentVisibility, setVisibility } = props
+  const isCurrent = (item: NavbarItem) => item.path === currentPath
+  const pageName = items.find(isCurrent)?.text ?? 'Unknown'
+  const LinkRender = props?.linkComponent?.render ?? aRender
   return (
     <>
       <h1 style={{ userSelect: 'none' }}>
         <span
           style={ItemIconStyle}
           onClick={() => {
-            switch (sidebarState) {
+            switch (currentVisibility) {
               case 'icons-and-names':
-                setSidebarState('icons-only')
+                setVisibility('icons-only')
                 break
               case 'icons-only':
-                setSidebarState('hidden')
+                setVisibility('hidden')
                 break
               case 'hidden':
-                setSidebarState('icons-and-names')
+                setVisibility('icons-and-names')
                 break
               default:
                 break
@@ -65,21 +76,28 @@ export const Navbar = (props: Props) => {
         {pageName}
       </h1>
       <nav style={{ userSelect: 'none' }} aria-label="Navigation Menu">
-        {sidebarState !== 'hidden' && (
+        {currentVisibility !== 'hidden' && (
           <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
-            {props.items.map((item) => (
+            {items.map((item) => (
               <li key={item.path}>
                 {isCurrent(item) ? (
                   <span className="current" style={{ stroke: currentColor }}>
                     {/* <span className="visuallyhidden">Current Page: </span> */}
                     <ItemIcon icon={item.icon} />
-                    {sidebarState !== 'icons-and-names' ? item.text : null}
+                    {currentVisibility !== 'icons-and-names' ? item.text : null}
                   </span>
                 ) : (
-                  <a href={item.path}>
-                    <ItemIcon icon={item.icon} />
-                    {sidebarState !== 'icons-and-names' ? item.text : null}
-                  </a>
+                  LinkRender({
+                    href: item.path,
+                    children: (
+                      <>
+                        <ItemIcon icon={item.icon} />
+                        {currentVisibility !== 'icons-and-names'
+                          ? item.text
+                          : null}
+                      </>
+                    ),
+                  })
                 )}
               </li>
             ))}

@@ -1,6 +1,8 @@
-import { Button, Navbar } from '@solenoid/ui'
-
+import { Button, Navbar, NavbarVisibility } from '@solenoid/ui'
+import { useState } from 'react'
 export default function Docs() {
+  const [navbarVisibility, setNavbarVisibility] =
+    useState<NavbarVisibility>('icons-only')
   return (
     <div>
       <h1>Docs</h1>
@@ -16,6 +18,8 @@ export default function Docs() {
           { text: 'Second', path: '/2' },
           { text: 'Third', path: '/3', icon: 'CampgroundSolid' },
         ]}
+        currentVisibility={navbarVisibility}
+        setVisibility={setNavbarVisibility}
       />
       <hr />
     </div>

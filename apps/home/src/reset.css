@@ -41,10 +41,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-#app-root {
-  isolation: isolate;
-}
-#page-root {
+#root {
   isolation: isolate;
 }
 body {
