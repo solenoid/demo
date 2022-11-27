@@ -52,13 +52,15 @@ const mapper = (entry: EntryXML): Entry => {
 /** sorts most recent first */
 const sorter = (a: Entry, b: Entry) => b.published - a.published
 
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
+const MISSING_REQUIRED = 'Missing required channel_id query parameter.'
+const YOUTUBE_XML_FEED = 'https://www.youtube.com/feeds/videos.xml'
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const channelId = req.query?.channel_id
   if (!channelId) {
-    res.status(400).send('Missing required channel_id query parameter.')
+    res.status(400).json({ error: MISSING_REQUIRED })
   } else {
     res.setHeader('Content-Type', 'text/xml; charset=UTF-8')
-    fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`)
+    await fetch(`${YOUTUBE_XML_FEED}?channel_id=${channelId}`)
       .then((p) => p.text())
       .then((xml) => {
         const parser = new XMLParser(parserOptions)

@@ -1,4 +1,3 @@
-// TODO get this channels list from somewhere else
 const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
 // TODO figure out URL prefix concerns to reference the APIs for this app
 const channelFetcher = async (id: string) =>
@@ -13,7 +12,8 @@ const majorGap = 8
 const minorGap = 2
 type Entry = any
 const Page = async () => {
-  let allChannels: Array<Entry> = await getAllChannels()
+  // const allChannels: Array<Entry> = use(getAllChannels())
+  const allChannels: Array<Entry> = await getAllChannels()
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: majorGap }}>
       {allChannels.map((channel) => {
@@ -25,6 +25,7 @@ const Page = async () => {
                 return (
                   <a
                     target="vids"
+                    key={video.href}
                     href={video.href}
                     title={video.title}
                     style={{
@@ -33,12 +34,14 @@ const Page = async () => {
                       textDecoration: 'none',
                     }}
                   >
-                    <img
-                      src={video.src}
-                      width={video.width / divisor}
-                      height={video.height / divisor}
-                      alt={video.title}
-                    />
+                    <picture>
+                      <img
+                        src={video.src}
+                        width={video.width / divisor}
+                        height={video.height / divisor}
+                        alt={video.title}
+                      />
+                    </picture>
                     <div className="one-line-box">
                       {video.month}/{video.day}
                       <span style={{ fontSize: 10 }}> {video.title}</span>
