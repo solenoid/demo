@@ -11,11 +11,16 @@ const divisor = 6
 const majorGap = 8
 const minorGap = 2
 type Entry = any
+// const Page = () => {
+//   // put 'use client' at the top when trying this out
+//   const allChannels: Array<Entry> = use(getAllChannels())
 const Page = async () => {
-  // const allChannels: Array<Entry> = use(getAllChannels())
   const allChannels: Array<Entry> = await getAllChannels()
+  // TODO consider putting meta into head once the api settles for that
+  // see https://beta.nextjs.org/docs/api-reference/file-conventions/head
   return (
     <main style={{ display: 'flex', flexDirection: 'column', gap: majorGap }}>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       {allChannels.map((channel) => {
         return (
           <div key={`channel-${channel.uri}`}>
