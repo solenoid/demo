@@ -19,7 +19,8 @@ type Props = {
   children?: ReactNode
 }
 
-const currentColor = '#0055bc'
+const currentColor = '#d882d9'
+const regularColor = '#c6c0e9'
 const iconPad = 10
 const contractedWidth = `calc(2 * ${iconPad}px + 24px)`
 const expandedWidth = `calc(2 * ${iconPad}px + 24px + 75px)`
@@ -101,7 +102,7 @@ export const Navbar = (props: Props) => {
                     href={item.path}
                     style={{
                       display: 'block',
-                      color: '#000',
+                      color: regularColor,
                       textDecoration: 'none',
                     }}
                   >

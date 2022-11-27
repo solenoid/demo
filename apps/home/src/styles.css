@@ -1,5 +1,7 @@
 body {
-  background: #ddfffe;
+  background: #20144c;
+  color: #e7e5fc;
+  fill: #c6c0e9;
 }
 
 h1 {
@@ -19,4 +21,8 @@ main {
 
 p {
   margin-top: 0.5em;
+}
+
+a {
+  color: #85acf4;
 }
