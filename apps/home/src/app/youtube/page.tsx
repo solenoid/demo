@@ -7,17 +7,20 @@ const channelFetcher = async (id: string) =>
   )
 
 const getAllChannels = async () => Promise.all(channels.map(channelFetcher))
-const divisor = 2 // TODO consider having this be somewhat media query aware
+// TODO consider having these be somewhat media query aware
+const divisor = 6
+const majorGap = 8
+const minorGap = 2
 type Entry = any
 const Page = async () => {
   let allChannels: Array<Entry> = await getAllChannels()
   return (
-    <main style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <main style={{ display: 'flex', flexDirection: 'column', gap: majorGap }}>
       {allChannels.map((channel) => {
         return (
           <div key={`channel-${channel.uri}`}>
             <h3>{channel.title}</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: minorGap }}>
               {channel.entries.map((video: any) => {
                 return (
                   <a
@@ -27,7 +30,6 @@ const Page = async () => {
                     style={{
                       display: 'block',
                       width: video.width / divisor,
-                      fontSize: 16,
                       textDecoration: 'none',
                     }}
                   >
