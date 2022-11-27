@@ -7,7 +7,7 @@ import { navItems } from './mainNav'
 
 const AppNavbar = ({ children }: { children: ReactNode }) => {
   const currentPath = usePathname()
-  const [expanded, setExpanded] = useState(true)
+  const [expanded, setExpanded] = useState(false)
   return (
     <Navbar
       items={navItems}
