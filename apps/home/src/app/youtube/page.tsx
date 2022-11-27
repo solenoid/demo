@@ -7,7 +7,7 @@ const channelFetcher = async (id: string) =>
   )
 
 const getAllChannels = async () => Promise.all(channels.map(channelFetcher))
-const divisor = 4 // TODO consider having this be somewhat media query aware
+const divisor = 2 // TODO consider having this be somewhat media query aware
 type Entry = any
 const Page = async () => {
   let allChannels: Array<Entry> = await getAllChannels()
@@ -17,7 +17,7 @@ const Page = async () => {
         return (
           <div key={`channel-${channel.uri}`}>
             <h3>{channel.title}</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {channel.entries.map((video: any) => {
                 return (
                   <a
@@ -26,8 +26,9 @@ const Page = async () => {
                     title={video.title}
                     style={{
                       display: 'block',
-                      minWidth: video.width / divisor,
+                      width: video.width / divisor,
                       fontSize: 16,
+                      textDecoration: 'none',
                     }}
                   >
                     <img
@@ -36,8 +37,10 @@ const Page = async () => {
                       height={video.height / divisor}
                       alt={video.title}
                     />
-                    <span style={{ fontSize: 8 }}>{video.year} </span>
-                    {video.month}/{video.day}
+                    <div className="one-line-box">
+                      {video.month}/{video.day}
+                      <span style={{ fontSize: 10 }}> {video.title}</span>
+                    </div>
                   </a>
                 )
               })}

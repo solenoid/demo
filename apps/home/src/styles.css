@@ -16,6 +16,20 @@ p {
   margin-bottom: 0.5em;
 }
 
+/* see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp */
+.one-line-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.two-line-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 /* TODO consider more deeply techniques like in https://webaim.org/techniques/css/invisiblecontent/ */
 .visuallyhidden {
   display: none;
