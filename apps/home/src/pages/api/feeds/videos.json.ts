@@ -57,21 +57,47 @@ const YOUTUBE_XML_FEED = 'https://www.youtube.com/feeds/videos.xml'
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const channelId = req.query?.channel_id
   if (!channelId) {
-    res.status(400).json({ error: MISSING_REQUIRED })
+    res.status(400).json({
+      code: 'Bad Request',
+      message: MISSING_REQUIRED,
+    })
   } else {
     res.setHeader('Content-Type', 'text/xml; charset=UTF-8')
-    await fetch(`${YOUTUBE_XML_FEED}?channel_id=${channelId}`)
-      .then((p) => p.text())
-      .then((xml) => {
-        const parser = new XMLParser(parserOptions)
-        const parsed = parser.parse(xml)
-        const entries = (parsed?.feed?.entry ?? []).map(mapper).sort(sorter)
-        res.status(200).json({
-          title: parsed?.feed?.title,
-          uri: parsed?.feed?.author?.uri,
-          entries,
+    const channelParam = `channel_id=${channelId}`
+    try {
+      await fetch(`${YOUTUBE_XML_FEED}?${channelParam}`)
+        .then((p) => p.text())
+        .then((xml) => {
+          const parser = new XMLParser(parserOptions)
+          const parsed = parser.parse(xml)
+          const entries = (parsed?.feed?.entry ?? []).map(mapper).sort(sorter)
+          res.status(200).json({
+            title: parsed?.feed?.title,
+            uri: parsed?.feed?.author?.uri,
+            entries,
+          })
         })
-      })
+    } catch (reason: any) {
+      if (
+        // consider if errno is better
+        // consider if hostname is useful off error or not
+        reason?.cause?.code === 'ENOTFOUND' &&
+        reason?.cause?.syscall === 'getaddrinfo'
+      ) {
+        res
+          // is 504 or 503 better consider meaningful status here?
+          .status(502)
+          .json({
+            code: 'Bad Gateway',
+            message: `${YOUTUBE_XML_FEED} not available.`,
+          })
+      } else {
+        res.status(500).json({
+          code: 'Internal Server Error',
+          error: `Feed for ${channelParam} not available.`,
+        })
+      }
+    }
   }
 }
 
