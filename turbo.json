@@ -1,21 +1,26 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "src:gen": {
+      "dependsOn": ["^src:gen"],
+      "outputs": ["dist/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^src:gen", "^build"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
       "outputs": []
     },
-    "clean": {
-      "cache": false
-    },
     "type:check": {
       "outputs": []
     },
-    "dev": {
+    "clean": {
       "cache": false
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^src:gen"]
     }
   }
 }

@@ -6,7 +6,7 @@
   "main": "./dist/index.ts",
   "types": "./dist/index.ts",
   "scripts": {
-    "build": "npm exec -y -- @svgr/cli@6.5.1 --typescript --icon 24 --out-dir dist -- svg-src",
+    "src:gen": "npm exec -y -- @svgr/cli@6.5.1 --typescript --icon 24 --out-dir dist -- svg-src",
     "clean": "npm exec -y -- rimraf@3.0.2 .turbo dist"
   }
 }
