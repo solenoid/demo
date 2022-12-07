@@ -85,7 +85,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         reason?.cause?.syscall === 'getaddrinfo'
       ) {
         res
-          // is 504 or 503 better consider meaningful status here?
+          // TODO 502 or 504 which makes more sense here?
           .status(502)
           .json({
             code: 'Bad Gateway',
