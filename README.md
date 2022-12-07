@@ -30,12 +30,19 @@ This turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
+### Get Started
+
+To get started, run the following command:
+
+```
+npm install
+```
+
 ### Build
 
 To build all apps and packages, run the following command:
 
 ```
-cd demo
 npm run build
 ```
 
@@ -44,7 +51,6 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-cd demo
 npm run dev
 ```
 
@@ -81,3 +87,7 @@ that Vercel is driving forward.
 - [Stripe Bazel Blog Post](https://stripe.com/blog/fast-secure-builds-choose-two)
 - [Caching Explained Blog Post Series](https://sluongng.hashnode.dev/series/bazel-caching-explained)
 - [Bazel in CI Blog Post Series](https://sluongng.hashnode.dev/series/bazel-in-ci)
+
+#### Buck and Buck2
+
+- [Alpha Buck2 to replace Buck](https://github.com/facebookincubator/buck2/blob/main/docs/why.md)
