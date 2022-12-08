@@ -19,12 +19,12 @@
     "lint": "nx run-many --target=lint",
     "type:check": "nx run-many --target=type:check",
     "clean": "nx run-many --target=clean",
-    "format": "prettier --write  '**/*.{js,json,ts,tsx,md}'",
+    "format": "prettier --write '**/*.{js,json,ts,tsx,md}'",
     "format:check": "prettier -c '**/*.{js,json,ts,tsx,md}'",
     "clean:all": "npm run clean && npm run clean:extra && npm run clean:self",
     "clean:check": "git clean -xdn",
     "clean:extra": "npm exec -y -- rimraf@3.0.2 apps/home/.vscode apps/**/node_modules packages/**/node_modules",
-    "clean:self": "npm  exec -y -- rimraf@3.0.2 node_modules"
+    "clean:self": "npm exec -y -- rimraf@3.0.2 node_modules"
   },
   "dependencies": {},
   "devDependencies": {
