@@ -1,0 +1,6 @@
+# pnpm workspace definitions
+packages:
+  # apps has all the webapps that could be run locally or deployed
+  - 'apps/*'
+  # shared ui components, icons, and configuration files for apps
+  - 'packages/*'

@@ -3,17 +3,8 @@
   "private": true,
   "license": "ISC",
   "version": "0.0.0",
-  "description": "Nx and Turbo Mono Repo Explorations.",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "description": "Nx and pnpm Mono Repo Explorations.",
   "scripts": {
-    "build-turbo": "turbo run build",
-    "dev-turbo": "turbo run dev --concurrency=3",
-    "lint-turbo": "turbo run lint",
-    "type:check-turbo": "turbo run type:check",
-    "clean-turbo": "turbo run clean",
     "build": "nx run-many --target=build",
     "dev": "nx run-many --target=dev",
     "lint": "nx run-many --target=lint",
@@ -21,23 +12,19 @@
     "clean": "nx run-many --target=clean",
     "format": "prettier --write '**/*.{js,json,ts,tsx,md}'",
     "format:check": "prettier -c '**/*.{js,json,ts,tsx,md}'",
-    "clean:all": "npm run clean && npm run clean:extra && npm run clean:self",
+    "clean:all": "pnpm clean && pnpm clean:extra && pnpm clean:self",
     "clean:check": "git clean -xdn",
-    "clean:extra": "npm exec -y -- rimraf@3.0.2 apps/home/.vscode apps/**/node_modules packages/**/node_modules",
-    "clean:self": "npm exec -y -- rimraf@3.0.2 node_modules"
+    "clean:extra": "rimraf apps/home-nextjs/.vscode apps/**/node_modules packages/**/node_modules",
+    "clean:self": "rimraf node_modules"
   },
   "dependencies": {},
   "devDependencies": {
     "@solenoid/eslint-config": "*",
     "prettier": "2.8.1",
-    "turbo": "1.6.3",
     "nx": "15.3.0"
   },
+  "packageManager": "pnpm@7.18.2",
   "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@8.19.2",
-  "volta": {
-    "node": "18.12.1"
+    "node": "18"
   }
 }

@@ -4,17 +4,19 @@ Sometimes demonstrating how something works helps understand it.
 
 Along with the ability to demolish what has already been made.
 
-This was started from an official npm starter turborepo.
+This was started from an official npm starter turborepo,
+after starting out with turbo it switch to a nx monorepo.
 
 ## What's inside?
 
-This turborepo uses [npm](https://www.npmjs.com/) as a package manager.
+This turborepo uses [pnpm](https://pnpm.io/motivation) as a package manager.
 It includes the following packages/apps:
 
 ### Apps and Packages
 
 - `docs`: a [Next.js](https://nextjs.org/) app
-- `home`: a [Next.js](https://nextjs.org/) app using the experimental app dir
+- `home-nextjs`: a [Next.js](https://nextjs.org/) app using the experimental app dir
+- `home-vitejs`: a [Vite](https://vitejs.dev/) app still evolving
 - `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `icons`: a React component icon set built from svgs in src
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
@@ -24,7 +26,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
-This turborepo has some additional tools already setup for you:
+This monorepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
@@ -35,7 +37,7 @@ This turborepo has some additional tools already setup for you:
 To get started, run the following command:
 
 ```
-npm install
+pnpm install
 ```
 
 ### Build
@@ -43,7 +45,7 @@ npm install
 To build all apps and packages, run the following command:
 
 ```
-npm run build
+pnpm run build
 ```
 
 ### Develop
@@ -51,7 +53,7 @@ npm run build
 To develop all apps and packages, run the following command:
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 ### Build Caching
@@ -66,9 +68,15 @@ smaller build artifacts. Both Turbo (repo and pack) approaches seem like they
 are very well integrated with [Vercel the company](https://vercel.com/) and the
 other products thay have like [Next.js](https://vercel.com/solutions/nextjs). It
 isn't clear if the open source tools will stand alone from the other projects
-that Vercel is driving forward.
+that Vercel is driving forward. The leading approach being tried out is
+leveraging [Nx Caching](https://nx.dev/concepts/how-caching-works) since that
+seemed more mature compared to the Turbo approaches.
 
 ## Useful Links
+
+#### Nx Builds
+
+- [Caching](https://nx.dev/core-features/cache-task-results)
 
 #### Turbo Repo
 
