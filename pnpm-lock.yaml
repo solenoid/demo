@@ -5,11 +5,11 @@ importers:
   .:
     specifiers:
       '@solenoid/eslint-config': '*'
-      nx: 15.3.0
+      nx: 15.3.3
       prettier: 2.8.1
     devDependencies:
       '@solenoid/eslint-config': link:packages/eslint-config
-      nx: 15.3.0
+      nx: 15.3.3
       prettier: 2.8.1
 
   apps/docs-nextjs:
@@ -764,21 +764,21 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.14.0
 
-  /@nrwl/cli/15.3.0:
-    resolution: {integrity: sha512-WAki2+puBp6qel/VAxdQmr/L/sLyw8K6bynYNmMl4eIlR5hjefrUChPzUiJDAS9/CUYQNOyva2VV5wofzdv95w==}
+  /@nrwl/cli/15.3.3:
+    resolution: {integrity: sha512-ZWTmVP9H3ukppWWGaS/s3Nym2nOYgnt6eHtuUFNsroz8LesG5oFAJviOz9jDEM/b+pLIrvYfU5aAGZqrtM3Z2A==}
     dependencies:
-      nx: 15.3.0
+      nx: 15.3.3
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
       - debug
     dev: true
 
-  /@nrwl/tao/15.3.0:
-    resolution: {integrity: sha512-alyzKKSgfgPwQ/FUozvk43VGOZHyNMiSM6Udl49ZaQwT77GXRFkrOu21odW6dciWPd3iUOUjfJISNqrEJmxvpw==}
+  /@nrwl/tao/15.3.3:
+    resolution: {integrity: sha512-f9+VwhlJ/7TWpjHSgoUOAA067uP9DmzABMY9HC5OREEDaCx+rzYEvbLAPv6cXzWw+6IYM6cyKw0zWSQrdEVrWg==}
     hasBin: true
     dependencies:
-      nx: 15.3.0
+      nx: 15.3.3
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -1904,7 +1904,7 @@ packages:
       emoji-regex: 9.2.2
       has: 1.0.3
       jsx-ast-utils: 3.3.3
-      language-tags: 1.0.6
+      language-tags: 1.0.7
       minimatch: 3.1.2
       semver: 6.3.0
     dev: false
@@ -2264,6 +2264,7 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: false
 
   /glob/8.0.3:
     resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
@@ -2607,8 +2608,8 @@ packages:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
     dev: false
 
-  /language-tags/1.0.6:
-    resolution: {integrity: sha512-HNkaCgM8wZgE/BZACeotAAgpL9FUjEnhgF0FVQMIgH//zqTPreLYMb3rWYkYAqPoF75Jwuycp1da7uz66cfFQg==}
+  /language-tags/1.0.7:
+    resolution: {integrity: sha512-bSytju1/657hFjgUzPAPqszxH62ouE8nQFoFaVlIQfne4wO/wXC9A4+m8jYve7YBBvi59eq0SUpcshvG8h5Usw==}
     dependencies:
       language-subtag-registry: 0.3.22
     dev: false
@@ -2802,8 +2803,8 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /nx/15.3.0:
-    resolution: {integrity: sha512-5tBrEF2zDkGBDfe8wThazJqBDhsVkRrxc6OttzfBmkXP4VPp8w5MMtUEOry181AXKfjDGkw//UnCSkUNynTDlw==}
+  /nx/15.3.3:
+    resolution: {integrity: sha512-yR102AlVW5Sb7X1e9cyR+0h44RD6c3eLJbAZ0yVFKPCKw+zQTdGvAqITtB6ZeFnPkg6Qq6f1oWu6G0n6f2cTpw==}
     hasBin: true
     requiresBuild: true
     peerDependencies:
@@ -2815,8 +2816,8 @@ packages:
       '@swc/core':
         optional: true
     dependencies:
-      '@nrwl/cli': 15.3.0
-      '@nrwl/tao': 15.3.0
+      '@nrwl/cli': 15.3.3
+      '@nrwl/tao': 15.3.3
       '@parcel/watcher': 2.0.4
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.33
@@ -3153,7 +3154,7 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.1.7
+      glob: 7.1.4
     dev: true
 
   /rollup/3.7.4:

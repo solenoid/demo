@@ -17,11 +17,10 @@
     "clean:extra": "rimraf apps/home-nextjs/.vscode apps/**/node_modules packages/**/node_modules",
     "clean:self": "rimraf node_modules"
   },
-  "dependencies": {},
   "devDependencies": {
     "@solenoid/eslint-config": "*",
-    "prettier": "2.8.1",
-    "nx": "15.3.0"
+    "nx": "15.3.3",
+    "prettier": "2.8.1"
   },
   "packageManager": "pnpm@7.18.2",
   "engines": {
