@@ -104,8 +104,10 @@ importers:
   packages/icons:
     specifiers:
       '@svgr/cli': 6.5.1
+      '@types/react': 18.0.26
     devDependencies:
       '@svgr/cli': 6.5.1
+      '@types/react': 18.0.26
 
   packages/tsconfig:
     specifiers: {}
