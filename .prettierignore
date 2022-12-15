@@ -4,3 +4,6 @@
 .next/
 out/
 build
+
+# vite.js
+dist
