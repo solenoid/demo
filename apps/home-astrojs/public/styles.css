@@ -1,0 +1,49 @@
+/**
+ * See https://huetone.ardov.me/ for the
+ * Stripe palette these colors are from
+ */
+:root {
+  --violet-100-color: #e7e5fc;
+  --violet-200-color: #c6c0e9;
+  --violet-900-color: #20144c;
+  --blue-300-color: #85acf4;
+}
+
+body {
+  background: var(--violet-900-color);
+  color: var(--violet-100-color);
+  fill: var(--violet-200-color);
+}
+
+a {
+  color: var(--blue-300-color);
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+/* see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp */
+.one-line-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  /* word-break: break-all; */
+}
+.two-line-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  /* word-break: break-all; */
+}
+
+/* TODO consider more deeply techniques like in https://webaim.org/techniques/css/invisiblecontent/ */
+.visuallyhidden {
+  display: none;
+}
