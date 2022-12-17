@@ -13,8 +13,8 @@ type NavbarItem = {
 type Props = {
   items: NavbarItems
   current: Path | null
-  expanded: boolean
-  setExpanded: (expanded: boolean) => void
+  expanded?: boolean
+  setExpanded?: (expanded: boolean) => void
   LinkComponent?: ComponentType | typeof Link
   children?: ReactNode
 }
@@ -49,11 +49,11 @@ const AComponent = ({ href, style, children }: aRenderType) => (
 )
 
 /**
- * We can accept a list of available `items`. The `currentPath` will not be a
+ * We can accept a list of available `items`. The `current` will not be a
  * link and should be communicated that it is the Current Page.
  */
 export const Navbar = (props: Props) => {
-  const { current, items, expanded, setExpanded, children } = props
+  const { current, items, expanded = false, setExpanded, children } = props
   const isCurrent = (item: NavbarItem) => item.path === current
   const pageName = items.find(isCurrent)?.text ?? 'Unknown'
   const LinkComponent = props?.LinkComponent ?? AComponent
@@ -63,6 +63,7 @@ export const Navbar = (props: Props) => {
         <span
           style={ItemIconStyle}
           onClick={() => {
+            if (!setExpanded) return
             if (expanded) {
               setExpanded(false)
             } else {

@@ -1,4 +1,6 @@
 ---
+import { Navbar } from '@solenoid/ui'
+import { navItems } from '../shared/mainNav'
 const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
 
 const channelFetcher = async (id: string) =>
@@ -20,42 +22,43 @@ const divisor = 6
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Youtube</title>
   </head>
   <body>
-    <h1>Astro</h1>
-    {
-      allChannels.map((channel) => {
-        return (
-          <div>
-            <h3>{channel.title}</h3>
-            <div class="row">
-              {channel.entries.map((video: any) => {
-                return (
-                  <a
-                    target="vids"
-                    href={video.href}
-                    title={video.title}
-                    style={{ width: `${video.width / divisor}px` }}
-                  >
-                    <img
-                      src={video.src}
-                      width={video.width / divisor}
-                      height={video.height / divisor}
-                      alt={video.title}
-                    />
-                    <div class="one-line-box">
-                      <span>{`${video.month}/${video.day}`}</span>
-                      <span class="small-title">{video.title}</span>
-                    </div>
-                  </a>
-                )
-              })}
+    <Navbar current="/youtube" items={navItems}>
+      {
+        allChannels.map((channel) => {
+          return (
+            <div>
+              <h3>{channel.title}</h3>
+              <div class="row">
+                {channel.entries.map((video: any) => {
+                  return (
+                    <a
+                      target="vids"
+                      href={video.href}
+                      title={video.title}
+                      style={{ width: `${video.width / divisor}px` }}
+                    >
+                      <img
+                        src={video.src}
+                        width={video.width / divisor}
+                        height={video.height / divisor}
+                        alt={video.title}
+                      />
+                      <div class="one-line-box">
+                        <span>{`${video.month}/${video.day}`}</span>
+                        <span class="small-title">{video.title}</span>
+                      </div>
+                    </a>
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        )
-      })
-    }
+          )
+        })
+      }
+    </Navbar>
     <style>
       a {
         display: block;
