@@ -1,6 +1,8 @@
 # pnpm workspace definitions
 packages:
-  # apps has all the webapps that could be run locally or deployed
+  # apps has all the web apps and api apps
   - 'apps/*'
-  # shared ui components, icons, and configuration files for apps
-  - 'packages/*'
+  # shared configuration files
+  - 'configs/*'
+  # shared ui components, icons, etc.
+  - 'libs/*'

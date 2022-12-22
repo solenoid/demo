@@ -1,4 +1,0 @@
-# Relevant for all packages but not relevant at the top level or for apps
-
-# common output directories
-dist/

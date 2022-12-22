@@ -14,11 +14,11 @@
     "format:check": "prettier -c --plugin-search-dir=. '**/*.{mjs,js,json,ts,tsx,md,astro}'",
     "clean:all": "pnpm clean && pnpm clean:extra && pnpm clean:self",
     "clean:check": "git clean -xdn",
-    "clean:extra": "rimraf apps/home-nextjs/.vscode apps/**/node_modules packages/**/node_modules",
+    "clean:extra": "rimraf apps/web-home-nextjs/.vscode apps/**/node_modules configs/**/node_modules libs/**/node_modules",
     "clean:self": "rimraf node_modules"
   },
   "devDependencies": {
-    "@solenoid/eslint-config": "*",
+    "@config/eslint-config": "workspace:*",
     "nx": "15.3.3",
     "prettier": "2.8.1",
     "prettier-plugin-astro": "0.7.0"

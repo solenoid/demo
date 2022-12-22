@@ -1,4 +1,0 @@
-{
-  "extends": "@solenoid/tsconfig/react-library.json",
-  "include": ["src"]
-}

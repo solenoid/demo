@@ -1,4 +1,0 @@
-{
-  "extends": "@solenoid/tsconfig/nextjs.json",
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]
-}

@@ -1,0 +1,11 @@
+{
+  "name": "@config/tsconfig",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Shared tsconfig.json configurations.",
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ]
+}

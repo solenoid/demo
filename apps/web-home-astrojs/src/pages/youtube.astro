@@ -1,0 +1,79 @@
+---
+import { Navbar } from '@lib/ui'
+import { navItems } from '../shared/mainNav'
+const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
+
+const channelFetcher = async (id: string) =>
+  fetch(`http://localhost:3030/api/feeds/videos.json?channel_id=${id}`).then(
+    (r) => r.json()
+  )
+const getAllChannels = async () => Promise.all(channels.map(channelFetcher))
+type Entry = any
+
+const allChannels: Array<Entry> = await getAllChannels()
+const divisor = 6
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Youtube</title>
+  </head>
+  <body>
+    <Navbar current="/youtube" items={navItems}>
+      <main>
+        {
+          allChannels.map((channel) => {
+            return (
+              <div>
+                <h3>{channel.title}</h3>
+                <div class="row">
+                  {channel.entries.map((video: any) => {
+                    return (
+                      <a
+                        target="vids"
+                        href={video.href}
+                        title={video.title}
+                        style={{ width: `${video.width / divisor}px` }}
+                      >
+                        <img
+                          src={video.src}
+                          width={video.width / divisor}
+                          height={video.height / divisor}
+                          alt={video.title}
+                        />
+                        <div class="one-line-box">
+                          <span>{`${video.month}/${video.day}`}</span>
+                          <span class="small-title">{video.title}</span>
+                        </div>
+                      </a>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })
+        }
+      </main>
+    </Navbar>
+    <style>
+      a {
+        display: block;
+        text-decoration: none;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+      }
+      .small-title {
+        font-size: 10px;
+      }
+    </style>
+  </body>
+</html>
