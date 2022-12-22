@@ -26,38 +26,40 @@ const divisor = 6
   </head>
   <body>
     <Navbar current="/youtube" items={navItems}>
-      {
-        allChannels.map((channel) => {
-          return (
-            <div>
-              <h3>{channel.title}</h3>
-              <div class="row">
-                {channel.entries.map((video: any) => {
-                  return (
-                    <a
-                      target="vids"
-                      href={video.href}
-                      title={video.title}
-                      style={{ width: `${video.width / divisor}px` }}
-                    >
-                      <img
-                        src={video.src}
-                        width={video.width / divisor}
-                        height={video.height / divisor}
-                        alt={video.title}
-                      />
-                      <div class="one-line-box">
-                        <span>{`${video.month}/${video.day}`}</span>
-                        <span class="small-title">{video.title}</span>
-                      </div>
-                    </a>
-                  )
-                })}
+      <main>
+        {
+          allChannels.map((channel) => {
+            return (
+              <div>
+                <h3>{channel.title}</h3>
+                <div class="row">
+                  {channel.entries.map((video: any) => {
+                    return (
+                      <a
+                        target="vids"
+                        href={video.href}
+                        title={video.title}
+                        style={{ width: `${video.width / divisor}px` }}
+                      >
+                        <img
+                          src={video.src}
+                          width={video.width / divisor}
+                          height={video.height / divisor}
+                          alt={video.title}
+                        />
+                        <div class="one-line-box">
+                          <span>{`${video.month}/${video.day}`}</span>
+                          <span class="small-title">{video.title}</span>
+                        </div>
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          )
-        })
-      }
+            )
+          })
+        }
+      </main>
     </Navbar>
     <style>
       a {
