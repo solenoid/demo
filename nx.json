@@ -1,4 +1,11 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "main",
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
@@ -19,6 +26,5 @@
     "dev": {
       "dependsOn": ["^src:gen"]
     }
-  },
-  "defaultBase": "main"
+  }
 }
