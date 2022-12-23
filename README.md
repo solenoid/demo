@@ -5,21 +5,30 @@ Sometimes demonstrating how something works helps understand it.
 Along with the ability to demolish what has already been made.
 
 This was started from an official npm starter turborepo,
-after starting out with turbo it switch to a nx monorepo.
+after starting out with turbo it switched to a nx monorepo.
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io/motivation) as a package manager.
+This monorepo uses [pnpm](https://pnpm.io/motivation) as a package manager.
 It includes the following packages/apps:
 
-### Apps and Packages
+### Apps, Configs, and Libs
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `home-nextjs`: a [Next.js](https://nextjs.org/) app using the experimental app dir
-- `home-vitejs`: a [Vite](https://vitejs.dev/) app still evolving
+#### Apps
+
+- `web-docs-nextjs`: a [Next.js](https://nextjs.org/) app
+- `web-home-astrojs`: an [Astro.js](https://astro.build/) app
+- `web-home-nextjs`: a [Next.js](https://nextjs.org/) app using the experimental app dir
+- `web-home-vitejs`: a [Vite](https://vitejs.dev/) app still evolving
+
+#### Configs
+
 - `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: shared `tsconfig.json` used throughout the monorepo
+
+#### Libs
+
 - `icons`: a React component icon set built from svgs in src
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 - `ui`: a React component library shared by applications
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
