@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@config/eslint-config": "workspace:*",
-    "nx": "15.3.3",
+    "nx": "15.4.0",
     "prettier": "2.8.1",
     "prettier-plugin-astro": "0.7.0"
   },
