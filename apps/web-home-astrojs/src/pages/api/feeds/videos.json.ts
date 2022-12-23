@@ -1,9 +1,4 @@
-/**
- * See if or how this moves out of the pages dir when app dir comes out of beta
- * https://beta.nextjs.org/docs/data-fetching/api-routes
- */
-
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { APIRoute } from 'astro'
 
 import { XMLParser } from 'fast-xml-parser'
 
@@ -55,32 +50,54 @@ const sorter = (a: Entry, b: Entry) => b.published - a.published
 
 const MISSING_REQUIRED = 'Missing required channel_id query parameter.'
 const YOUTUBE_XML_FEED = 'https://www.youtube.com/feeds/videos.xml'
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const channelId = req.query?.channel_id
+const jsonHeaders = {
+  'Content-Type': 'application/json',
+}
+
+export const get: APIRoute = async ({ url }) => {
+  const channelId = url.searchParams.get('channel_id') ?? ''
   if (!channelId) {
-    res.status(400).json({
-      code: 'Bad Request',
-      message: MISSING_REQUIRED,
-    })
+    return new Response(
+      JSON.stringify({
+        code: 'Bad Request',
+        message: MISSING_REQUIRED,
+      }),
+      {
+        status: 400,
+        headers: { ...jsonHeaders },
+      }
+    )
   } else {
     const channelParam = `channel_id=${channelId}`
     try {
       const fetchPromise = await fetch(`${YOUTUBE_XML_FEED}?${channelParam}`)
       if (fetchPromise.status !== 200) {
-        res.status(fetchPromise.status).json({
-          code: 'Unexpected Server Error',
-          error: `Feed for ${channelParam} not available.`,
-        })
+        return new Response(
+          JSON.stringify({
+            code: 'Unexpected Server Error',
+            error: `Feed for ${channelParam} not available.`,
+          }),
+          {
+            status: fetchPromise.status,
+            headers: { ...jsonHeaders },
+          }
+        )
       }
       const xml = await fetchPromise.text()
       const parser = new XMLParser(parserOptions)
       const parsed = parser.parse(xml)
       const entries = (parsed?.feed?.entry ?? []).map(mapper).sort(sorter)
-      res.status(200).json({
-        title: parsed?.feed?.title,
-        uri: parsed?.feed?.author?.uri,
-        entries,
-      })
+      return new Response(
+        JSON.stringify({
+          title: parsed?.feed?.title,
+          uri: parsed?.feed?.author?.uri,
+          entries,
+        }),
+        {
+          status: 200,
+          headers: { ...jsonHeaders },
+        }
+      )
     } catch (reason: any) {
       if (
         // consider if errno is better
@@ -88,21 +105,29 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         reason?.cause?.code === 'ENOTFOUND' &&
         reason?.cause?.syscall === 'getaddrinfo'
       ) {
-        res
-          // TODO 502 or 504 which makes more sense here?
-          .status(502)
-          .json({
+        return new Response(
+          JSON.stringify({
             code: 'Bad Gateway',
             message: `${YOUTUBE_XML_FEED} not available.`,
-          })
+          }),
+          {
+            // TODO 502 or 504 which makes more sense here?
+            status: 502,
+            headers: { ...jsonHeaders },
+          }
+        )
       } else {
-        res.status(500).json({
-          code: 'Internal Server Error',
-          error: `Feed for ${channelParam} not available.`,
-        })
+        return new Response(
+          JSON.stringify({
+            code: 'Internal Server Error',
+            error: `Feed for ${channelParam} not available.`,
+          }),
+          {
+            status: 500,
+            headers: { ...jsonHeaders },
+          }
+        )
       }
     }
   }
 }
-
-export default handler

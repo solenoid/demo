@@ -4,7 +4,7 @@ import { navItems } from '../shared/mainNav'
 const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
 
 const channelFetcher = async (id: string) =>
-  fetch(`http://localhost:3030/api/feeds/videos.json?channel_id=${id}`).then(
+  fetch(`http://localhost:3000/api/feeds/videos.json?channel_id=${id}`).then(
     (r) => r.json()
   )
 const getAllChannels = async () => Promise.all(channels.map(channelFetcher))

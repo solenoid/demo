@@ -6,7 +6,7 @@
   "description": "Nx and pnpm Mono Repo Explorations.",
   "scripts": {
     "build": "nx run-many --target=build",
-    "dev": "nx run-many --target=dev",
+    "dev": "nx run-many --target=dev --projects=web-home-astrojs,web-home-nextjs",
     "lint": "nx run-many --target=lint",
     "type:check": "nx run-many --target=type:check",
     "graph": "nx graph --groupByFolder --focus=ui-shared",
