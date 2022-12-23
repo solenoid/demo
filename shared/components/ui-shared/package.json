@@ -1,8 +1,8 @@
 {
-  "name": "@lib/ui",
+  "name": "ui-shared",
   "private": true,
   "version": "0.0.0",
-  "description": "Shared UI components across apps.",
+  "description": "Shared UI components.",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
@@ -10,15 +10,15 @@
     "type:check": "tsc --noEmit"
   },
   "dependencies": {
-    "@lib/icons": "workspace:*"
+    "icons-shared": "workspace:*"
   },
   "devDependencies": {
-    "@config/eslint-config": "workspace:*",
-    "@config/tsconfig": "workspace:*",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "eslint": "8.30.0",
+    "eslint-config-shared": "workspace:*",
     "react": "18.2.0",
+    "tsconfig-shared": "workspace:*",
     "typescript": "4.9.4"
   }
 }

@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ['@lib/ui'],
+  transpilePackages: ['ui-shared'],
   experimental: {
     appDir: true,
   },

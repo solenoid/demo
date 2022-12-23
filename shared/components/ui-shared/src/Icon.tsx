@@ -1,4 +1,4 @@
-import * as Icons from '@lib/icons'
+import * as Icons from 'icons-shared'
 import { SVGProps } from 'react'
 
 export type IconNames = keyof typeof Icons

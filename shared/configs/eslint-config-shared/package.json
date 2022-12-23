@@ -1,8 +1,8 @@
 {
-  "name": "@config/eslint-config",
+  "name": "eslint-config-shared",
   "private": true,
   "version": "0.0.0",
-  "description": "Shared eslint configurations.",
+  "description": "ESLint config shared.",
   "main": "index.js",
   "dependencies": {
     "eslint-config-next": "13.1.0",

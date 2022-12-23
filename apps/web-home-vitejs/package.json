@@ -1,5 +1,5 @@
 {
-  "name": "@app/web-home-vitejs",
+  "name": "web-home-vitejs",
   "private": true,
   "version": "0.0.0",
   "type": "module",

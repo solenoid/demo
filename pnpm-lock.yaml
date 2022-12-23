@@ -4,12 +4,12 @@ importers:
 
   .:
     specifiers:
-      '@config/eslint-config': workspace:*
+      eslint-config-shared: workspace:*
       nx: 15.4.0
       prettier: 2.8.1
       prettier-plugin-astro: 0.7.0
     devDependencies:
-      '@config/eslint-config': link:shared/configs/eslint-config
+      eslint-config-shared: link:shared/configs/eslint-config-shared
       nx: 15.4.0
       prettier: 2.8.1
       prettier-plugin-astro: 0.7.0
@@ -17,44 +17,44 @@ importers:
   apps/web-docs-nextjs:
     specifiers:
       '@babel/core': 7.20.7
-      '@config/eslint-config': workspace:*
-      '@config/tsconfig': workspace:*
-      '@lib/ui': workspace:*
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: workspace:*
       next: 13.1.0
       react: 18.2.0
       react-dom: 18.2.0
+      tsconfig-shared: workspace:*
       typescript: 4.9.4
+      ui-shared: workspace:*
     dependencies:
-      '@lib/ui': link:../../shared/components/ui
       next: 13.1.0_7xlrwlvvs7cv2obrs6a5y6oxxq
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      ui-shared: link:../../shared/components/ui-shared
     devDependencies:
       '@babel/core': 7.20.7
-      '@config/eslint-config': link:../../shared/configs/eslint-config
-      '@config/tsconfig': link:../../shared/configs/tsconfig
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: link:../../shared/configs/eslint-config-shared
+      tsconfig-shared: link:../../shared/configs/tsconfig-shared
       typescript: 4.9.4
 
   apps/web-home-astrojs:
     specifiers:
       '@astrojs/react': 1.2.2
-      '@lib/ui': workspace:*
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       astro: 1.7.2
       react: 18.2.0
       react-dom: 18.2.0
+      ui-shared: workspace:*
     dependencies:
-      '@lib/ui': link:../../shared/components/ui
       astro: 1.7.2
+      ui-shared: link:../../shared/components/ui-shared
     devDependencies:
       '@astrojs/react': 1.2.2_yqqa5ithnjtlkxisuaub7c4kpa
       '@types/react': 18.0.26
@@ -65,32 +65,32 @@ importers:
   apps/web-home-nextjs:
     specifiers:
       '@babel/core': 7.20.7
-      '@config/eslint-config': workspace:*
-      '@config/tsconfig': workspace:*
-      '@lib/ui': workspace:*
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: workspace:*
       fast-xml-parser: 4.0.12
       next: 13.1.0
       react: 18.2.0
       react-dom: 18.2.0
+      tsconfig-shared: workspace:*
       typescript: 4.9.4
+      ui-shared: workspace:*
     dependencies:
-      '@lib/ui': link:../../shared/components/ui
       fast-xml-parser: 4.0.12
       next: 13.1.0_7xlrwlvvs7cv2obrs6a5y6oxxq
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      ui-shared: link:../../shared/components/ui-shared
     devDependencies:
       '@babel/core': 7.20.7
-      '@config/eslint-config': link:../../shared/configs/eslint-config
-      '@config/tsconfig': link:../../shared/configs/tsconfig
       '@types/node': 18.11.17
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: link:../../shared/configs/eslint-config-shared
+      tsconfig-shared: link:../../shared/configs/tsconfig-shared
       typescript: 4.9.4
 
   apps/web-home-vitejs:
@@ -112,7 +112,7 @@ importers:
       typescript: 4.9.4
       vite: 4.0.3
 
-  shared/components/icons:
+  shared/components/icons-shared:
     specifiers:
       '@svgr/cli': 6.5.1
       '@types/react': 18.0.26
@@ -120,28 +120,28 @@ importers:
       '@svgr/cli': 6.5.1
       '@types/react': 18.0.26
 
-  shared/components/ui:
+  shared/components/ui-shared:
     specifiers:
-      '@config/eslint-config': workspace:*
-      '@config/tsconfig': workspace:*
-      '@lib/icons': workspace:*
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: workspace:*
+      icons-shared: workspace:*
       react: 18.2.0
+      tsconfig-shared: workspace:*
       typescript: 4.9.4
     dependencies:
-      '@lib/icons': link:../icons
+      icons-shared: link:../icons-shared
     devDependencies:
-      '@config/eslint-config': link:../../configs/eslint-config
-      '@config/tsconfig': link:../../configs/tsconfig
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
       eslint: 8.30.0
+      eslint-config-shared: link:../../configs/eslint-config-shared
       react: 18.2.0
+      tsconfig-shared: link:../../configs/tsconfig-shared
       typescript: 4.9.4
 
-  shared/configs/eslint-config:
+  shared/configs/eslint-config-shared:
     specifiers:
       eslint: 8.30.0
       eslint-config-next: 13.1.0
@@ -156,7 +156,7 @@ importers:
       eslint: 8.30.0
       typescript: 4.9.4
 
-  shared/configs/tsconfig:
+  shared/configs/tsconfig-shared:
     specifiers: {}
 
 packages:

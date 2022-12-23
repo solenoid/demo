@@ -1,5 +1,5 @@
 {
-  "name": "@app/web-docs-nextjs",
+  "name": "web-docs-nextjs",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -11,19 +11,19 @@
     "type:check": "tsc"
   },
   "dependencies": {
-    "@lib/ui": "workspace:*",
     "next": "13.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "ui-shared": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "7.20.7",
-    "@config/eslint-config": "workspace:*",
-    "@config/tsconfig": "workspace:*",
     "@types/node": "18.11.17",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "eslint": "8.30.0",
+    "eslint-config-shared": "workspace:*",
+    "tsconfig-shared": "workspace:*",
     "typescript": "4.9.4"
   }
 }

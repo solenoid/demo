@@ -12,7 +12,9 @@ after starting out with turbo it switched to a nx monorepo.
 This monorepo uses [pnpm](https://pnpm.io/motivation) as a package manager.
 It includes the following packages/apps:
 
-### Apps, Configs, and Libs
+### Apps and Shared Components / Configs
+
+Everything is 100% [TypeScript](https://www.typescriptlang.org/).
 
 #### Apps
 
@@ -21,17 +23,15 @@ It includes the following packages/apps:
 - `web-home-nextjs`: a [Next.js](https://nextjs.org/) app using the experimental app dir
 - `web-home-vitejs`: a [Vite](https://vitejs.dev/) app still evolving
 
-#### Configs
+#### Shared Components
 
-- `eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: shared `tsconfig.json` used throughout the monorepo
+- `icons-shared`: a React component icon set built from svgs in src
+- `ui-shared`: a React component library shared by apps
 
-#### Libs
+#### Shared Configs
 
-- `icons`: a React component icon set built from svgs in src
-- `ui`: a React component library shared by applications
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `eslint-config-shared`: shared `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig-shared`: shared `tsconfig.json` used throughout the monorepo
 
 ### Utilities
 

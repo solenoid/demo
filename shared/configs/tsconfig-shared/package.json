@@ -1,8 +1,8 @@
 {
-  "name": "@config/tsconfig",
+  "name": "tsconfig-shared",
   "private": true,
   "version": "0.0.0",
-  "description": "Shared tsconfig.json configurations.",
+  "description": "tsconfig.json shared files.",
   "files": [
     "base.json",
     "nextjs.json",

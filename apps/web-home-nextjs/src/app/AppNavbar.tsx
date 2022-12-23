@@ -1,8 +1,8 @@
 'use client'
-import { Navbar } from '@lib/ui'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useState, ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
+import { Navbar } from 'ui-shared'
 import { navItems } from './mainNav'
 
 const AppNavbar = ({ children }: { children: ReactNode }) => {

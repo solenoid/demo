@@ -1,4 +1,4 @@
-import { NavbarItems } from '@lib/ui'
+import { NavbarItems } from 'ui-shared'
 
 export const navItems: NavbarItems = [
   {
