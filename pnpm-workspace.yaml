@@ -2,7 +2,5 @@
 packages:
   # apps has all the web apps and api apps
   - 'apps/*'
-  # shared configuration files
-  - 'configs/*'
-  # shared ui components, icons, etc.
-  - 'libs/*'
+  # shared ui components, icons, and configs
+  - 'shared/**'
