@@ -1,14 +1,14 @@
 {
   "name": "web-home-astrojs",
-  "type": "module",
-  "version": "0.0.1",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "@astrojs/node": "4.0.0",

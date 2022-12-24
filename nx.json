@@ -10,21 +10,24 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["src:gen", "build", "lint", "type:check"]
+        "cacheableOperations": ["code-gen", "type-check", "lint", "build"]
       }
     }
   },
   "targetDefaults": {
-    "src:gen": {
-      "dependsOn": ["^src:gen"],
+    "code-gen": {
+      "dependsOn": ["^code-gen"],
       "outputs": ["{projectRoot}/dist"]
     },
-    "build": {
-      "dependsOn": ["^src:gen", "^build"],
-      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next"]
+    "type-check": {
+      "dependsOn": ["^code-gen"]
     },
     "dev": {
-      "dependsOn": ["^src:gen"]
+      "dependsOn": ["^code-gen"]
+    },
+    "build": {
+      "dependsOn": ["^code-gen", "^build"],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next"]
     }
   }
 }

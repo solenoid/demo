@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "clean": "rimraf dist",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "react": "18.2.0",

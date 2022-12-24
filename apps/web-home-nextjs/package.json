@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "next dev --port 3030",
-    "build": "next build",
-    "clean": "rimraf .next next-env.d.ts tsconfig.tsbuildinfo",
-    "start": "next start",
     "lint": "next lint",
-    "type:check": "tsc"
+    "type-check": "tsc --noEmit",
+    "build": "next build",
+    "start": "next start",
+    "clean": "rimraf .next next-env.d.ts tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "fast-xml-parser": "4.0.12",
