@@ -14,36 +14,7 @@ importers:
       prettier: 2.8.1
       prettier-plugin-astro: 0.7.0
 
-  apps/web-docs-nextjs:
-    specifiers:
-      '@babel/core': 7.20.7
-      '@types/node': 18.11.17
-      '@types/react': 18.0.26
-      '@types/react-dom': 18.0.9
-      eslint: 8.30.0
-      eslint-config-shared: workspace:*
-      next: 13.1.0
-      react: 18.2.0
-      react-dom: 18.2.0
-      shared-ui: workspace:*
-      tsconfig-shared: workspace:*
-      typescript: 4.9.4
-    dependencies:
-      next: 13.1.0_7xlrwlvvs7cv2obrs6a5y6oxxq
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      shared-ui: link:../../shared/ui
-    devDependencies:
-      '@babel/core': 7.20.7
-      '@types/node': 18.11.17
-      '@types/react': 18.0.26
-      '@types/react-dom': 18.0.9
-      eslint: 8.30.0
-      eslint-config-shared: link:../../shared/configs/eslint-config-shared
-      tsconfig-shared: link:../../shared/configs/tsconfig-shared
-      typescript: 4.9.4
-
-  apps/web-home-astrojs:
+  apps/astro-home:
     specifiers:
       '@astrojs/node': 4.0.0
       '@astrojs/react': 1.2.2
@@ -68,7 +39,36 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
 
-  apps/web-home-nextjs:
+  apps/nextjs-docs:
+    specifiers:
+      '@babel/core': 7.20.7
+      '@types/node': 18.11.17
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
+      eslint: 8.30.0
+      eslint-config-shared: workspace:*
+      next: 13.1.0
+      react: 18.2.0
+      react-dom: 18.2.0
+      shared-ui: workspace:*
+      tsconfig-shared: workspace:*
+      typescript: 4.9.4
+    dependencies:
+      next: 13.1.0_7xlrwlvvs7cv2obrs6a5y6oxxq
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      shared-ui: link:../../shared/ui
+    devDependencies:
+      '@babel/core': 7.20.7
+      '@types/node': 18.11.17
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
+      eslint: 8.30.0
+      eslint-config-shared: link:../../shared/configs/eslint-config-shared
+      tsconfig-shared: link:../../shared/configs/tsconfig-shared
+      typescript: 4.9.4
+
+  apps/nextjs-home:
     specifiers:
       '@babel/core': 7.20.7
       '@types/node': 18.11.17
@@ -99,7 +99,7 @@ importers:
       tsconfig-shared: link:../../shared/configs/tsconfig-shared
       typescript: 4.9.4
 
-  apps/web-home-vitejs:
+  apps/vite-home:
     specifiers:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9

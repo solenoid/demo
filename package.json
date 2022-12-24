@@ -12,7 +12,7 @@
     "type-check": "nx run-many --target type-check",
     "clean": "pnpm clean-spaces && pnpm clean-extra && pnpm clean-self",
     "clean-spaces": "nx run-many --target clean",
-    "clean-extra": "rimraf apps/web-home-nextjs/.vscode 'apps/**/node_modules' 'shared/**/node_modules'",
+    "clean-extra": "rimraf apps/nextjs-home/.vscode 'apps/**/node_modules' 'shared/**/node_modules'",
     "clean-self": "rimraf node_modules",
     "clean-check": "git clean -xdn --exclude SCRATCH.md"
   },
