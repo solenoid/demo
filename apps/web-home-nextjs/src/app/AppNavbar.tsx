@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ReactNode, useState } from 'react'
-import { Navbar } from 'ui-shared'
+import { Navbar } from 'shared-ui'
 import { navItems } from './mainNav'
 
 const AppNavbar = ({ children }: { children: ReactNode }) => {

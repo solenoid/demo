@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Navbar } from 'ui-shared'
+import { Button, Navbar } from 'shared-ui'
 
 export default function Docs() {
   const [expanded, setExpanded] = useState(true)

@@ -1,4 +1,4 @@
-# Relevant for all apps but not relevant at the top level or for packages
+# Relevant for all apps but not relevant at the top level or for shared
 
 # typescript
 *.tsbuildinfo

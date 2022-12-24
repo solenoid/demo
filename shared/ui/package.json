@@ -1,8 +1,8 @@
 {
-  "name": "ui-shared",
+  "name": "shared-ui",
   "private": true,
   "version": "0.0.0",
-  "description": "Shared UI components.",
+  "description": "Shared UI Components.",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "icons-shared": "workspace:*"
+    "shared-icons": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "18.0.26",
