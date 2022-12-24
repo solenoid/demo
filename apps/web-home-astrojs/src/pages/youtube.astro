@@ -1,7 +1,40 @@
 ---
+import { fileURLToPath } from 'node:url'
+import sqlite3 from 'sqlite3'
 import { Navbar } from 'ui-shared'
+import { ecleticYoutubeChannels } from '../shared/constants'
 import { navItems } from '../shared/mainNav'
-const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
+
+let channels: Array<string>
+try {
+  channels = await new Promise((resolve, reject) => {
+    let db = new sqlite3.Database(
+      fileURLToPath(new URL('../../data/wip.db', import.meta.url)),
+      sqlite3.OPEN_READONLY,
+      (err) => {
+        if (err) reject(err.message)
+      }
+    )
+    db.get(
+      'SELECT channel_ids FROM channels WHERE user_id=?',
+      42,
+      (err, row) => {
+        if (err) {
+          reject(err.message)
+        }
+        if (row) {
+          resolve(JSON.parse(row.channel_ids))
+        } else {
+          reject('no channel ids in db for user')
+        }
+      }
+    )
+    db.close()
+  })
+} catch (e) {
+  console.error(e)
+  channels = ecleticYoutubeChannels
+}
 
 const channelFetcher = async (id: string) =>
   fetch(`http://localhost:3000/api/feeds/videos.json?channel_id=${id}`).then(
