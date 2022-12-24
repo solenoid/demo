@@ -5,18 +5,14 @@
   "version": "0.0.0",
   "description": "Nx and pnpm Mono Repo Explorations.",
   "scripts": {
-    "build": "nx run-many --target=build",
-    "dev": "nx run-many --target=dev --projects=web-home-astrojs,web-home-nextjs",
-    "lint": "nx run-many --target=lint",
-    "type:check": "nx run-many --target=type:check",
-    "graph": "nx graph --groupByFolder --focus=ui-shared",
-    "clean": "nx run-many --target=clean",
-    "format": "prettier --write --plugin-search-dir=. '**/*.{mjs,js,json,ts,tsx,md,astro}'",
-    "format:check": "prettier -c --plugin-search-dir=. '**/*.{mjs,js,json,ts,tsx,md,astro}'",
-    "clean:all": "pnpm clean && pnpm clean:extra && pnpm clean:self",
-    "clean:check": "git clean -xdn",
-    "clean:extra": "rimraf apps/web-home-nextjs/.vscode apps/**/node_modules shared/**/node_modules",
-    "clean:self": "rimraf node_modules"
+    "graph": "nx graph --groupByFolder --focus ui-shared",
+    "format": "prettier --write --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
+    "format-check": "prettier -c --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
+    "clean-spaces": "nx run-many --target clean",
+    "clean-all": "pnpm clean-spaces && pnpm clean-extra && pnpm clean-self",
+    "clean-extra": "rimraf apps/web-home-nextjs/.vscode apps/**/node_modules shared/**/node_modules",
+    "clean-self": "rimraf node_modules",
+    "clean-check": "git clean -xdn --exclude SCRATCH.md"
   },
   "devDependencies": {
     "eslint-config-shared": "workspace:*",
@@ -24,7 +20,6 @@
     "prettier": "2.8.1",
     "prettier-plugin-astro": "0.7.0"
   },
-  "packageManager": "pnpm@7.18.2",
   "engines": {
     "node": "18"
   }
