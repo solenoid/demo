@@ -62,6 +62,10 @@ const divisor = 6
       <main>
         {
           allChannels.map((channel) => {
+            if (!channel.entries) {
+              console.error(channel)
+              return null
+            }
             return (
               <div>
                 <h3>{channel.title}</h3>

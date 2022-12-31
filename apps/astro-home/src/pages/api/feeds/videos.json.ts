@@ -86,18 +86,14 @@ export const get: APIRoute = async ({ url }) => {
       const xml = await fetchPromise.text()
       const parser = new XMLParser(parserOptions)
       const parsed = parser.parse(xml)
+      // TODO consider storing channel id, title, uri look aside
+      const title = parsed?.feed?.title
+      const uri = parsed?.feed?.author?.uri
       const entries = (parsed?.feed?.entry ?? []).map(mapper).sort(sorter)
-      return new Response(
-        JSON.stringify({
-          title: parsed?.feed?.title,
-          uri: parsed?.feed?.author?.uri,
-          entries,
-        }),
-        {
-          status: 200,
-          headers: { ...jsonHeaders },
-        }
-      )
+      return new Response(JSON.stringify({ title, uri, entries }), {
+        status: 200,
+        headers: { ...jsonHeaders },
+      })
     } catch (reason: any) {
       if (
         // consider if errno is better
