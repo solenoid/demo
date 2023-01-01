@@ -1,0 +1,160 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+
+import { timeFormat } from 'd3'
+import { DateBar } from '../shared/DateBar'
+import { DateLine } from '../shared/DateLine'
+
+const CITY_ID = import.meta.env.CITY_ID
+let forecast: any = {}
+try {
+  forecast = await fetch(
+    `http://localhost:3000/api/forecast.json?city_id=${CITY_ID}`
+  ).then((r) => r.json())
+} catch (e) {
+  console.error(e)
+}
+
+const referenceTimeFormat = timeFormat('%A %B %-d, %-I:%M %p')
+const formatDate = timeFormat('%Y-%m-%dT00:00:00')
+
+let temperatureData: any[] = []
+let daylightData: any[] = []
+
+let rainData: any[] = []
+let snowData: any[] = []
+
+let rainSum: any[] = []
+let snowSum: any[] = []
+
+let city = ''
+
+if (forecast.list && forecast.city) {
+  city = forecast.city.name
+  temperatureData = forecast.list.map((d: any) => ({
+    date: new Date(d.dt * 1000),
+    value: d.main.temp,
+  }))
+  rainData = forecast.list.map((d: any) => ({
+    date: new Date(d.dt * 1000),
+    // comes back in mm / 3h so we turn that into inches
+    value: (d.rain && d.rain['3h']) / 25.4 || 0,
+  }))
+  // TODO evaluate sum assumptions
+  rainSum = Object.entries(
+    rainData.reduce((memo: any, item: any) => {
+      const day = formatDate(item.date)
+      memo[day] = (memo[day] || 0) + item.value
+      return memo
+    }, {})
+  ).map(([key, value], i) => ({
+    date:
+      i === 0
+        ? // have the first entry be "near the end" of the period for partial days
+          new Date(key.replace('00:', '18:'))
+        : new Date(key),
+    value,
+  }))
+  snowData = forecast.list.map((d: any) => ({
+    date: new Date(d.dt * 1000),
+    // comes back in mm / 3h so we turn that into inches
+    // TODO see if the mm / 3h is wrong and it's cm / 3h in practice
+    value: (d.snow && d.snow['3h']) / 2.54 || 0,
+  }))
+  // TODO evaluate sum assumptions
+  snowSum = Object.entries(
+    snowData.reduce((memo: any, item: any) => {
+      const day = formatDate(item.date)
+      memo[day] = (memo[day] || 0) + item.value
+      return memo
+    }, {})
+  ).map(([key, value], i) => ({
+    date:
+      i === 0
+        ? // have the first entry be "near the end" of the period for partial days
+          new Date(key.replace('00:', '18:'))
+        : new Date(key),
+    value,
+  }))
+
+  const sunriseMS = forecast.city.sunrise * 1000
+  const sunsetMS = forecast.city.sunset * 1000
+  const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+  daylightData = [0, 1, 2, 3, 4, 5, 6].map((i) => {
+    return [
+      new Date(sunsetMS + (i - 1) * MILLISECONDS_IN_DAY),
+      new Date(sunriseMS + i * MILLISECONDS_IN_DAY),
+    ]
+  })
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Covid</title>
+  </head>
+  <body>
+    <Navbar current="/weather" items={navItems}>
+      <main>
+        <p>Forecasted on {referenceTimeFormat(new Date())} for {city}</p>
+        <DateLine
+          client:load
+          title="Temperature °F"
+          data={temperatureData}
+          daylightData={daylightData}
+          color="#654321"
+        />
+        <DateBar
+          client:load
+          noneTitle="No Rain Forecasted"
+          title="Rain Inches / 3 Hours"
+          data={rainData}
+          sumData={rainSum}
+          color="#446"
+        />
+        <DateBar
+          client:load
+          noneTitle="No Snow Forecasted"
+          title="Snow Inches / 3 Hours"
+          data={snowData}
+          sumData={snowSum}
+          color="#446"
+        />
+      </main>
+    </Navbar>
+    <style>
+      /* TODO deal with global especially the h2 aspect */
+      :global(h2) {
+        font-weight: 100;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      }
+      :global(.domain) {
+        display: none;
+      }
+      :global(.y-axis .tick line) {
+        stroke: #ddd;
+      }
+      :global(.x-axis-bottom .tick line) {
+        stroke: #999;
+      }
+      :global(.x-axis-top .tick line) {
+        /* NOTE this is behind a dark shaded region for night */
+        stroke: #bbb;
+      }
+      :global(.x-axis .tick text) {
+        text-anchor: start;
+      }
+      :global(.x-axis-bottom .tick text) {
+        margin-top: -6px;
+      }
+    </style>
+  </body>
+</html>
