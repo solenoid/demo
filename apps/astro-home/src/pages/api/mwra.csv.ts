@@ -2,7 +2,6 @@ import type { APIRoute } from 'astro'
 
 import { URL } from 'url'
 import fs from 'fs/promises'
-// @ts-expect-error
 import pdf_table_extractor from 'pdf-table-extractor'
 // TODO consider fixing up to at least get on the 2.x version of pdfjs-dist vs. 1.x
 // or just do a fork and own it completely w/o the legacy from old JS / node etc.

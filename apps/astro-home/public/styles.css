@@ -17,6 +17,7 @@ body {
 
 a {
   color: var(--blue-300-color);
+  fill: var(--blue-300-color);
 }
 
 h1 {

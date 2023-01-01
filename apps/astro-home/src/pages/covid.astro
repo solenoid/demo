@@ -1,0 +1,80 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+import { parseCsvData } from '../shared/utils/csv'
+import NorthernChart from '../shared/NorthernChart'
+import SouthernChart from '../shared/SouthernChart'
+import { Icon } from 'shared-ui/src/Icon'
+
+const csvText = await fetch('http://localhost:3000/api/mwra.csv').then((r) =>
+  r.text()
+)
+
+const data = parseCsvData(csvText)
+
+// TODO consider sliders
+const maxY = 2500
+const currentX = Date.parse('2021-09-01T00:00')
+const maxX = Date.parse(data[data.length - 1]?.sampleDate)
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Covid</title>
+  </head>
+  <body>
+    <Navbar current="/covid" items={navItems}>
+      <main>
+        <p>
+          Unofficial Alternative data vis for the Massachusetts Water Resources
+          Authority sourced from{' '}
+          <a
+            href="https://www.mwra.com/biobot/biobotdata.htm"
+            class="external"
+            target="_blank"
+          >
+            Biobot Data <Icon
+              style={{
+                width: 15,
+              }}
+              client:load
+              iconName="ExternalLinkAltSolid"
+            />
+          </a>
+        </p>
+        <p>Samples submitted through {new Date(maxX).toDateString()}</p>
+        <NorthernChart
+          client:load
+          maxY={maxY}
+          minX={currentX}
+          maxX={maxX}
+          data={data}
+        />
+        <hr />
+        <SouthernChart
+          client:load
+          maxY={maxY}
+          minX={currentX}
+          maxX={maxX}
+          data={data}
+        />
+      </main>
+    </Navbar>
+    <style>
+      hr {
+        margin: 10px 5px;
+        border: solid 1px #444;
+      }
+      a.external {
+        text-decoration: none;
+        border-bottom: solid 1.5px var(--blue-300-color);
+      }
+    </style>
+  </body>
+</html>
