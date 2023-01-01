@@ -1,9 +1,10 @@
 ---
-import { fileURLToPath } from 'node:url'
 import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+
+import { fileURLToPath } from 'node:url'
 import sqlite3 from 'sqlite3'
 import { ecleticYoutubeChannels } from '../shared/constants'
-import { navItems } from '../shared/mainNav'
 
 let channels: Array<string>
 try {

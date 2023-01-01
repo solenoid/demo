@@ -1,10 +1,12 @@
 ---
 import { Navbar } from 'shared-ui'
 import { navItems } from '../shared/mainNav'
-import { parseCsvData } from '../shared/utils/csv'
+
+import { Icon } from 'shared-ui/src/Icon'
+
 import NorthernChart from '../shared/NorthernChart'
 import SouthernChart from '../shared/SouthernChart'
-import { Icon } from 'shared-ui/src/Icon'
+import { parseCsvData } from '../shared/utils/csv'
 
 const csvText = await fetch('http://localhost:3000/api/mwra.csv').then((r) =>
   r.text()
