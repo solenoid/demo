@@ -6,6 +6,9 @@ import { fileURLToPath } from 'node:url'
 import sqlite3 from 'sqlite3'
 import { ecleticYoutubeChannels } from '../shared/constants'
 
+// For what the global `Astro` provides see:
+// https://docs.astro.build/en/reference/api-reference/#astrourl
+const userId = Astro.url.searchParams.get('id') ?? '42'
 let channels: Array<string>
 try {
   channels = await new Promise((resolve, reject) => {
@@ -18,7 +21,7 @@ try {
     )
     db.get(
       'SELECT channel_ids FROM channels WHERE user_id=?',
-      42,
+      userId,
       (err, row) => {
         if (err) {
           reject(err.message)
