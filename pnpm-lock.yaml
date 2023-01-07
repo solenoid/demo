@@ -5,14 +5,14 @@ importers:
   .:
     specifiers:
       eslint-config-shared: workspace:*
-      nx: 15.4.2
-      prettier: 2.8.1
-      prettier-plugin-astro: 0.7.0
+      nx: 15.4.5
+      prettier: 2.8.2
+      prettier-plugin-astro: 0.7.2
     devDependencies:
       eslint-config-shared: link:shared/configs/eslint-config-shared
-      nx: 15.4.2
-      prettier: 2.8.1
-      prettier-plugin-astro: 0.7.0
+      nx: 15.4.5
+      prettier: 2.8.2
+      prettier-plugin-astro: 0.7.2
 
   apps/astro-home:
     specifiers:
@@ -184,10 +184,15 @@ packages:
 
   /@astrojs/compiler/0.29.19:
     resolution: {integrity: sha512-lvPpoOA6Fc1NpJrPT65ZOhhFieYkiBds9wzOhWX55lXMUpNPu5CUxqzgDAkNSTIoXHZxkxHfi+6EpFNnRZBBYQ==}
+    dev: false
 
   /@astrojs/compiler/0.31.3:
     resolution: {integrity: sha512-WbA05QH5xkdaJ3XtzDuYOjtqsip2InW5rk156sSdaHs5qN2NroUHbzWZthHJwmNAAjQSGXVIj+O6jQj81zzX/Q==}
     dev: false
+
+  /@astrojs/compiler/0.31.4:
+    resolution: {integrity: sha512-6bBFeDTtPOn4jZaiD3p0f05MEGQL9pw2Zbfj546oFETNmjJFWO3nzHz6/m+P53calknCvyVzZ5YhoBLIvzn5iw==}
+    dev: true
 
   /@astrojs/language-server/0.28.3:
     resolution: {integrity: sha512-fPovAX/X46eE2w03jNRMpQ7W9m2mAvNt4Ay65lD9wl1Z5vIQYxlg7Enp9qP225muTr4jSVB5QiLumFJmZMAaVA==}
@@ -1020,7 +1025,7 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.14.0
+      fastq: 1.15.0
 
   /@npmcli/fs/1.1.1:
     resolution: {integrity: sha512-8KG5RD0GVP4ydEzRn/I4BNDuxDtqVbOdm8675T49OIG/NGhaK0pjPX7ZcDlvKYbA+ulvVK3ztfcF4uBdOxuJbQ==}
@@ -1040,21 +1045,21 @@ packages:
     dev: false
     optional: true
 
-  /@nrwl/cli/15.4.2:
-    resolution: {integrity: sha512-k/sGhqHhXsZakJxaWLmbyDJkQd/klqBEBChax3IHXAgIO9kG0lVwXHzENRqbfw3Z8TdKEZQ4IFwBJt9Dao6bCg==}
+  /@nrwl/cli/15.4.5:
+    resolution: {integrity: sha512-f13s0/hzS9jsV1+QPr1Lp3Um+3dOHD8gEP2h7uw17rEPrtJ5ggRKMj/HcZ9dkT9zDM9EmPtVTb6k38ON+NWcUw==}
     dependencies:
-      nx: 15.4.2
+      nx: 15.4.5
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
       - debug
     dev: true
 
-  /@nrwl/tao/15.4.2:
-    resolution: {integrity: sha512-c/hYhWMjEBvucO9cGL2h2lqH7f+4gb8DJJiuNRPwfvF+sQITLXpl9wASHlpG2unDrtnLjGFo73u5XUUqGiSKvA==}
+  /@nrwl/tao/15.4.5:
+    resolution: {integrity: sha512-UMtxXxTWqbyZOdyD9Zt2IsDY/JVXIFZtY6pO4jPha7+UIHWf2Zi8Dszs6UoUTS4mqpNMIkKymwpZGtkDTfiAJA==}
     hasBin: true
     dependencies:
-      nx: 15.4.2
+      nx: 15.4.5
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -1076,7 +1081,7 @@ packages:
     requiresBuild: true
     dependencies:
       node-addon-api: 3.2.1
-      node-gyp-build: 4.5.0
+      node-gyp-build: 4.6.0
     dev: true
 
   /@pkgr/utils/2.3.1:
@@ -1549,6 +1554,7 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: false
 
   /@types/json5/0.0.30:
     resolution: {integrity: sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==}
@@ -3657,8 +3663,8 @@ packages:
       strnum: 1.0.5
     dev: false
 
-  /fastq/1.14.0:
-    resolution: {integrity: sha512-eR2D+V9/ExcbF9ls441yIuN6TI2ED1Y2ZcA5BmMtJsOkWOFRJQ0Jt0g1UwqXJJVAb+V+umH5Dfr8oh4EVP7VVg==}
+  /fastq/1.15.0:
+    resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
     dependencies:
       reusify: 1.0.4
 
@@ -4514,11 +4520,18 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.7
+    dev: false
 
   /json5/2.2.2:
     resolution: {integrity: sha512-46Tk9JiOL2z7ytNQWFLpj99RZkVgeHf87yGQKsIkaPz1qSH9UczKH1rO7K3wgRselo0tYMUNfecYpm/p1vC7tQ==}
     engines: {node: '>=6'}
     hasBin: true
+
+  /json5/2.2.3:
+    resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dev: true
 
   /jsonc-parser/2.3.1:
     resolution: {integrity: sha512-H8jvkz1O50L3dMZCsLqiuB2tA7muqbSg1AtGEkN0leAqGjsUzDJir3Zwr02BhqdcITPg3ei3mZ+HjMocAknhhg==}
@@ -5403,8 +5416,8 @@ packages:
       formdata-polyfill: 4.0.10
     dev: false
 
-  /node-gyp-build/4.5.0:
-    resolution: {integrity: sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==}
+  /node-gyp-build/4.6.0:
+    resolution: {integrity: sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==}
     hasBin: true
     dev: true
 
@@ -5486,8 +5499,8 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /nx/15.4.2:
-    resolution: {integrity: sha512-np8eJfiBy2I8RZOWCKHr1oeUMHdqLQc7V6ihrzEQe2ZYUl9CSibtKvx0v8YGToHj/vYCiolRPhliFV5sFxgWlg==}
+  /nx/15.4.5:
+    resolution: {integrity: sha512-1spZL6sgOV8JJJuN8W5CLtJYwTOnlyaV32jPXfidavU0QMS8MP+rW3+NUQ9Uzc1UYhOu8llZWtnen93neVGQRw==}
     hasBin: true
     requiresBuild: true
     peerDependencies:
@@ -5499,8 +5512,8 @@ packages:
       '@swc/core':
         optional: true
     dependencies:
-      '@nrwl/cli': 15.4.2
-      '@nrwl/tao': 15.4.2
+      '@nrwl/cli': 15.4.5
+      '@nrwl/tao': 15.4.5
       '@parcel/watcher': 2.0.4
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.34
@@ -5529,7 +5542,7 @@ packages:
       strong-log-transformer: 2.1.0
       tar-stream: 2.2.0
       tmp: 0.2.1
-      tsconfig-paths: 3.14.1
+      tsconfig-paths: 4.1.2
       tslib: 2.4.1
       v8-compile-cache: 2.3.0
       yargs: 17.6.2
@@ -5860,11 +5873,28 @@ packages:
       prettier: 2.8.1
       sass-formatter: 0.7.5
       synckit: 0.8.4
+    dev: false
+
+  /prettier-plugin-astro/0.7.2:
+    resolution: {integrity: sha512-mmifnkG160BtC727gqoimoxnZT/dwr8ASxpoGGl6EHevhfblSOeu+pwH1LAm5Qu1MynizktztFujHHaijLCkww==}
+    engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
+    dependencies:
+      '@astrojs/compiler': 0.31.4
+      prettier: 2.8.2
+      sass-formatter: 0.7.5
+      synckit: 0.8.4
+    dev: true
 
   /prettier/2.8.1:
     resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+
+  /prettier/2.8.2:
+    resolution: {integrity: sha512-BtRV9BcncDyI2tsuS19zzhzoxD8Dh8LiCx7j7tHzrkz8GFXAexeWFdi22mjE1d16dftH2qNaytVxqiRTGlMfpw==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /prismjs/1.29.0:
     resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
@@ -6720,6 +6750,16 @@ packages:
       json5: 1.0.2
       minimist: 1.2.7
       strip-bom: 3.0.0
+    dev: false
+
+  /tsconfig-paths/4.1.2:
+    resolution: {integrity: sha512-uhxiMgnXQp1IR622dUXI+9Ehnws7i/y6xvpZB9IbUVOPy0muvdvgXeZOn88UcGPiT98Vp3rJPTa8bFoalZ3Qhw==}
+    engines: {node: '>=6'}
+    dependencies:
+      json5: 2.2.3
+      minimist: 1.2.7
+      strip-bom: 3.0.0
+    dev: true
 
   /tsconfig-resolver/3.0.1:
     resolution: {integrity: sha512-ZHqlstlQF449v8glscGRXzL6l2dZvASPCdXJRWG4gHEZlUVx2Jtmr+a2zeVG4LCsKhDXKRj5R3h0C/98UcVAQg==}
