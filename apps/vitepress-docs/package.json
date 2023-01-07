@@ -1,0 +1,15 @@
+{
+  "name": "vitepress-docs",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Docs for the whole monorepo, trying out VitePress as the main tech.",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-alpha.35",
+    "vue": "3.2.45"
+  }
+}
