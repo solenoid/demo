@@ -9,7 +9,8 @@ build
 dist
 
 # vitepress
-.vitepress/
+.vitepress/cache
+.vitepress/dist
 
 # vscode
 .vscode/

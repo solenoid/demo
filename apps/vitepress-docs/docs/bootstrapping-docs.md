@@ -27,8 +27,9 @@ touch docs/bootstrapping-docs.md
 open http://localhost:5173/bootstrapping-docs.html
 
 # add in a minimal .gitignore file
-echo '# Relevant for all vitepress apps' > .gitignore
-echo '.vitepress/' >> .gitignore
+echo '# Relevant for this vitepress app while figuring things out' > .gitignore
+echo 'docs/.vitepress/cache' >> .gitignore
+echo 'docs/.vitepress/dist' >> .gitignore
 
 # decide to have this be the stopping point before sprawling into the sidebar
 # commit work so far
@@ -37,3 +38,47 @@ git add apps/vitepress-docs
 git add pnpm-lock.yaml
 git commit -m 'vitepress-docs bootstrapped'
 ```
+
+That should get you a up and running with a no config setup. The things that is
+very important to have that comes from having config is at least a sidebar.
+
+```zsh
+# create the vitepress config file
+touch apps/vitepress-docs/docs/.vitepress/config.ts
+
+# way to make the starter config throught the shell
+cat <<EOF > apps/vitepress-docs/docs/.vitepress/config.ts
+// begin vitepress config
+
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  lang: 'en-US',
+  cleanUrls: 'without-subfolders',
+  lastUpdated: true,
+  title: 'Demo Docs',
+  description: 'Demo docs for what is built or destroyed',
+  themeConfig: {
+    sidebar: [
+      {
+        text: 'Guides',
+        items: [
+          {
+            text: 'Bootstrapping Docs',
+            link: '/bootstrapping-docs',
+          },
+          {
+            text: 'Upgrading',
+            link: '/upgrading',
+          },
+        ],
+      },
+    ],
+  },
+})
+
+// end vitepress config
+EOF
+```
+
+After this you should have some docs with a sidebar.
