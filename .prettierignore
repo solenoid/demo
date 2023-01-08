@@ -7,3 +7,9 @@ build
 
 # vite.js
 dist
+
+# vitepress
+.vitepress/
+
+# vscode
+.vscode/
