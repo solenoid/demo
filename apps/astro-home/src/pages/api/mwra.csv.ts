@@ -7,6 +7,7 @@ import pdf_table_extractor from 'pdf-table-extractor'
 // or just do a fork and own it completely w/o the legacy from old JS / node etc.
 
 const __dirname = new URL('.', import.meta.url).pathname
+// TODO figure out a data dir plan once deployed
 const DATA_TMP = `${__dirname}/../../../data/`
 
 try {
@@ -37,13 +38,17 @@ export const get: APIRoute = async () => {
   } else {
     try {
       const pdfPath = nameMatch[1]
-      const pdf = await fetch(`${PREFIX}${pdfPath}`).then((res) =>
-        res.arrayBuffer()
-      )
       const pathParts = pdfPath.split('/')
       const pdfName = pathParts[pathParts.length - 1]
       const pdfLocation = `${DATA_TMP}${pdfName}`
-      await fs.writeFile(pdfLocation, Buffer.from(pdf))
+      try {
+        await fs.access(pdfLocation)
+      } catch (e) {
+        const pdf = await fetch(`${PREFIX}${pdfPath}`).then((res) =>
+          res.arrayBuffer()
+        )
+        await fs.writeFile(pdfLocation, Buffer.from(pdf))
+      }
       const csvData: string = await new Promise((resolve, reject) => {
         const success = async (d: any) => {
           const data = d.pageTables
