@@ -29,12 +29,13 @@ type d3Props = {
     value: number
   }>
   daylightData: any[]
+  showFreezeLine?: boolean
 }
 type Props = d3Props & {
   title: string
 }
 const d3Magic = (el: HTMLElement, config: d3Props) => {
-  const { color, data, daylightData } = config
+  const { color, data, daylightData, showFreezeLine } = config
   const HALF_MAGIC_BAR_WIDTH = 9
   const width = 800
   const height = 140
@@ -56,15 +57,13 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .attr('transform', `translate(${margin.left},${margin.top})`)
   const contentHeight = height - margin.top - margin.bottom
   const contentWidth = width - margin.right - margin.left
-  let xScale = d3
-    .scaleTime()
-    .domain(d3.extent(data.map((d) => d.date)) as [Date, Date])
-    .range([0, width - margin.left - margin.right])
-    .clamp(true)
-  let yScale = d3
-    .scaleLinear()
-    .domain(d3.extent(data.map((d) => d.value)) as [number, number])
-    .range([contentHeight, 0])
+  // TODO see about getting rid of the castes safely
+  const xExtent = d3.extent(data.map((d) => d.date)) as [Date, Date]
+  const yExtent = d3.extent(data.map((d) => d.value)) as [number, number]
+  const xRange = [0, width - margin.left - margin.right]
+  const yRange = [contentHeight, 0]
+  let xScale = d3.scaleTime().domain(xExtent).range(xRange).clamp(true)
+  let yScale = d3.scaleLinear().domain(yExtent).range(yRange)
   let yAxis = d3
     .axisLeft(yScale)
     .ticks(5)
@@ -109,10 +108,21 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .data(daylightData)
     .enter()
     .append('rect')
-    .attr('x', ([x1, x2]) => xScale(x1))
+    .attr('x', ([x1]) => xScale(x1))
     .attr('width', ([x1, x2]) => xScale(x2) - xScale(x1))
     .attr('height', contentHeight)
-    .attr('fill', 'rgba(0,25,50,0.3)')
+    .attr('fill', 'rgba(0,25,50,0.1)')
+
+  if (showFreezeLine && yExtent[0] <= 32 && yExtent[1] >= 32) {
+    vis
+      .append('line')
+      .attr('y1', yScale(32))
+      .attr('y2', yScale(32))
+      .attr('x2', xScale(xExtent[1]))
+      .attr('stroke-width', 2)
+      .attr('stroke-linecap', 'round')
+      .style('stroke', '#2859a6')
+  }
 
   let line = d3
     .line()
@@ -135,7 +145,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
 }
 
 export const DateLine = (props: Props) => {
-  const { title, color, data, daylightData } = props
+  const { title, color, data, daylightData, showFreezeLine = true } = props
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -145,7 +155,7 @@ export const DateLine = (props: Props) => {
       if (child) {
         child.remove()
       }
-      d3Magic(element, { color, data, daylightData })
+      d3Magic(element, { color, data, daylightData, showFreezeLine })
     }
   }, [ref, data, color])
   return (
