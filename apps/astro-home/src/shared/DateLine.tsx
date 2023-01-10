@@ -2,19 +2,13 @@ import * as d3 from 'd3'
 import { useEffect, useRef } from 'react'
 
 const formatHour = (date: Date) =>
-  d3
-    .timeFormat('%-I %p')(date)
-    // .replace("M", "");
-    .replace('12 PM', 'noon')
+  d3.timeFormat('%-I %p')(date).replace('12 PM', 'noon')
 
 const formatDay = d3.timeFormat('%a %d')
 const blank = () => ''
 
-// const multiFormat = (date: Date) =>
-//   (d3.timeDay(date) < date ? formatHour : formatDay)(date)
-
 const hourOnlyFormat = (date: Date) =>
-  (d3.timeDay(date) < date ? formatHour : blank)(date)
+  (d3.timeDay(date) < date ? formatHour : formatHour)(date)
 
 const dayOnlyFormat = (date: Date) =>
   (d3.timeDay(date) < date ? blank : formatDay)(date)
@@ -92,13 +86,15 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .attr('class', 'x-axis x-axis-top')
     .attr('transform', `translate(0,${contentHeight})`)
     .call(xAxisTop)
+    .selectAll('text')
+    .attr('x', -1)
   vis
     .append('g')
     .attr('class', 'x-axis x-axis-bottom')
     .attr('transform', `translate(0,${contentHeight})`)
     .call(xAxisBottom)
     .selectAll('text')
-    .attr('x', 5)
+    .attr('x', 2)
     .attr('y', 3)
 
   vis

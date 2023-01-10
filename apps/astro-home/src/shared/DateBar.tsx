@@ -2,23 +2,17 @@ import * as d3 from 'd3'
 import { useEffect, useRef } from 'react'
 
 const sumNumberFormat = d3.format('.2f')
-// const sumFormat = d => `∑ ${sumNumberFormat(d)} inches`;
-const sumFormat = (val: number) => {
-  if (!val) return '   ∅'
-  return `   Σ ${sumNumberFormat(val)}″` //.replace("0.", ".");
-}
+const sumFormat = (val: number) =>
+  val ? `${sumNumberFormat(val)} Inches Total on` : 'No Precipitation on'
 
 const formatHour = (date: Date) =>
-  d3
-    .timeFormat('%-I %p')(date)
-    // .replace("M", "");
-    .replace('12 PM', 'noon')
-// ∑
+  d3.timeFormat('%-I %p')(date).replace('12 PM', 'noon')
+
 const formatDay = d3.timeFormat('%a %d')
 const blank = () => ''
 
 const hourOnlyFormat = (date: Date) =>
-  (d3.timeDay(date) < date ? formatHour : blank)(date)
+  (d3.timeDay(date) < date ? formatHour : formatHour)(date)
 
 // TODO see if we care about this ever
 let yTickFormat: any = null
@@ -41,11 +35,11 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     const found = sumData.find((d: any) => {
       return d.date.getTime() === date.getTime()
     })
-    let suffix = ''
+    let otherPart = ''
     if (found) {
-      suffix = sumFormat(found.value)
+      otherPart = sumFormat(found.value)
     }
-    return (d3.timeDay(date) < date ? blank : formatDay)(date) + suffix
+    return otherPart + ' ' + (d3.timeDay(date) < date ? blank : formatDay)(date)
   }
 
   const HALF_MAGIC_BAR_WIDTH = 9
@@ -117,7 +111,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .attr('transform', `translate(0,${contentHeight})`)
     .call(xAxisBottom)
     .selectAll('text')
-    .attr('x', 5)
+    .attr('x', 2)
     .attr('y', 3)
 
   vis
