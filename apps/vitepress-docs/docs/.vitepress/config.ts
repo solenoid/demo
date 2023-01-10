@@ -10,19 +10,36 @@ export default defineConfig({
   description: 'Demo docs for what is built or destroyed',
   themeConfig: {
     sidebar: [
+      // {
+      //   text: 'Tutorials',
+      //   items: [],
+      // },
       {
         text: 'Guides',
+        collapsible: true,
         items: [
-          {
-            text: 'Bootstrapping Docs',
-            link: '/bootstrapping-docs',
-          },
           {
             text: 'Upgrading',
             link: '/upgrading',
           },
+          {
+            text: 'Bootstrapping Docs',
+            link: '/bootstrapping-docs',
+          },
         ],
       },
+      // {
+      //   text: 'References',
+      //   collapsible: true,
+      //   collapsed: true,
+      //   items: [],
+      // },
+      // {
+      //   text: 'Explanations',
+      //   collapsible: true,
+      //   collapsed: true,
+      //   items: [],
+      // },
     ],
   },
 })
