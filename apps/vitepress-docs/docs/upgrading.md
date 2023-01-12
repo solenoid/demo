@@ -116,4 +116,8 @@ pnpm update --latest
 pnpm -r outdated
 # update to the latest recursively
 pnpm -r update --latest
+# update using an interactive prompt for what to update
+pnpm -r update --latest --interactive
+# update with short options same as the last
+pnpm update -irL
 ```

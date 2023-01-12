@@ -13,8 +13,8 @@
   "dependencies": {
     "@astrojs/node": "4.0.0",
     "@observablehq/plot": "0.6.1",
-    "astro": "1.9.1",
-    "d3": "7.8.0",
+    "astro": "1.9.2",
+    "d3": "7.8.1",
     "fast-xml-parser": "4.0.13",
     "pdf-table-extractor": "1.0.3",
     "shared-ui": "workspace:*",
