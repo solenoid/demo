@@ -26,13 +26,21 @@ pnpm update --latest nx
 Running without any packages will update all that are outdated, so that's a
 quick way to update all when appropriate.
 
+You can also do updates with an interactive prompt on the command line. This
+lets you pick of all the potential updates which ones you want to do now.
+
+```zsh
+pnpm update --interactive --latest
+pnpm update -iL
+```
+
 Check that things still work well and commit the `package.json` changes along
 with the `pnpm-lock.yaml` changes and continue with the others that need
 upgrades.
 
 ## Shared Upgrades
 
-Share packages are used across apps and are made up of a mix of concerns:
+Shared packages are used across apps and are made up of a mix of concerns:
 
 - shared library code like UI elements, or icons
 - configs for things like linting or typescript
@@ -60,6 +68,8 @@ To update things that are outdated run:
 pnpm update --filter './shared/**' -r --latest
 # to update a specific package or packages eslint in this case
 pnpm update --filter './shared/**' -r --latest eslint
+# with an interactive prompt using short option names
+pnpm update -F './shared/**' -irL eslint
 ```
 
 Check that things still work well and commit the `package.json` changes along

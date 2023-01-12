@@ -17,12 +17,23 @@ export default defineConfig({
         collapsible: true,
         items: [
           {
-            text: 'Upgrading',
-            link: '/upgrading',
+            text: 'How-To Guides',
+            link: '/guides',
           },
           {
-            text: 'Bootstrapping Docs',
-            link: '/bootstrapping-docs',
+            text: 'Upgrading',
+            link: '/guides/upgrading',
+          },
+        ],
+      },
+      {
+        text: 'Explanations',
+        collapsible: true,
+        collapsed: true,
+        items: [
+          {
+            text: 'Upgrading in Depth',
+            link: '/explanations/upgrading-in-depth',
           },
         ],
       },
@@ -32,12 +43,17 @@ export default defineConfig({
       //   collapsed: true,
       //   items: [],
       // },
-      // {
-      //   text: 'Explanations',
-      //   collapsible: true,
-      //   collapsed: true,
-      //   items: [],
-      // },
+      {
+        text: 'Historical References',
+        collapsible: true,
+        collapsed: true,
+        items: [
+          {
+            text: 'Bootstrapping Docs',
+            link: '/historical/bootstrapping-docs',
+          },
+        ],
+      },
     ],
   },
 })
