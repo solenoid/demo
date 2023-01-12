@@ -53,23 +53,21 @@ cat <<EOF > apps/vitepress-docs/docs/.vitepress/config.ts
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  lang: 'en-US',
+  title: 'Demo',
   cleanUrls: 'without-subfolders',
   lastUpdated: true,
-  title: 'Demo Docs',
-  description: 'Demo docs for what is built or destroyed',
   themeConfig: {
     sidebar: [
       {
         text: 'Guides',
         items: [
           {
-            text: 'Bootstrapping Docs',
-            link: '/bootstrapping-docs',
-          },
-          {
             text: 'Upgrading',
             link: '/upgrading',
+          },
+          {
+            text: 'Bootstrapping Docs',
+            link: '/bootstrapping-docs',
           },
         ],
       },

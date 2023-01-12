@@ -3,11 +3,9 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  lang: 'en-US',
+  title: 'Demo',
   cleanUrls: 'without-subfolders',
   lastUpdated: true,
-  title: 'Demo Docs',
-  description: 'Demo docs for what is built or destroyed',
   themeConfig: {
     sidebar: [
       // {
