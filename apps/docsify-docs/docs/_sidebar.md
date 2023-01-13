@@ -1,11 +1,12 @@
 - Guides
 
-  - [Upgrading](upgrading.md)
+  - [How-To Guides](guides.md)
+  - [Upgrading](guides/upgrading.md)
 
 - Explanations
 
-  - [Upgrading in Depth](upgrading-in-depth.md)
+  - [Upgrading in Depth](explanations/upgrading-in-depth.md)
 
 - Historical References
 
-  - [Bootstrapping Docs](bootstrapping-docs.md)
+  - [Bootstrapping Docs](historical/bootstrapping-docs.md)
