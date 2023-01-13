@@ -5,7 +5,7 @@ To get the documentation going the steps to
 VitePress were mostly followed. There are some opinions to have it fit in with
 the current norms for this repo:
 
-1. Make `package.json` conventional in in what fields are used and ordering.
+1. Make `package.json` conventional in what fields are used and ordering.
 2. Drop the `docs:` prefix on scripts to treat docs as a standalone and
    equivalent app in what script commands are available, and also avoid the
    "using : in script name" norm that help `nx` be easy to use.
@@ -46,7 +46,7 @@ very important to have that comes from having config is at least a sidebar.
 # create the vitepress config file
 touch apps/vitepress-docs/docs/.vitepress/config.ts
 
-# way to make the starter config throught the shell
+# way to make the starter config through the shell
 cat <<EOF > apps/vitepress-docs/docs/.vitepress/config.ts
 // begin vitepress config
 
