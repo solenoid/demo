@@ -2,6 +2,7 @@
 
   - [How-To Guides](guides.md)
   - [Upgrading](guides/upgrading.md)
+  - [Switch from Volta to pnpm](guides/switch-from-volta-to-pnpm.md)
 
 - Explanations
 
