@@ -33,3 +33,36 @@ git commit -m 'docsify-docs bootstrapped'
 
 That should get you a up and running with a no config setup. The things that is
 very important to have that comes from having config is at least a sidebar.
+
+With docsify you change config in `index.html`, this will turn on the sidebar.
+
+```diff
+apps/docsify-docs/docs/index.html
+     <script>
+       window.$docsify = {
++        loadSidebar: true,
+       }
+     </script>
+```
+
+You can create the `_sidebar.md` file however you want. Here is a way to do it
+on the command line.
+
+```zsh
+# way to make the starter sidebar through the shell
+cat <<EOF > apps/docsify-docs/docs/_sidebar.md
+- Guides
+
+  - [Upgrading](upgrading.md)
+
+- Explanations
+
+  - [Upgrading in Depth](upgrading-in-depth.md)
+
+- Historical References
+
+  - [Bootstrapping Docs](bootstrapping-docs.md)
+EOF
+```
+
+After this you should have some docs with a sidebar.
