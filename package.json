@@ -5,9 +5,10 @@
   "version": "0.0.0",
   "description": "Nx and pnpm Mono Repo Explorations.",
   "scripts": {
-    "dev-some": "pnpm --filter astro-home --filter vitepress-docs --filter docsify-docs dev ",
+    "dev-some": "pnpm --filter astro-home   --filter docsify-docs dev --filter vitepress-docs",
+    "dev-docs": "pnpm --filter nextjs-docs  --filter docsify-docs dev --filter vitepress-docs",
     "graph": "nx graph --groupByFolder --focus shared-ui",
-    "format": "prettier --write --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
+    "format": "prettier  --write --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
     "format-check": "prettier -c --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
     "lint-check": "nx run-many --target lint",
     "type-check": "nx run-many --target type-check",
