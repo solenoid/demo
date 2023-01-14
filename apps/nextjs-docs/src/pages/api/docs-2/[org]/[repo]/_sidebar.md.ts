@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getOrgRepoConfig } from '../../utils'
+import { getOrgRepoConfig, rewrite } from '../../utils'
 
-// TODO see if there is a better way to get markdown link paths
-const linkRe = /\(([^\)]*)\)/g
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { org = '', repo = '' } = req.query
@@ -16,11 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(404).send('Not Found')
     }
     const sidebarText = await fetchPromise.text()
-    // Assume we can inject a leading org/repo on all links.
-    const replacedText = sidebarText.replaceAll(
-      linkRe,
-      (__, inner) => `(${org}/${repo}/${inner})`
-    )
+    const replacedText = rewrite(`${org}/${repo}`, sidebarText)
     return res.status(200).send(replacedText)
   } catch (e) {
     return res.status(500).send('Internal Server Error')

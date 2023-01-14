@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getOrgRepoConfig } from '../../utils'
+import { getOrgRepoConfig, rewrite } from '../../utils'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -20,9 +20,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (fetchPromise.status !== 200) {
       return res.status(404).send('Not Found')
     }
-    // TODO see about parroting the content-type too
+    const contentType = fetchPromise.headers.get('Content-Type') ?? 'text/plain'
     const sidebarText = await fetchPromise.text()
-    return res.status(200).send(sidebarText)
+    const replacedText = rewrite(`${org}/${repo}`, sidebarText)
+    return res
+      .status(200)
+      .setHeader('Content-Type', contentType)
+      .send(replacedText)
   } catch (e) {
     console.log(e)
     return res.status(500).send('Internal Server Error')
