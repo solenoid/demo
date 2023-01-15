@@ -7,7 +7,10 @@ import { DateBar } from '../shared/DateBar'
 import { DateLine } from '../shared/DateLine'
 
 const serverRenderNow = new Date()
+const SITE = import.meta.env.SITE
 const CITY_ID = import.meta.env.CITY_ID
+const API_ENDPOINT = `${SITE}api/forecast.json`
+
 let forecast: any = {}
 
 try {
@@ -18,9 +21,9 @@ try {
   //   CITY_ID,
   //   '\n'
   // )
-  forecast = await fetch(
-    `http://localhost:3000/api/forecast.json?city_id=${CITY_ID}`
-  ).then((r) => r.json())
+  forecast = await fetch(`${API_ENDPOINT}?city_id=${CITY_ID}`).then((r) =>
+    r.json()
+  )
 } catch (e) {
   console.error(e)
 }

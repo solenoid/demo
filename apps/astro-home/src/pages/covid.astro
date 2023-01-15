@@ -8,9 +8,9 @@ import NorthernChart from '../shared/NorthernChart'
 import SouthernChart from '../shared/SouthernChart'
 import { parseCsvData } from '../shared/utils/csv'
 
-const csvText = await fetch('http://localhost:3000/api/mwra.csv').then((r) =>
-  r.text()
-)
+const SITE = import.meta.env.SITE
+const API_ENDPOINT = `${SITE}api/mwra.csv`
+const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 
 const data = parseCsvData(csvText)
 
