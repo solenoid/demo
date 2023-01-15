@@ -1,4 +1,4 @@
-# Upgrading
+# Upgrading in Depth
 
 ## Top Level Upgrades
 

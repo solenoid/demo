@@ -7,6 +7,7 @@
 - Explanations
 
   - [Upgrading in Depth](explanations/upgrading-in-depth.md)
+  - [Add Ports in Depth](explanations/add-ports-in-depth.md)
 
 - Historical References
 
