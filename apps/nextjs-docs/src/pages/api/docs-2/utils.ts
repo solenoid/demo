@@ -11,11 +11,6 @@ type docLinks = Array<{
 
 const items: docLinks = [
   {
-    name: 'Vitepress site',
-    org_repo: 'solenoid/site-1',
-    site: 'http://localhost:5173/',
-  },
-  {
     name: 'Docsify site',
     org_repo: 'solenoid/site-2',
     site: 'http://localhost:9000/',
@@ -30,6 +25,11 @@ const items: docLinks = [
     org_repo: 'hibbitts-design/demo-docsify-open-publishing-starter-kit',
     site: 'https://hibbitts-design.github.io/demo-docsify-open-publishing-starter-kit/',
     home: 'home.md',
+  },
+  {
+    name: 'Vitepress site',
+    org_repo: 'solenoid/site-1',
+    site: 'http://localhost:5173/',
   },
 ]
 
@@ -68,18 +68,26 @@ export const getFrameSrcEmbed = (org: string, repo: string) => {
 export const getOrgRepoConfig = (org: string, repo: string) =>
   items.find((d) => d.org_repo === `${org}/${repo}`)
 
-// Useful way to go about markdown file link rewrites
+// Useful way to go about markdown file link rewrites including schemeless
 // riff from https://github.com/sindresorhus/is-absolute-url
-// Scheme: https://tools.ietf.org/html/rfc3986#section-3.1
-// Absolute URL: https://tools.ietf.org/html/rfc3986#section-4.3
-const ABSOLUTE_URL_REGEX = /^[a-zA-Z][a-zA-Z\d+\-.]*?:/
+const ABS_OR_SCHEMELESS_RE = /^[a-zA-Z][a-zA-Z\d+\-.]*?:|^\/\//
+
+// Useful way to get link and text ignore images
 // riff from https://github.com/sethvincent/rewrite-markdown-urls
-const linkRe = /\(([^\)]*)\)/g
+const LINK_RE = /([^!])\[([^\]]+)]\(([^\)]*)\)/g
+
+// Can have double or single quote :include for special docsify handling
+const HAS_INCLUDE = /['"]:include/
 export const rewrite = (prefix: string, mdSrc: string) =>
-  mdSrc.replace(linkRe, (__, existing) =>
-    ABSOLUTE_URL_REGEX.test(existing)
-      ? `(${existing})`
-      : `(${prefix}/${existing})`
+  mdSrc.replace(LINK_RE, (__, b, text, link: string) =>
+    // Allow external http://example.com or //example.com to avoid rewrites
+    ABS_OR_SCHEMELESS_RE.test(link) ||
+    // Allow any ':include ... to avoid rewrites
+    HAS_INCLUDE.test(link) ||
+    // Avoid double rewrites if prefix is already present
+    link.startsWith(`${prefix}/`)
+      ? `${b}[${text}](${link})`
+      : `${b}[${text}](${prefix}/${link})`
   )
 
 /** minimal default export so these utils can co-exist in the apis dir */
