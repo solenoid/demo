@@ -21,12 +21,26 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(404).send('Not Found')
     }
     const contentType = fetchPromise.headers.get('Content-Type') ?? 'text/plain'
-    const sidebarText = await fetchPromise.text()
-    const replacedText = rewrite(`${org}/${repo}`, sidebarText)
-    return res
-      .status(200)
-      .setHeader('Content-Type', contentType)
-      .send(replacedText)
+    if (
+      contentType.startsWith('text/') ||
+      contentType.startsWith('application/javascript')
+    ) {
+      const rawText = await fetchPromise.text()
+      const replacedText = contentType.startsWith('text/markdown')
+        ? rewrite(`${org}/${repo}`, rawText)
+        : rawText
+      // const replacedText = rawText
+      return res
+        .status(200)
+        .setHeader('Content-Type', contentType)
+        .send(replacedText)
+    } else {
+      const buf = await fetchPromise.arrayBuffer()
+      return res
+        .status(200)
+        .setHeader('Content-Type', contentType)
+        .write(new Uint8Array(buf))
+    }
   } catch (e) {
     console.log(e)
     return res.status(500).send('Internal Server Error')
