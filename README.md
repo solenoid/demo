@@ -19,10 +19,18 @@ Everything is 100% [TypeScript](https://www.typescriptlang.org/).
 #### Apps
 
 - `astro-home`: an [Astro](https://astro.build/) app; furthest along
-- `nextjs-docs`: a [Next.js](https://nextjs.org/) app; pages, doc centric
-- `nextjs-home`: a [Next.js](https://nextjs.org/) app; using the experimental
-  app dir
+- `nextjs-home`: a [Next.js](https://nextjs.org/) app; using the beta app dir
 - `vite-home`: a [Vite](https://vitejs.dev/) app; on pause, not integrated
+
+##### Docs
+
+- `docsify-docs`: a [docsify](https://docsify.js.org//) app; standalone and in
+  docsify aggregator experiments.
+- `nextjs-docs`: a [Next.js](https://nextjs.org/) app; pages, doc centric. Has
+  docsify aggregator experiments.
+- `vitepress-docs`: a [VitePress](https://vitepress.vuejs.org/) app; doc
+  centric. Fits in well with Vite ethos. Can't integrate fully into docsify
+  aggregator experiments.
 
 #### Shared Components
 
