@@ -1,27 +1,21 @@
-import { useState } from 'react'
-import { Button, Navbar } from 'shared-ui'
+import Link from 'next/link'
 
-export default function Docs() {
-  const [expanded, setExpanded] = useState(true)
-  return (
-    <div>
-      <h1>Docs</h1>
-      <hr />
-      <h2>Button</h2>
-      <Button />
-      <hr />
-      <h2>Navbar</h2>
-      <Navbar
-        current="/1"
-        items={[
-          { text: 'First', path: '/1' },
-          { text: 'Second', path: '/2' },
-          { text: 'Third', path: '/3', icon: 'CampgroundSolid' },
-        ]}
-        expanded={expanded}
-        setExpanded={setExpanded}
-      />
-      <hr />
-    </div>
-  )
-}
+export default () => (
+  <div>
+    <h1>Docs Index</h1>
+    <p>
+      Lots of different approaches are being experimented with, while that broad
+      experimentation is happening the organization is a little dis-jointed.
+    </p>
+    <ul>
+      <li>
+        <a href="/docs-agg.html">Docsify Aggregator Concept</a>, past
+        experiments are docs-1.html and docs-2.html leading to this Aggregator
+        concept without the iframe approach adding complexity.
+      </li>
+      <li>
+        <Link href="/component-examples">Component Examples</Link>
+      </li>
+    </ul>
+  </div>
+)
