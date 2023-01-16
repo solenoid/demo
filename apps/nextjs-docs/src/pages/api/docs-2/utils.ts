@@ -13,7 +13,7 @@ const items: docLinks = [
   {
     name: 'Docsify site',
     org_repo: 'solenoid/site-2',
-    site: 'http://localhost:9000/',
+    site: 'http://localhost:9999/',
   },
   {
     name: 'DocsifyJS Tutorial',
@@ -29,7 +29,7 @@ const items: docLinks = [
   {
     name: 'Vitepress site',
     org_repo: 'solenoid/site-1',
-    site: 'http://localhost:5173/',
+    site: 'http://localhost:9997/',
   },
 ]
 

@@ -7,11 +7,11 @@ type simpleLinks = Array<{
 const sidebarGenericLinks: simpleLinks = [
   {
     name: 'Vitepress site',
-    to: 'http://localhost:5173',
+    to: 'http://localhost:9997',
   },
   {
     name: 'Docsify site',
-    to: 'http://localhost:9000',
+    to: 'http://localhost:9999',
   },
 ]
 export default async (req: NextApiRequest, res: NextApiResponse) => {

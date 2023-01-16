@@ -1,9 +1,9 @@
 const channels = ['UCvjgXvBlbQiydffZU7m1_aw']
 // TODO figure out URL prefix concerns to reference the APIs for this app
+const SITE = 'http://localhost:9001/'
+const API_ENDPOINT = `${SITE}api/feeds/videos.json`
 const channelFetcher = async (id: string) =>
-  fetch(`http://localhost:3030/api/feeds/videos.json?channel_id=${id}`).then(
-    (r) => r.json()
-  )
+  fetch(`${API_ENDPOINT}?channel_id=${id}`).then((r) => r.json())
 
 const getAllChannels = async () => Promise.all(channels.map(channelFetcher))
 // TODO consider having these be somewhat media query aware

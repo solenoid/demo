@@ -25,6 +25,7 @@ pnpm dev # see things working
 touch docs/bootstrapping-docs.md
 # write this document you're reading now and view it
 open http://localhost:5173/bootstrapping-docs.html
+# later the port switch to 9997 to fit in with the port numbering scheme
 
 # add in a minimal .gitignore file
 echo '# Relevant for this vitepress app while figuring things out' > .gitignore

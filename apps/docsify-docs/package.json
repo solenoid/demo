@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Docs for the whole monorepo, trying out Docsify as the main tech.",
   "scripts": {
-    "dev": "docsify serve docs --port 9000"
+    "dev": "docsify serve docs --port 9999"
   },
   "devDependencies": {
     "docsify-cli": "4.4.4"

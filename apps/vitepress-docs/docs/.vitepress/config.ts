@@ -3,7 +3,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Demo',
+  title: 'Demo VitePress',
   cleanUrls: 'without-subfolders',
   lastUpdated: true,
   themeConfig: {
