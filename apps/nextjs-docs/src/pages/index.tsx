@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+/* eslint-disable react/display-name */
 export default () => (
   <div>
     <h1>Docs Index</h1>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button, Navbar } from 'shared-ui'
 
+/* eslint-disable react/display-name */
 export default () => {
   const [expanded, setExpanded] = useState(true)
   return (
