@@ -39,6 +39,11 @@ const items: docLinks = [
     home: 'introduction.md',
     side: 'sidebar.md',
   },
+  {
+    name: 'mas',
+    org_repo: 'solenoid/mas',
+    site: 'https://solenoid.github.io/mas/',
+  },
 ]
 
 export const getSideBarLinks = () => {
