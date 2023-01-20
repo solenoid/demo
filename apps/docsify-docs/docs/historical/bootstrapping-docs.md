@@ -16,12 +16,12 @@ cd docsify-docs
 pnpm init # pnpm is what is used for this mono repo
 # edited by hand to fit in with other package.json files in this repo
 pnpm add --save-dev docsify-cli
-# add script section with common names using port 9999
+# add script section with common names using port 9998
 pnpm docsify init ./docs
 pnpm dev # see things working
 touch docs/bootstrapping-docs.md
 # write this document you're reading now and view it
-open http://localhost:9999/bootstrapping-docs.html
+open http://localhost:9998/bootstrapping-docs.html
 
 # decide to have this be the stopping point before sprawling into the sidebar
 # commit work so far

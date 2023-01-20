@@ -13,7 +13,7 @@ const items: docLinks = [
   {
     name: 'Docsify site',
     org_repo: 'solenoid/site-2',
-    site: 'http://localhost:9999/',
+    site: 'http://localhost:9998/',
   },
   {
     name: 'DocsifyJS Tutorial',

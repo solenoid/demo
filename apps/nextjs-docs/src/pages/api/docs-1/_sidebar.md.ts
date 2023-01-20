@@ -11,7 +11,7 @@ const sidebarGenericLinks: simpleLinks = [
   },
   {
     name: 'Docsify site',
-    to: 'http://localhost:9999',
+    to: 'http://localhost:9998',
   },
 ]
 export default async (req: NextApiRequest, res: NextApiResponse) => {

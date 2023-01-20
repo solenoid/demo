@@ -33,8 +33,8 @@ and switched to a spot closer to those memorable ports.
 
 | Port | Status | Description    |
 | ---- | ------ | -------------- |
-| 9999 | Used   | docsify-docs   |
-| 9998 | Used   | nextjs-docs    |
+| 9999 | Used   | nextjs-docs    |
+| 9998 | Used   | docsify-docs   |
 | 9997 | Used   | vitepress-docs |
 
 ## Ports Used, Reserved, or Unassigned
