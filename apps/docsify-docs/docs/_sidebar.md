@@ -1,13 +1,16 @@
 - Guides
 
   - [How-To Guides](guides.md)
-  - [Upgrading](guides/upgrading.md)
-  - [Switch from Volta to pnpm](guides/switch-from-volta-to-pnpm.md)
+  - [Install pnpm](guides/install-pnpm.md)
+  - [Install node](guides/install-node.md)
+  - [Migrate to pnpm](guides/migrate-to-pnpm.md)
+  - [Upgrade deps](guides/upgrade-deps.md)
 
 - Explanations
 
-  - [Upgrading in Depth](explanations/upgrading-in-depth.md)
-  - [Add Ports in Depth](explanations/add-ports-in-depth.md)
+  - [Port number scheme](explanations/port-number-scheme.md)
+  - [pnpm & node on Mac](explanations/pnpm-and-node-on-mac.md)
+  - [Upgrade dependencies](explanations/upgrade-dependencies.md)
 
 - Historical References
 

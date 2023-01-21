@@ -1,4 +1,4 @@
-# Upgrading in Depth
+# Upgrade dependencies explained
 
 ## Top Level Upgrades
 

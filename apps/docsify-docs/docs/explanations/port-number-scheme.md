@@ -1,6 +1,4 @@
-# Add Ports in Depth
-
-## Port Number Scheme
+# Port Number Scheme
 
 While doing local development the need to work on multiple apps at the same time
 arises. To allow for this need if we have a good port number scheme it can allow

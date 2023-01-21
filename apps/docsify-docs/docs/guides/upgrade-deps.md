@@ -1,6 +1,4 @@
-# Upgrading
-
-## Upgrades and Updates
+# Upgrade dependencies
 
 To check the state of dependencies run:
 
@@ -11,7 +9,7 @@ pnpm -r outdated
 pnpm --recursive outdated
 ```
 
-To update to the latest interactively run:
+To update (aka upgrade) to the latest interactively run:
 
 ```zsh
 # short options
