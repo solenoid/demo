@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "start": "astro dev",
-    "clean": "rimraf dist"
+    "clean": "rimraf node_modules dist"
   },
   "dependencies": {
     "@astrojs/node": "4.0.0",

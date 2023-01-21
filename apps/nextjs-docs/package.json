@@ -8,7 +8,7 @@
     "type-check": "tsc --noEmit",
     "build": "next build",
     "start": "next start",
-    "clean": "rimraf .next next-env.d.ts tsconfig.tsbuildinfo"
+    "clean": "rimraf node_modules .next next-env.d.ts tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "next": "13.1.3",

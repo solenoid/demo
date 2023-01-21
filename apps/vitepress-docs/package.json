@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vitepress dev docs --port 9997",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "clean": "rimraf node_modules docs/.vitepress/cache docs/.vitepress/dist"
   },
   "devDependencies": {
     "vitepress": "1.0.0-alpha.38",
