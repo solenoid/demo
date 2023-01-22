@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ComponentType, CSSProperties, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { Icon, IconNames } from './Icon'
 
 // TODO reconsider design when basePath concerns settle down.
@@ -15,7 +15,7 @@ type Props = {
   current: Path | null
   expanded?: boolean
   setExpanded?: (expanded: boolean) => void
-  LinkComponent?: ComponentType | typeof Link
+  LinkComponent?: typeof AComponent | typeof Link
   children?: ReactNode
 }
 
