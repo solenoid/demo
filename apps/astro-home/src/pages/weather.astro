@@ -68,11 +68,13 @@ if (forecast.list && forecast.city) {
         : new Date(key),
     value,
   }))
+  // see how to match other forecasts better w/ a futz multiplier
+  const snowFutzMultiplier = 2
   snowData = forecast.list.map((d: any) => ({
     date: new Date(d.dt * 1000),
-    // comes back in mm / 3h so we turn that into inches
     // TODO see if the mm / 3h is wrong and it's cm / 3h in practice
-    value: (d.snow && d.snow['3h']) / 2.54 || 0,
+    // comes back in mm / 3h so we turn that into inches
+    value: (snowFutzMultiplier * (d.snow && d.snow['3h'])) / 25.4 || 0,
   }))
   // TODO evaluate sum assumptions
   snowSum = Object.entries(
