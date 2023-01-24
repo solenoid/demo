@@ -15,7 +15,7 @@
     "@observablehq/plot": "0.6.2",
     "astro": "1.9.2",
     "d3": "7.8.2",
-    "fast-xml-parser": "4.0.13",
+    "fast-xml-parser": "4.0.14",
     "pdf-table-extractor": "1.0.3",
     "shared-ui": "workspace:*",
     "sqlite3": "5.1.4"

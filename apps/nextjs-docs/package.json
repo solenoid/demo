@@ -11,7 +11,7 @@
     "clean": "rimraf node_modules .next next-env.d.ts tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "next": "13.1.4",
+    "next": "13.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "shared-ui": "workspace:*"
