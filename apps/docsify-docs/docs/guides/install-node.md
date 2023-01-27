@@ -1,7 +1,7 @@
 ## Get a version of node
 
-A prerequisite is to [install pnpm](guides/install-pnpm.md), so please do that
-if you have not already done so.
+A prerequisite is to [install pnpm](install-pnpm.md), so please do that if you
+have not already done so.
 
 To get `node` aka [Node.js](https://nodejs.org/) run:
 
@@ -64,10 +64,10 @@ The important part to note is that `node` is inside the `~/Library/pnpm/`
 directory and uses either the system default or the `.npmrc` specific version.
 
 If you've had Nvm or Volta on your system in the past to manage `node` versions,
-there are more required steps to [migrate to pnpm](guides/migrate-to-pnpm.md).
+there are more required steps to [migrate to pnpm](migrate-to-pnpm.md).
 
 If you are still have problems verifying your `node` location after you've tried
-to [migrate to pnpm](guides/migrate-to-pnpm.md) please ask for help.
+to [migrate to pnpm](migrate-to-pnpm.md) please ask for help.
 
 ## Verify node installation
 

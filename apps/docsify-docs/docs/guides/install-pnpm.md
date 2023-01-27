@@ -30,5 +30,5 @@ $ pnpm -h | head -1
 Version 7.25.1 (compiled to binary; bundled Node.js v14.19.2)
 ```
 
-Next you can [install node](guides/install-node.md) with `pnpm env` to get the
-version you want.
+Next you can [install node](install-node.md) with `pnpm env` to get the version
+you want.

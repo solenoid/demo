@@ -1,7 +1,7 @@
 If you have used `nvm` or `volta` in the past to manage the version of `node`
 then the following will help migrate to using `pnpm env` instead. If you haven't
-used `nvm` or `volta` in the past go [install pnpm](guides/install-pnpm.md) and
-skip these migration steps.
+used `nvm` or `volta` in the past go [install pnpm](install-pnpm.md) and skip
+these migration steps.
 
 ## Migrating from Nvm
 
@@ -33,6 +33,6 @@ The essential step is to take all things Volta out of your path.
 ## After migration
 
 At this point we've taken out the old way to manage `node` versions on your
-system. You will now need to [install pnpm](guides/install-pnpm.md) which allows
-you to use the `pnpm env` command to [install node](guides/install-node.md) if
-you have not already done so.
+system. You will now need to [install pnpm](install-pnpm.md) which allows you to
+use the `pnpm env` command to [install node](install-node.md) if you have not
+already done so.
