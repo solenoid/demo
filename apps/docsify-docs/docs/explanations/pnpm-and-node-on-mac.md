@@ -1,5 +1,3 @@
-# Getting pnpm and node on a Mac
-
 ## Getting pnpm
 
 There are many ways to [install pnpm](https://pnpm.io/installation) and for a

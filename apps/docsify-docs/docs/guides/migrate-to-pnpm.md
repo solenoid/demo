@@ -1,5 +1,3 @@
-# Migrate to pnpm
-
 If you have used `nvm` or `volta` in the past to manage the version of `node`
 then the following will help migrate to using `pnpm env` instead. If you haven't
 used `nvm` or `volta` in the past go [install pnpm](guides/install-pnpm.md) and

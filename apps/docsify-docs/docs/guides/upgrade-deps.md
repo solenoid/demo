@@ -1,5 +1,3 @@
-# Upgrade dependencies
-
 To check the state of dependencies run:
 
 ```zsh

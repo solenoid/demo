@@ -1,5 +1,3 @@
-# Port Number Scheme
-
 While doing local development the need to work on multiple apps at the same time
 arises. To allow for this need if we have a good port number scheme it can allow
 for most or all apps to be run at the same time. It's not realistic to want to

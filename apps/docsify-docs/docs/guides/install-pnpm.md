@@ -1,5 +1,3 @@
-# Install pnpm
-
 ## Get pnpm
 
 To get [`pnpm`](https://pnpm.io/motivation) run:

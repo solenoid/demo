@@ -1,5 +1,3 @@
-# Install node
-
 ## Get a version of node
 
 A prerequisite is to [install pnpm](guides/install-pnpm.md), so please do that

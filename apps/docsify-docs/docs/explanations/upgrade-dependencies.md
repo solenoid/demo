@@ -1,5 +1,3 @@
-# Upgrade dependencies explained
-
 ## Top Level Upgrades
 
 Some dependencies are managed at the top level of the mono repo. They are things
