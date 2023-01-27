@@ -25,6 +25,6 @@
     "eslint": "8.32.0",
     "eslint-config-shared": "workspace:*",
     "tsconfig-shared": "workspace:*",
-    "typescript": "4.9.4"
+    "typescript": "5.0.0-beta"
   }
 }
