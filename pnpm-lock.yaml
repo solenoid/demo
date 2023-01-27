@@ -5,12 +5,12 @@ importers:
   .:
     specifiers:
       eslint-config-shared: workspace:*
-      nx: 15.6.2
+      nx: 15.6.3
       prettier: 2.8.3
       prettier-plugin-astro: 0.8.0
     devDependencies:
       eslint-config-shared: link:shared/configs/eslint-config-shared
-      nx: 15.6.2
+      nx: 15.6.3
       prettier: 2.8.3
       prettier-plugin-astro: 0.8.0
 
@@ -1129,21 +1129,21 @@ packages:
     dev: false
     optional: true
 
-  /@nrwl/cli/15.6.2:
-    resolution: {integrity: sha512-7U9hYVTwXqPZSqRxYTDO+wCudASuknqTAY6151RrpT4HDK5BpkMxC96HW/wvhrzaLf+7dLHAimr2b+vR2xnqRA==}
+  /@nrwl/cli/15.6.3:
+    resolution: {integrity: sha512-K4E0spofThZXMnhA6R8hkUTdfqmwSnUE2+DlD5Y3jqsvKTAgwF5U41IFkEouFZCf+dWjy0RA20bWoX48EVFtmQ==}
     dependencies:
-      nx: 15.6.2
+      nx: 15.6.3
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
       - debug
     dev: true
 
-  /@nrwl/tao/15.6.2:
-    resolution: {integrity: sha512-jG8Csd43uyFf1XUc02k1XoK89n3FsvXM9EXdFadKLbiw5/7c0dZ0AYK8+JFgRpk67/7T0qaxtw8YlKdkuf/uJg==}
+  /@nrwl/tao/15.6.3:
+    resolution: {integrity: sha512-bDZbPIbU5Mf2BvX0q8GjPxrm1WkYyfW+gp7mLuuJth2sEpZiCr47mSwuGko/y4CKXvIX46VQcAS0pKQMKugXsg==}
     hasBin: true
     dependencies:
-      nx: 15.6.2
+      nx: 15.6.3
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -1915,7 +1915,7 @@ packages:
     engines: {node: '>=14.15.0'}
     dependencies:
       js-yaml: 3.14.1
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: true
 
   /@zkochan/js-yaml/0.0.6:
@@ -2236,8 +2236,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /axios/1.2.4:
-    resolution: {integrity: sha512-lIQuCfBJvZB/Bv7+RWUqEJqNShGOVpk9v7P0ZWx5Ip0qY6u7JBAU6dzQPMLasU9vHL2uD8av/1FDJXj7n6c39w==}
+  /axios/1.2.5:
+    resolution: {integrity: sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -5917,8 +5917,8 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /nx/15.6.2:
-    resolution: {integrity: sha512-F6O2mRf6fWVVpkekvmN2erlJZ8jFVRO+PlAKxHBd8pFGtqkh53VXtU0r7/93qgRjC1zz9VVd8BKEB+xuQ2FbDQ==}
+  /nx/15.6.3:
+    resolution: {integrity: sha512-3t0A0GPLNen1yPAyE+VGZ3nkAzZYb5nfXtAcx8SHBlKq4u42yBY3khBmP1y4Og3jhIwFIj7J7Npeh8ZKrthmYQ==}
     hasBin: true
     requiresBuild: true
     peerDependencies:
@@ -5930,13 +5930,13 @@ packages:
       '@swc/core':
         optional: true
     dependencies:
-      '@nrwl/cli': 15.6.2
-      '@nrwl/tao': 15.6.2
+      '@nrwl/cli': 15.6.3
+      '@nrwl/tao': 15.6.3
       '@parcel/watcher': 2.0.4
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.36
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.2.4
+      axios: 1.2.5
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -5961,7 +5961,7 @@ packages:
       tar-stream: 2.2.0
       tmp: 0.2.1
       tsconfig-paths: 4.1.2
-      tslib: 2.4.1
+      tslib: 2.5.0
       v8-compile-cache: 2.3.0
       yargs: 17.6.2
       yargs-parser: 21.1.1
