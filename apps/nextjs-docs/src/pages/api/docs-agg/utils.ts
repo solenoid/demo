@@ -52,7 +52,7 @@ export const getSideBarLinks = () => {
     '',
     ...items
       // show deeper links that assume link rewriting will work
-      .map((d) => `  - [${d.name}](${d.org_repo}/${d.home ?? 'README.md'})`),
+      .map((d) => `  - [${d.name}](/${d.org_repo}/${d.home ?? 'README.md'})`),
   ].join('\n')
 }
 
@@ -61,7 +61,9 @@ export const getOrgRepoConfig = (org: string, repo: string) =>
 
 // Useful way to go about markdown file link rewrites including schemeless
 // riff from https://github.com/sindresorhus/is-absolute-url
-const ABS_OR_SCHEMELESS_RE = /^[a-zA-Z][a-zA-Z\d+\-.]*?:|^\/\//
+const ABSOLUTE_URL_RE = /^[a-zA-Z][a-zA-Z\d+\-.]*?:/
+const SCHEMELESS_URL_RE = /^\/\//
+const LEADING_SLASH_RE = /^\//
 
 // Useful way to get link and text ignore images
 // riff from https://github.com/sethvincent/rewrite-markdown-urls
@@ -72,14 +74,20 @@ const HAS_INCLUDE = /['"]:include/
 
 export const rewrite = (prefix: string, mdSrc: string) =>
   mdSrc.replace(LINK_RE, (__, b, text, link: string) =>
-    // Allow external http://example.com or //example.com to avoid rewrites
-    ABS_OR_SCHEMELESS_RE.test(link) ||
+    // Allow external http://example.com to avoid rewrites
+    ABSOLUTE_URL_RE.test(link) ||
+    // Allow external //example.com to avoid rewrites
+    SCHEMELESS_URL_RE.test(link) ||
     // Allow any ':include ... to avoid rewrites
     HAS_INCLUDE.test(link) ||
     // Avoid double rewrites if prefix is already present
     link.startsWith(`${prefix}/`)
       ? `${b}[${text}](${link})`
-      : `${b}[${text}](${prefix}/${link})`
+      : LEADING_SLASH_RE.test(link)
+      ? // leading slash /rooted/links added beyond the prefix
+        `${b}[${text}](${prefix}${link})`
+      : // no leading slash relative/links added beyond the prefix
+        `${b}[${text}](${prefix}/${link})`
   )
 
 /** minimal default export so these utils can co-exist in the apis dir */

@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(404).send('Not Found')
     }
     const sidebarText = await fetchPromise.text()
-    const replacedText = rewrite(`${org}/${repo}`, sidebarText)
+    const replacedText = rewrite(`/${org}/${repo}`, sidebarText)
     return res.status(200).send(replacedText)
   } catch (e) {
     return res.status(500).send('Internal Server Error')

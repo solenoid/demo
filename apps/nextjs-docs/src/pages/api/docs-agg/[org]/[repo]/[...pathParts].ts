@@ -10,6 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!Array.isArray(pathParts)) {
       return res.status(400).send('Expecting a list of pathParts')
     }
+    const relativePath = pathParts.slice(0, -1)?.join('/')
     const resourcePath = pathParts.join('/')
     if (Array.isArray(org) || Array.isArray(repo)) {
       return res.status(400).send('Only one org and one repo is supported')
@@ -28,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ) {
       const rawText = await fetchPromise.text()
       const replacedText = contentType.startsWith('text/markdown')
-        ? rewrite(`${org}/${repo}`, rawText)
+        ? rewrite(`/${org}/${repo}/${relativePath}`, rawText)
         : rawText
       // const replacedText = rawText
       return res
