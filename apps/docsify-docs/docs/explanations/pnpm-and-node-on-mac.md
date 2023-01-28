@@ -3,7 +3,7 @@
 There are many ways to [install pnpm](https://pnpm.io/installation) and for a
 Mac OS the suggested way is to use curl as explained in the pnpm documentation.
 
-```zsh
+```shell
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 ```
 
@@ -17,7 +17,7 @@ system.
 After running the above you should see output similar to the following assuming
 you're using the `zsh` shell, which is the default on Mac OS.
 
-```console
+```shell-session
 $ curl -fsSL https://get.pnpm.io/install.sh | sh -
 ==> Extracting pnpm binaries 7.25.1
 Copying pnpm CLI from /private/var/.../pnpm to /Users/you/Library/pnpm/pnpm
@@ -36,7 +36,7 @@ follow the documentation on how to use `PNPM_VERSION` to get a pinned version.
 
 At the bottom of your `.zshrc` file a new section will be present.
 
-```zsh
+```shell
 # pnpm
 export PNPM_HOME="/Users/you/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
@@ -47,7 +47,7 @@ Feel free to move that around in the file wherever you'd like. For example if
 you have trailing section for profiling `zsh` like the following it's nice to
 move that back to the end of the file.
 
-```zsh
+```shell
 # uncomment for profiling along with beginning line
 # zprof
 # used to be end of file with one blank line afterwards
@@ -60,7 +60,7 @@ a new shell will have the same effect.
 
 You can see what version of `pnpm` you have with the following.
 
-```console
+```shell-session
 # shorter version information also can use --version
 $ pnpm -v
 7.25.1
@@ -85,13 +85,13 @@ showing it in use for the fish shell.
 
 It says to do the following:
 
-```zsh
+```shell
 pnpm install-completion
 ```
 
 That will add the following to your `~/.zshrc` file if you say `y` change file.
 
-```zsh
+```shell
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
@@ -118,7 +118,7 @@ after it was marked LTS will be available so `18.12.0` or later for Hydrogen. If
 you run the following commands you can see the difference in versions available
 for both.
 
-```zsh
+```shell
 pnpm env ls --remote 18
 pnpm env ls --remote Hydrogen
 ```
@@ -127,7 +127,7 @@ Once you know what version you want the suggestion is to get it via the major
 number so it has the latest `node` for that major release. Following the example
 of getting version 18 you can run this command.
 
-```zsh
+```shell
 pnpm env use -g 18
 ```
 
@@ -144,7 +144,7 @@ helps clarify what those are and how they change over time.
 Here is what a system with a few versions of `node` on it could look like
 assuming `18.13.0` is the latest version 18 available.
 
-```console
+```shell-session
 $ pnpm env ls
   16.19.0
   18.12.1
@@ -155,7 +155,7 @@ The `*` indicates which is your default version for the system.
 
 If you wanted to roll back to the `16.19.0` version use this command.
 
-```console
+```shell-session
 $ pnpm env use -g 16.19.0
 Node.js 16.19.0 is activated
 /Users/you/Library/pnpm/node -> /Users/you/Library/pnpm/nodejs/16.19.0/bin/node
@@ -187,7 +187,7 @@ on `.npmrc` setups.
 If everything has worked out and your `~/.zshrc` file is all updated you can
 verify with the following:
 
-```console
+```shell-session
 $ which node
 /Users/you/Library/pnpm/node
 $ pnpm which node
@@ -198,7 +198,7 @@ $ pnpm which node
 
 You can see what version of `node` you have with the following.
 
-```console
+```shell-session
 $ node -v
 v18.13.0
 
@@ -212,7 +212,7 @@ version respectively.
 If you want verify your `node` version along with your `pnpm` setup this can
 help show information on what versions will be used for both.
 
-```zsh
+```shell
 pnpm node -e 'console.log(`
 Minimal debug info
 node ${process.version}
@@ -235,7 +235,7 @@ for the [user-agent](https://docs.npmjs.com/cli/v9/using-npm/config#user-agent).
 
 The output should look similar to this.
 
-```console
+```shell-session
 $ pnpm node -e 'console.log(`
 Minimal debug info
 node ${process.version}

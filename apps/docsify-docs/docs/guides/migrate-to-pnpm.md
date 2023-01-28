@@ -7,7 +7,7 @@ these migration steps.
 
 The essential step is to take all things Nvm out of your path.
 
-```zsh
+```shell
 # In your ~/.zshrc file comment out lines like
 
 # export NVM_DIR="$HOME/.nvm"
@@ -21,7 +21,7 @@ The essential step is to take all things Nvm out of your path.
 
 The essential step is to take all things Volta out of your path.
 
-```zsh
+```shell
 # In your ~/.zshrc file comment out lines like
 
 # export VOLTA_HOME="$HOME/.volta"

@@ -1,6 +1,6 @@
 To check the state of dependencies run:
 
-```zsh
+```shell
 # short options
 pnpm -r outdated
 # long options
@@ -9,7 +9,7 @@ pnpm --recursive outdated
 
 To update (aka upgrade) to the latest interactively run:
 
-```zsh
+```shell
 # short options
 pnpm -irL update
 # long options
@@ -18,7 +18,7 @@ pnpm --interactive --recursive --latest update
 
 To update `shared` run:
 
-```zsh
+```shell
 # short options
 pnpm -irLF './shared/**' update
 # long options
@@ -27,7 +27,7 @@ pnpm --interactive --recursive --latest --filter './shared/**' update
 
 To update `apps` run:
 
-```zsh
+```shell
 # short options
 pnpm -irLF './apps/**' update
 # long options

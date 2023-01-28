@@ -5,7 +5,7 @@ have not already done so.
 
 To get `node` aka [Node.js](https://nodejs.org/) run:
 
-```zsh
+```shell
 pnpm env use -g 18
 ```
 
@@ -17,7 +17,7 @@ This will get that version and use it as the system default node using
 Running `pnpm env ls` will show what versions of node you have installed. The
 system default will have a `*` before it.
 
-```console
+```shell-session
 $ pnpm env ls
   16.19.0
 * 18.13.0
@@ -30,7 +30,7 @@ remove any version you would like and it will reinstalled as needed.
 
 To remove a version from the list do this for the version you want to remove.
 
-```zsh
+```shell
 pnpm env rm -g 16.19.0
 ```
 
@@ -53,7 +53,7 @@ running `node` and `pnpm node` can have different versions depending on your
 If everything has worked out and your `~/.zshrc` file is all updated you can
 verify with the following:
 
-```console
+```shell-session
 $ which node
 /Users/you/Library/pnpm/node
 $ pnpm which node
@@ -73,7 +73,7 @@ to [migrate to pnpm](migrate-to-pnpm.md) please ask for help.
 
 You can check what version of `node` you have with these commands.
 
-```console
+```shell-session
 $ node -v
 v18.13.0
 
@@ -83,7 +83,7 @@ v16.19.0
 
 This will verify your whole setup showing minimal debug information.
 
-```zsh
+```shell
 pnpm node -e 'console.log(`
 Minimal debug info
 node ${process.version}
@@ -92,7 +92,7 @@ npm_ua ${process.env.npm_config_user_agent}`)'
 
 The output should look similar to this.
 
-```console
+```shell-session
 $ pnpm node -e 'console.log(`
 Minimal debug info
 node ${process.version}

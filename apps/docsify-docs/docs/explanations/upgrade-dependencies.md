@@ -9,7 +9,7 @@ would be at this top level and replace aspects like `prettier` if that happens.
 
 To check the state of the top level dependencies run:
 
-```zsh
+```shell
 pnpm outdated
 ```
 
@@ -17,7 +17,7 @@ If that has not output that's great news it means those are all up to date!
 
 If it shows something that needs an update like `nx` for example run:
 
-```zsh
+```shell
 pnpm update --latest nx
 ```
 
@@ -27,7 +27,7 @@ quick way to update all when appropriate.
 You can also do updates with an interactive prompt on the command line. This
 lets you pick of all the potential updates which ones you want to do now.
 
-```zsh
+```shell
 pnpm update --interactive --latest
 pnpm update -iL
 ```
@@ -46,7 +46,7 @@ Shared packages are used across apps and are made up of a mix of concerns:
 
 To check the state of the "shared" dependencies run:
 
-```zsh
+```shell
 pnpm outdated --filter './shared/**' -r
 pnpm outdated --filter '{shared/**}...' -r
 ```
@@ -61,7 +61,7 @@ and not at the top level.
 
 To update things that are outdated run:
 
-```zsh
+```shell
 # to update everything
 pnpm update --filter './shared/**' -r --latest
 # to update a specific package or packages eslint in this case
@@ -81,7 +81,7 @@ another vote in the direction of moving to something like
 dance on versions. If that comes up combine a shared upgrade of that with the
 `next` version that would show up in the next app specific upgrades.
 
-```zsh
+```shell
 # check both config and next together
 pnpm -r --filter './apps/**' --filter './shared/**' outdated eslint-config-next next
 # update both config and next together to the latest
@@ -96,14 +96,14 @@ deployed.
 
 To check if any of the "apps" are outdated run:
 
-```zsh
+```shell
 pnpm outdated --filter './apps/**' -r
 pnpm outdated --filter '{apps/**}...' -r
 ```
 
 To update things that are outdated run:
 
-```zsh
+```shell
 # to update everything
 pnpm update --filter './apps/**' -r --latest
 # to update a specific package or packages vite and astro in this case
@@ -115,7 +115,7 @@ pnpm update --filter './apps/**' -r --latest vite astro
 You can take out `--filter` options from above and do things mono repo wide when
 applicable if you prefer.
 
-```zsh
+```shell
 # check outdated top level
 pnpm outdated
 # update to the latest top level

@@ -8,7 +8,7 @@ norms for this repo:
 1. Make `package.json` conventional in what fields are used and ordering.
 2. Pick a port other than `3000` to serve on to avoid port collisions.
 
-```zsh
+```shell
 # from the root of the mono repo
 cd apps
 mkdir docsify-docs # fits in with apps naming conventions so far
@@ -48,7 +48,7 @@ apps/docsify-docs/docs/index.html
 You can create the `_sidebar.md` file however you want. Here is a way to do it
 on the command line.
 
-```zsh
+```shell
 # way to make the starter sidebar through the shell
 cat <<EOF > apps/docsify-docs/docs/_sidebar.md
 - Guides
