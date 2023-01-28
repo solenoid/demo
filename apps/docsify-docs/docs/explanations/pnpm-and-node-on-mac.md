@@ -17,7 +17,7 @@ system.
 After running the above you should see output similar to the following assuming
 you're using the `zsh` shell, which is the default on Mac OS.
 
-```shell-session
+```shellsession
 $ curl -fsSL https://get.pnpm.io/install.sh | sh -
 ==> Extracting pnpm binaries 7.25.1
 Copying pnpm CLI from /private/var/.../pnpm to /Users/you/Library/pnpm/pnpm
@@ -60,7 +60,7 @@ a new shell will have the same effect.
 
 You can see what version of `pnpm` you have with the following.
 
-```shell-session
+```shellsession
 # shorter version information also can use --version
 $ pnpm -v
 7.25.1
@@ -144,7 +144,7 @@ helps clarify what those are and how they change over time.
 Here is what a system with a few versions of `node` on it could look like
 assuming `18.13.0` is the latest version 18 available.
 
-```shell-session
+```shellsession
 $ pnpm env ls
   16.19.0
   18.12.1
@@ -155,7 +155,7 @@ The `*` indicates which is your default version for the system.
 
 If you wanted to roll back to the `16.19.0` version use this command.
 
-```shell-session
+```shellsession
 $ pnpm env use -g 16.19.0
 Node.js 16.19.0 is activated
 /Users/you/Library/pnpm/node -> /Users/you/Library/pnpm/nodejs/16.19.0/bin/node
@@ -187,7 +187,7 @@ on `.npmrc` setups.
 If everything has worked out and your `~/.zshrc` file is all updated you can
 verify with the following:
 
-```shell-session
+```shellsession
 $ which node
 /Users/you/Library/pnpm/node
 $ pnpm which node
@@ -198,7 +198,7 @@ $ pnpm which node
 
 You can see what version of `node` you have with the following.
 
-```shell-session
+```shellsession
 $ node -v
 v18.13.0
 
@@ -235,7 +235,7 @@ for the [user-agent](https://docs.npmjs.com/cli/v9/using-npm/config#user-agent).
 
 The output should look similar to this.
 
-```shell-session
+```shellsession
 $ pnpm node -e 'console.log(`
 Minimal debug info
 node ${process.version}

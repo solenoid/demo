@@ -22,7 +22,7 @@ source ~/.zshrc
 
 You can check what version of `pnpm` you have with these commands.
 
-```shell-session
+```shellsession
 $ pnpm -v
 7.25.1
 
