@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ) {
       const rawText = await fetchPromise.text()
       const replacedText = contentType.startsWith('text/markdown')
-        ? rewrite(`/${org}/${repo}/${relativePath}`, rawText)
+        ? rewrite(`/${org}/${repo}/${relativePath}/`, rawText)
         : rawText
       // const replacedText = rawText
       return res

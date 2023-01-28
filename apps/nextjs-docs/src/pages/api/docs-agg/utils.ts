@@ -8,7 +8,7 @@ type docLinks = Array<{
   /** docsify homepage, will default to README.md if not given */
   home?: string
   /** docsify sidebar, will default to _sidebar.md if not given */
-  side?: string
+  sidebar?: string
 }>
 
 /**
@@ -37,7 +37,7 @@ const items: docLinks = [
     org_repo: 'jhildenbiddle/docsify-themeable',
     site: 'https://jhildenbiddle.github.io/docsify-themeable/',
     home: 'introduction.md',
-    side: 'sidebar.md',
+    sidebar: 'sidebar.md',
   },
   {
     name: 'mas',
@@ -72,6 +72,9 @@ const LINK_RE = /([^!])\[([^\]]+)]\(([^\)]*)\)/g
 // Can have double or single quote :include for special docsify handling
 const HAS_INCLUDE = /['"]:include/
 
+/**
+ * `prefix` is assumed to always have a trailing slash on it when present
+ */
 export const rewrite = (prefix: string, mdSrc: string) =>
   mdSrc.replace(LINK_RE, (__, b, text, link: string) =>
     // Allow external http://example.com to avoid rewrites
@@ -81,13 +84,13 @@ export const rewrite = (prefix: string, mdSrc: string) =>
     // Allow any ':include ... to avoid rewrites
     HAS_INCLUDE.test(link) ||
     // Avoid double rewrites if prefix is already present
-    link.startsWith(`${prefix}/`)
+    link.startsWith(`${prefix}`)
       ? `${b}[${text}](${link})`
       : LEADING_SLASH_RE.test(link)
       ? // leading slash /rooted/links added beyond the prefix
-        `${b}[${text}](${prefix}${link})`
+        `${b}[${text}](${prefix}${link.slice(1)})`
       : // no leading slash relative/links added beyond the prefix
-        `${b}[${text}](${prefix}/${link})`
+        `${b}[${text}](${prefix}${link})`
   )
 
 /** minimal default export so these utils can co-exist in the apis dir */
