@@ -11,12 +11,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).send('Expecting a list of pathParts')
     }
     const relativePath = pathParts.slice(0, -1)?.join('/')
+    const pathWithTrailingSlash = relativePath ? `${relativePath}/` : ''
     const resourcePath = pathParts.join('/')
     if (Array.isArray(org) || Array.isArray(repo)) {
       return res.status(400).send('Only one org and one repo is supported')
     }
     const config = getOrgRepoConfig(org, repo)
-    const resource = `${config?.site}/${resourcePath}`
+    const resource = `${config?.site}${resourcePath}`
     const fetchPromise = await fetch(resource)
     if (fetchPromise.status !== 200) {
       return res.status(404).send('Not Found')
@@ -29,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ) {
       const rawText = await fetchPromise.text()
       const replacedText = contentType.startsWith('text/markdown')
-        ? rewrite(`/${org}/${repo}/${relativePath}/`, rawText)
+        ? await rewrite(`/${org}/${repo}/${pathWithTrailingSlash}`, rawText)
         : rawText
       // const replacedText = rawText
       return res

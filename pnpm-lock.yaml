@@ -64,14 +64,18 @@ importers:
       next: 13.1.6
       react: 18.2.0
       react-dom: 18.2.0
+      remark: 14.0.2
       shared-ui: workspace:*
       tsconfig-shared: workspace:*
       typescript: 5.0.0-beta
+      unist-util-visit: 4.1.2
     dependencies:
       next: 13.1.6_pjwopsidmaokadturxaafygjp4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      remark: 14.0.2
       shared-ui: link:../../shared/ui
+      unist-util-visit: 4.1.2
     devDependencies:
       '@babel/core': 7.20.12
       '@types/node': 18.11.18
@@ -6581,6 +6585,25 @@ packages:
       retext: 8.1.0
       retext-smartypants: 5.2.0
       unist-util-visit: 4.1.2
+    dev: false
+
+  /remark-stringify/10.0.2:
+    resolution: {integrity: sha512-6wV3pvbPvHkbNnWB0wdDvVFHOe1hBRAx1Q/5g/EpH4RppAII6J8Gnwe7VbHuXaoKIF6LAg6ExTel/+kNqSQ7lw==}
+    dependencies:
+      '@types/mdast': 3.0.10
+      mdast-util-to-markdown: 1.5.0
+      unified: 10.1.2
+    dev: false
+
+  /remark/14.0.2:
+    resolution: {integrity: sha512-A3ARm2V4BgiRXaUo5K0dRvJ1lbogrbXnhkJRmD0yw092/Yl0kOCZt1k9ZeElEwkZsWGsMumz6qL5MfNJH9nOBA==}
+    dependencies:
+      '@types/mdast': 3.0.10
+      remark-parse: 10.0.1
+      remark-stringify: 10.0.2
+      unified: 10.1.2
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /require-directory/2.1.1:

@@ -1,3 +1,6 @@
+import { remark } from 'remark'
+import { visit } from 'unist-util-visit'
+
 type docLinks = Array<{
   /** sidebar link name */
   name: string
@@ -64,34 +67,48 @@ export const getOrgRepoConfig = (org: string, repo: string) =>
 const ABSOLUTE_URL_RE = /^[a-zA-Z][a-zA-Z\d+\-.]*?:/
 const SCHEMELESS_URL_RE = /^\/\//
 const LEADING_SLASH_RE = /^\//
+const LEADING_HASH_RE = /^\#/
 
-// Useful way to get link and text ignore images
-// riff from https://github.com/sethvincent/rewrite-markdown-urls
-const LINK_RE = /([^!])\[([^\]]+)]\(([^\)]*)\)/g
-
-// Can have double or single quote :include for special docsify handling
-const HAS_INCLUDE = /['"]:include/
+const createLinkPrefixer = (prefix: string) => () => (tree: any) => {
+  visit(tree, (node) => {
+    if (node.type === 'link') {
+      if (
+        // Leave alone all of the urls like these
+        !(
+          SCHEMELESS_URL_RE.test(node.url) || // Allow external //example.com to avoid rewrites
+          ABSOLUTE_URL_RE.test(node.url) || // Allow external http://example.com to avoid rewrites
+          LEADING_HASH_RE.test(node.url) || // Allow assumed #same-page to avoid rewrites
+          node.title?.startsWith(':include') || // Allow :include embeds to avoid rewrites
+          // Avoid double rewrites if prefix is already present
+          node.url?.startsWith(`${prefix}`)
+        )
+      ) {
+        // change the rest dealing
+        if (LEADING_SLASH_RE.test(node.url)) {
+          // with leading slash different
+          node.url = prefix + node.url.slice(1)
+        } else {
+          // than assumed relative
+          // console.log(prefix)
+          node.url = prefix + node.url
+        }
+        // console.log(node.url)
+      }
+    }
+  })
+}
 
 /**
  * `prefix` is assumed to always have a trailing slash on it when present
  */
-export const rewrite = (prefix: string, mdSrc: string) =>
-  mdSrc.replace(LINK_RE, (__, b, text, link: string) =>
-    // Allow external http://example.com to avoid rewrites
-    ABSOLUTE_URL_RE.test(link) ||
-    // Allow external //example.com to avoid rewrites
-    SCHEMELESS_URL_RE.test(link) ||
-    // Allow any ':include ... to avoid rewrites
-    HAS_INCLUDE.test(link) ||
-    // Avoid double rewrites if prefix is already present
-    link.startsWith(`${prefix}`)
-      ? `${b}[${text}](${link})`
-      : LEADING_SLASH_RE.test(link)
-      ? // leading slash /rooted/links added beyond the prefix
-        `${b}[${text}](${prefix}${link.slice(1)})`
-      : // no leading slash relative/links added beyond the prefix
-        `${b}[${text}](${prefix}${link})`
-  )
+export const rewrite = async (prefix: string, mdSrc: string) => {
+  const transformed = await remark()
+    // could add more plugins as needed
+    .use(createLinkPrefixer(prefix))
+    .process(mdSrc)
+  // console.log(transformed)
+  return transformed.toString()
+}
 
 /** minimal default export so these utils can co-exist in the apis dir */
 export default (__: any, res: any) => res.status(200).send('hi')
