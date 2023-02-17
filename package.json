@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "eslint-config-shared": "workspace:*",
-    "nx": "15.6.3",
-    "prettier": "2.8.3",
+    "nx": "15.7.1",
+    "prettier": "2.8.4",
     "prettier-plugin-astro": "0.8.0"
   },
   "engines": {
