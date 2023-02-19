@@ -5,13 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 9002",
-    "build": "tsc && vite build",
+    "type-check": "tsc",
+    "build": "pnpm build-client && pnpm build-server",
+    "build-client": "vite build --outDir dist/client",
+    "build-server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "preview": "vite preview",
+    "start": "node server-runtime.js",
     "clean": "rimraf node_modules dist"
   },
   "dependencies": {
+    "express": "4.18.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "serve-static": "1.15.0"
   },
   "devDependencies": {
     "@types/react": "18.0.28",

@@ -19,11 +19,12 @@ and switched to a spot closer to those memorable ports.
 
 ### Ports for Apps
 
-| Port | Status | Description |
-| ---- | ------ | ----------- |
-| 9000 | Used   | astro-home  |
-| 9001 | Used   | nextjs-home |
-| 9002 | Used   | vite-home   |
+| Port | Status | Description          |
+| ---- | ------ | -------------------- |
+| 9000 | Used   | astro-home           |
+| 9001 | Used   | nextjs-home          |
+| 9002 | Used   | vite-home            |
+| 9003 | Used   | vite ssr experiments |
 
 ### Ports for Docs
 
