@@ -14,7 +14,7 @@
     "format-check": "prettier -c --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
     "lint-check": "nx run-many --target lint",
     "type-check": "nx run-many --target type-check",
-    "clean": "pnpm clean-spaces && pnpm clean-self",
+    "clean": "pnpm clean-spaces && nx reset && pnpm clean-self",
     "clean-spaces": "nx run-many --target clean",
     "clean-self": "rimraf node_modules",
     "clean-size": "git clean -xdn --exclude SCRATCH.md | awk '{ print $3 } ' | xargs du -sk | sort -nr | awk '{ print $2 }' | xargs du -sh",
