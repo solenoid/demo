@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 
 export async function createServer() {
+  app.use((await import('compression')).default())
   // static client resources that have already been built
   app.use(
     (await import('serve-static')).default(
