@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
 import './index.css'
+import App from './App'
 
 // TODO consider hydrate only endpint vs. client render only split
 // riffed from https://ogzhanolguncu.com/blog/react-ssr-ssg-from-scratch
