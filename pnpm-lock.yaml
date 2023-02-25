@@ -8,11 +8,13 @@ importers:
       nx: 15.7.2
       prettier: 2.8.4
       prettier-plugin-astro: 0.8.0
+      rimraf: 4.1.2
     devDependencies:
       eslint-config-shared: link:shared/configs/eslint-config-shared
       nx: 15.7.2
       prettier: 2.8.4
       prettier-plugin-astro: 0.8.0
+      rimraf: 4.1.2
 
   apps/astro-home:
     specifiers:
@@ -7052,6 +7054,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.1.4
+
+  /rimraf/4.1.2:
+    resolution: {integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /robust-predicates/3.0.1:
     resolution: {integrity: sha512-ndEIpszUHiG4HtDsQLeIuMvRsDnn8c8rYStabochtUeCvfuvNptb5TUbVD68LRAILPX7p9nqQGh4xJgn3EHS/g==}
