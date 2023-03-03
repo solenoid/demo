@@ -69,7 +69,7 @@ if (forecast.list && forecast.city) {
     value,
   }))
   // see how to match other forecasts better w/ a futz multiplier
-  const snowFutzMultiplier = 10
+  const snowFutzMultiplier = 5
   snowData = forecast.list.map((d: any) => ({
     date: new Date(d.dt * 1000),
     // TODO see if the mm / 3h is wrong and it's cm / 3h in practice
