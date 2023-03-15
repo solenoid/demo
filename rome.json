@@ -1,0 +1,18 @@
+{
+  "formatter": {
+    "enabled": true,
+    "ignore": [".next", "out", "build", "dist", ".vscode"],
+    "indentStyle": "space",
+    "indentSize": 2
+  },
+  "javascript": {
+    "formatter": {
+      "trailingComma": "es5",
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
+  },
+  "linter": {
+    "enabled": false
+  }
+}
