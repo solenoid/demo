@@ -23,9 +23,9 @@
   "devDependencies": {
     "eslint-config-shared": "workspace:*",
     "nx": "15.8.7",
-    "prettier": "2.8.4",
+    "prettier": "2.8.6",
     "prettier-plugin-astro": "0.8.0",
-    "rimraf": "4.4.0",
+    "rimraf": "4.4.1",
     "rome": "11.0.0"
   },
   "engines": {
