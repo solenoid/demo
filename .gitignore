@@ -12,6 +12,7 @@ coverage
 .DS_Store
 *.pem
 SCRATCH.md
+.tmp
 
 # debug
 npm-debug.log*

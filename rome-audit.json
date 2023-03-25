@@ -4,12 +4,12 @@
     "enabled": true,
     "ignore": [".next", "out", "build", "dist", ".vscode", ".vitepress/cache"],
     "indentStyle": "space",
-    "indentSize": 2
+    "indentSize": 3
   },
   "javascript": {
     "formatter": {
       "trailingComma": "es5",
-      "quoteStyle": "single",
+      "quoteStyle": "double",
       "semicolons": "asNeeded"
     }
   },
