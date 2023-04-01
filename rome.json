@@ -1,5 +1,14 @@
 {
   "$schema": "./node_modules/rome/configuration_schema.json",
+  "linter": {
+    "enabled": true,
+    "ignore": [".next", "out", "build", "dist", ".vscode", ".vitepress/cache"],
+    "rules": {
+      "suspicious": {
+        "noExplicitAny": "off"
+      }
+    }
+  },
   "formatter": {
     "enabled": true,
     "ignore": [".next", "out", "build", "dist", ".vscode", ".vitepress/cache"],
@@ -12,8 +21,5 @@
       "quoteStyle": "single",
       "semicolons": "asNeeded"
     }
-  },
-  "linter": {
-    "enabled": false
   }
 }
