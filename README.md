@@ -20,7 +20,7 @@ Everything is 100% [TypeScript](https://www.typescriptlang.org/).
 
 - `astro-home`: an [Astro](https://astro.build/) app; furthest along
 - `nextjs-home`: a [Next.js](https://nextjs.org/) app; using the beta app dir
-- `vite-home`: a [Vite](https://vitejs.dev/) app; on pause, not integrated
+- `vite-home`: a [Vite](https://vitejs.dev/) app; highly experimental
 
 ##### Docs
 
@@ -123,6 +123,15 @@ There is also a `clean` and `clean-check` using the same naming conventions.
 pnpm clean
 pnpm clean-check
 ```
+
+---
+
+NOTE: below applies less after the shift from `nx` centric to `pnpm` centric
+approach happened. It is being left in for now for historical reasons, but
+likely to get removed in the future as this repo moves away from `nx` and build
+cache concerns in general.
+
+---
 
 ### Package Specific Commands
 
