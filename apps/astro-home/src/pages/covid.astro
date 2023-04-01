@@ -1,25 +1,38 @@
 ---
 import { Navbar } from 'shared-ui'
-import { navItems } from '../shared/mainNav'
-
 import { Icon } from 'shared-ui/src/Icon'
+import { navItems } from '../shared/mainNav'
 
 import NorthernChart from '../shared/NorthernChart'
 import SouthernChart from '../shared/SouthernChart'
+
 import { parseCsvData } from '../shared/utils/csv'
+import { localDate } from '../shared/utils/date'
+
+import { csvFormat } from 'd3'
 
 const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/mwra.csv`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 
-const data = parseCsvData(csvText, '2022-01-01T00:00')
-
 // TODO consider sliders
 const maxY = 2500
 // const currentX = Date.parse('2020-03-01T00:00')
 // const currentX = Date.parse('2021-03-01T00:00')
-const currentX = Date.parse('2022-03-01T00:00')
-const maxX = Date.parse(data[data.length - 1]?.sampleDate)
+const currentX = Date.parse(localDate('2022-03-01'))
+const data = parseCsvData(csvText, '2022-01-01')
+const maxX = Date.parse(localDate(data[data.length - 1]?.sampleDate))
+
+const northernCsvData = csvFormat(data, [
+  'sampleDate',
+  'northernCopies',
+  'northern7DayAvg',
+])
+const southernCsvData = csvFormat(data, [
+  'sampleDate',
+  'southernCopies',
+  'southern7DayAvg',
+])
 ---
 
 <html lang="en">
@@ -58,7 +71,7 @@ const maxX = Date.parse(data[data.length - 1]?.sampleDate)
           maxY={maxY}
           minX={currentX}
           maxX={maxX}
-          data={data}
+          csvData={northernCsvData}
         />
         <hr />
         <SouthernChart
@@ -66,7 +79,7 @@ const maxX = Date.parse(data[data.length - 1]?.sampleDate)
           maxY={maxY}
           minX={currentX}
           maxX={maxX}
-          data={data}
+          csvData={southernCsvData}
         />
       </main>
     </Navbar>

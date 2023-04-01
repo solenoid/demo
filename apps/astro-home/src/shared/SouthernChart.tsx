@@ -1,14 +1,23 @@
 import * as Plot from '@observablehq/plot'
 import PlotChart from './PlotChart'
 
+import { csvParse } from 'd3'
+import { localDate } from './utils/date'
+
 type Props = {
   maxY: number
   minX: number
   maxX: number
-  data: Array<any>
+  csvData: string
 }
 
-export default function SouthernChart({ maxY, minX, maxX, data }: Props) {
+export default function SouthernChart({ maxY, minX, maxX, csvData }: Props) {
+  const data = csvParse(csvData, (row) => {
+    return {
+      ...row,
+      date: localDate(row.date),
+    }
+  })
   return data.length > 0 ? (
     <PlotChart
       options={{
