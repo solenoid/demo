@@ -14,7 +14,7 @@ const dayOnlyFormat = (date: Date) =>
   (d3.timeDay(date) < date ? blank : formatDay)(date)
 
 // TODO see if we care about this ever
-let yTickFormat: any = null
+const yTickFormat: any = null
 
 type d3Props = {
   color: string
@@ -39,7 +39,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     bottom: 30,
     left: 40 + HALF_MAGIC_BAR_WIDTH,
   }
-  let vis = d3
+  const vis = d3
     .select(el)
     .append('svg:svg')
     .attr('width', width)
@@ -56,21 +56,21 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
   const yExtent = d3.extent(data.map((d) => d.value)) as [number, number]
   const xRange = [0, width - margin.left - margin.right]
   const yRange = [contentHeight, 0]
-  let xScale = d3.scaleTime().domain(xExtent).range(xRange).clamp(true)
-  let yScale = d3.scaleLinear().domain(yExtent).range(yRange)
-  let yAxis = d3
+  const xScale = d3.scaleTime().domain(xExtent).range(xRange).clamp(true)
+  const yScale = d3.scaleLinear().domain(yExtent).range(yRange)
+  const yAxis = d3
     .axisLeft(yScale)
     .ticks(5)
     .tickFormat(yTickFormat)
     .tickSizeInner(contentWidth)
 
-  let xAxisTop = d3
+  const xAxisTop = d3
     .axisTop(xScale)
     .ticks(5)
     .tickSizeInner(contentHeight)
     // @ts-expect-error
     .tickFormat(dayOnlyFormat)
-  let xAxisBottom = d3
+  const xAxisBottom = d3
     .axisBottom(xScale)
     .ticks(15)
     // @ts-expect-error
@@ -120,7 +120,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
       .style('stroke', '#2859a6')
   }
 
-  let line = d3
+  const line = d3
     .line()
     .curve(d3.curveCatmullRom.alpha(1))
     // @ts-expect-error

@@ -34,7 +34,7 @@ const ItemIcon = ({ icon }: { icon?: IconNames }) =>
   icon ? (
     <Icon style={ItemIconStyle} iconName={icon} />
   ) : (
-    <span style={ItemIconStyle}></span>
+    <span style={ItemIconStyle} />
   )
 
 type aRenderType = {
@@ -60,6 +60,7 @@ export const Navbar = (props: Props) => {
   return (
     <>
       <h1 style={{ userSelect: 'none' }}>
+        {/* rome-ignore lint/a11y/useKeyWithClickEvents: TODO revisit for keyboard */}
         <span
           style={ItemIconStyle}
           onClick={() => {

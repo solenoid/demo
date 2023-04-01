@@ -15,7 +15,7 @@ const hourOnlyFormat = (date: Date) =>
   (d3.timeDay(date) < date ? formatHour : formatHour)(date)
 
 // TODO see if we care about this ever
-let yTickFormat: any = null
+const yTickFormat: any = null
 
 type d3Props = {
   color: string
@@ -39,7 +39,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     if (found) {
       otherPart = sumFormat(found.value)
     }
-    return otherPart + ' ' + (d3.timeDay(date) < date ? blank : formatDay)(date)
+    return `${otherPart} ${(d3.timeDay(date) < date ? blank : formatDay)(date)}`
   }
 
   const HALF_MAGIC_BAR_WIDTH = 9
@@ -53,7 +53,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     bottom: 30,
     left: 40 + HALF_MAGIC_BAR_WIDTH,
   }
-  let vis = d3
+  const vis = d3
     .select(el)
     .append('svg:svg')
     .attr('width', width)
@@ -65,28 +65,28 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .attr('transform', `translate(${margin.left},${margin.top})`)
   const contentHeight = height - margin.top - margin.bottom
   const contentWidth = width - margin.right - margin.left
-  let xScale = d3
+  const xScale = d3
     .scaleTime()
     .domain(d3.extent(data.map((d) => d.date)) as [Date, Date])
     .range([0, width - margin.left - margin.right])
-  let yScale = d3
+  const yScale = d3
     .scaleLinear()
     .domain(d3.extent(data.map((d) => d.value)) as [number, number])
     .range([contentHeight, 0])
-  let yAxis = d3
+  const yAxis = d3
     .axisLeft(yScale)
     .ticks(5)
     .tickFormat(yTickFormat)
     .tickSizeInner(contentWidth)
 
   const EXTEND_UP_AXIS = 12
-  let xAxisTop = d3
+  const xAxisTop = d3
     .axisTop(xScale)
     .ticks(5)
     .tickSizeInner(contentHeight + EXTEND_UP_AXIS)
     // @ts-expect-error
     .tickFormat(dayOnlyFormat)
-  let xAxisBottom = d3
+  const xAxisBottom = d3
     .axisBottom(xScale)
     .ticks(15)
     // @ts-expect-error

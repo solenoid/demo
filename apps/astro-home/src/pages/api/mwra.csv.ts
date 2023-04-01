@@ -52,8 +52,7 @@ export const get: APIRoute = async () => {
       const csvData: string = await new Promise((resolve, reject) => {
         const success = async (d: any) => {
           const data = d.pageTables
-            .map((page: any) => page.tables)
-            .flat()
+            .flatMap((page: any) => page.tables)
             .map((row: any) =>
               row
                 .map((col: any) =>
