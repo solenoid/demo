@@ -23,7 +23,7 @@ type rowType = {
   southern7DayAvg?: number
 }
 
-export const parseCsvData = (csv: string) =>
+export const parseCsvData = (csv: string, earliestDate: string) =>
   d3
     .csvParse(csv, (row) => {
       return {
@@ -35,4 +35,9 @@ export const parseCsvData = (csv: string) =>
         ...numberOrAbsent('Southern 7 day avg', 'southern7DayAvg', row),
       } as rowType
     })
-    .filter((d) => d.northernCopies || d.southernCopies)
+    .filter(
+      (d) =>
+        (d.northernCopies || d.southernCopies) &&
+        // drop dates that are farther in the past
+        earliestDate < d.sampleDate
+    )

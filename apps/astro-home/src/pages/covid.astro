@@ -12,7 +12,7 @@ const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/mwra.csv`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 
-const data = parseCsvData(csvText)
+const data = parseCsvData(csvText, '2022-01-01T00:00')
 
 // TODO consider sliders
 const maxY = 2500
