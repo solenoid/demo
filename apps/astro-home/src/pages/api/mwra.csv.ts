@@ -27,6 +27,27 @@ const csvHeaders = {
   'Content-Type': 'text/csv',
 }
 
+// After 3/21/2023 the PDF table parse joined two columns in one
+// this assumes if we see a 6 digit number it should split into two 3 digit readings
+const longDigitPartsRe = /(\d{3})(\d{3})/
+const pdfTableTransform = (d: any) =>
+  d.pageTables
+    .flatMap((page: any) => page.tables)
+    .map((row: any) => {
+      // rewrited data for extra long digits
+      const matched = row[1]?.match(longDigitPartsRe)
+      if (matched) {
+        row[1] = matched[1]
+        row[2] = matched[2]
+      }
+
+      return row
+        .slice(0, 5)
+        .map((col: any) => (col && col !== 'ND' ? col.replace(/\n/g, '') : ''))
+        .join(',')
+    })
+    .join('\n')
+
 export const get: APIRoute = async () => {
   const webPage = await fetch(BIOBOT_PAGE).then((res) => res.text())
   const nameMatch = webPage.match(/"([^"]*data\.pdf)"/)
@@ -51,17 +72,7 @@ export const get: APIRoute = async () => {
       }
       const csvData: string = await new Promise((resolve, reject) => {
         const success = async (d: any) => {
-          const data = d.pageTables
-            .flatMap((page: any) => page.tables)
-            .map((row: any) =>
-              row
-                .map((col: any) =>
-                  col && col !== 'ND' ? col.replace(/\n/g, '') : ''
-                )
-                .join(',')
-            )
-            .join('\n')
-          resolve(data)
+          resolve(pdfTableTransform(d))
         }
         const error = (e: any) => {
           reject(e)
