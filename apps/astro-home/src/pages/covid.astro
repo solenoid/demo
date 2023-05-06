@@ -15,13 +15,13 @@ const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/mwra.csv`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 
-// TODO consider sliders
+// Start year for data an Jan 1st and graph at Mar 1st
+const YEAR = '2022'
+// Max System Copies / mL to avoid data blowing the scale
 const maxY = 2500
-// const currentX = Date.parse('2020-03-01T00:00')
-// const currentX = Date.parse('2021-03-01T00:00')
-const currentX = Date.parse(localDate('2022-03-01'))
-const data = parseCsvData(csvText, '2022-01-01')
+const data = parseCsvData(csvText, `${YEAR}-01-01`)
 const maxX = Date.parse(localDate(data[data.length - 1]?.sampleDate))
+const currentX = Date.parse(localDate(`${YEAR}-03-01`))
 
 const northernCsvData = csvFormat(data, [
   'sampleDate',
