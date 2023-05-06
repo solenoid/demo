@@ -15,8 +15,8 @@ export default function NorthernChart({ maxY, minX, maxX, csvData }: Props) {
   const data = csvParse(csvData, (row) => {
     return {
       ...row,
-      date: localDate(row.date),
-    }
+      sampleDate: localDate(row.sampleDate),
+    } as { [col: string]: string | undefined }
   })
   return data.length > 0 ? (
     <PlotChart
@@ -38,11 +38,14 @@ export default function NorthernChart({ maxY, minX, maxX, csvData }: Props) {
         height: 250,
         margin: 45,
         marks: [
-          Plot.dot(data, {
-            x: 'sampleDate',
-            y: 'northernCopies',
-            fill: '#0806',
-          }),
+          Plot.dot(
+            data.filter((d) => d.northernCopies),
+            {
+              x: 'sampleDate',
+              y: 'northernCopies',
+              fill: '#0806',
+            }
+          ),
           Plot.line(data, {
             x: 'sampleDate',
             y: 'northern7DayAvg',

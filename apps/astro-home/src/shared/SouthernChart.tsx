@@ -15,8 +15,8 @@ export default function SouthernChart({ maxY, minX, maxX, csvData }: Props) {
   const data = csvParse(csvData, (row) => {
     return {
       ...row,
-      date: localDate(row.date),
-    }
+      sampleDate: localDate(row.sampleDate),
+    } as { [col: string]: string | undefined }
   })
   return data.length > 0 ? (
     <PlotChart
@@ -38,11 +38,14 @@ export default function SouthernChart({ maxY, minX, maxX, csvData }: Props) {
         height: 250,
         margin: 45,
         marks: [
-          Plot.dot(data, {
-            x: 'sampleDate',
-            y: 'southernCopies',
-            fill: '#8406',
-          }),
+          Plot.dot(
+            data.filter((d) => d.southernCopies),
+            {
+              x: 'sampleDate',
+              y: 'southernCopies',
+              fill: '#8406',
+            }
+          ),
           Plot.line(data, {
             x: 'sampleDate',
             y: 'southern7DayAvg',
