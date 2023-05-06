@@ -3,7 +3,7 @@
   "private": true,
   "license": "ISC",
   "version": "0.0.0",
-  "description": "Nx and pnpm Mono Repo Explorations.",
+  "description": "pnpm Mono Repo Explorations.",
   "scripts": {
     "pre-dev": "pnpm -r code-gen",
     "dev-astro": "pnpm --filter astro-home dev",

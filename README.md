@@ -5,7 +5,7 @@ Sometimes demonstrating how something works helps understand it.
 Along with the ability to demolish what has already been made.
 
 This was started from an official npm starter turborepo, after starting out with
-turbo it switched to a nx monorepo.
+turbo it switched to a nx monorepo. Then it removed nx to use pnpm primarily.
 
 ## What's inside?
 
@@ -53,17 +53,18 @@ This monorepo has some additional tools already setup for you:
 
 ### Prerequisites to Get Started
 
-Get `pnpm` if you don't have it already. This can be done with `brew`.
+Get `pnpm` if you don't have it already. You can do this using a standalone
+script.
 
 ```sh
-brew install pnpm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
 # optionally add command line tab-completion for your shell
 pnpm install-completion
 ```
 
 For more information on what those are doing read the
-[installation docs](https://pnpm.io/installation#using-homebrew) or the
-[shell completion docs](https://pnpm.io/completion).
+[installation docs](https://pnpm.io/installation#using-a-standalone-script) or
+the [shell completion docs](https://pnpm.io/completion).
 
 ### Get Started
 
@@ -136,44 +137,21 @@ cache concerns in general.
 ### Package Specific Commands
 
 The above were things you can do repository wide for the entire monorepo. To do
-things in a more application or library centric way you will use `pnpm` in
-combination with `nx` to focus on the parts of the repository you are working
-directly with.
-
-Most commands will be run by `pnpm` with `nx` being right after that. You can
-see the help for `nx` by running
-
-```sh
-pnpm nx -h
-```
-
-> the "help" shows `nx.js` not `nx` which is confusing 🥴  
-> because if you use `nx.js` it won't work, so use `nx` 🤯
+things in a more application or library centric way you will use `pnpm` to focus
+on the parts of the repository you are working directly with.
 
 #### Develop
 
 To develop an app run any of the following:
 
 ```sh
-pnpm nx dev astro-home # 1. short and clear, dropping exec and run because we can
-pnpm nx run astro-home:dev # 2. using nx run with colon format for project:target
-pnpm exec nx run astro-home:dev # 3. using explicit exec for pnpm, no dlx needed
-```
+pnpm pre-dev # One time setup to do code-gen so apps can run
 
-1. This combines both
-   [the exec is Sometimes Optional in pnpm](https://pnpm.io/cli/exec#examples)
-   with the abilities for
-   [nx to Run a Single Task](https://nx.dev/core-features/run-tasks#run-a-single-task)
-2. This still uses the optional `exec` because `nx` is not a `pnpm` command
-   part, but uses the [nx run](https://nx.dev/packages/nx/documents/run) which
-   has a `project:target` format.
-3. Explicitly uses `pnpm exec` and `nx run` but otherwise equivalent with the
-   others. If you need to download the package because it is not one of the
-   dependencies then you can use `dlx` in place of `exec`. These two commands
-   are replacements for either `pnpx` or `npx` that you may have used in the
-   past that combined the now split `dlx` and `exec` functionality.
-4. There are multiple ways to do things like specifying the target in `nx` so
-   what is shown is only some of the ways you could run things.
+pnpm dev-astro # To work with a single app
+pnpm dev-apps-home # To work with multiple home apps
+pnpm dev-apps-docs # To work with multiple docs apps
+pnpm dev-apps # To work with all apps
+```
 
 #### Build
 
