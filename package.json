@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "description": "Nx and pnpm Mono Repo Explorations.",
   "scripts": {
+    "pre-dev": "pnpm -r code-gen",
     "dev-astro": "pnpm --filter astro-home dev",
     "dev-apps-home": "pnpm --filter './apps/*-home' dev",
     "dev-apps-docs": "pnpm --filter './apps/*-docs' dev",
