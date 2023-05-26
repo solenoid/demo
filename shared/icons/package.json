@@ -10,7 +10,7 @@
     "clean": "rimraf node_modules dist"
   },
   "devDependencies": {
-    "@svgr/cli": "7.0.0",
-    "@types/react": "18.2.6"
+    "@svgr/cli": "8.0.1",
+    "@types/react": "18.2.7"
   }
 }
