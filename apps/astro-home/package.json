@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/node": "5.2.0",
     "@observablehq/plot": "0.6.8",
-    "astro": "2.6.2",
+    "astro": "2.6.4",
     "d3": "7.8.5",
     "fast-xml-parser": "4.2.4",
     "pdf-table-extractor": "1.0.3",
@@ -23,8 +23,8 @@
   "devDependencies": {
     "@astrojs/react": "2.2.1",
     "@types/d3": "7.4.0",
-    "@types/react": "18.2.10",
-    "@types/react-dom": "18.2.4",
+    "@types/react": "18.2.12",
+    "@types/react-dom": "18.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   }
