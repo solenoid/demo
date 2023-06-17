@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "fast-xml-parser": "4.2.4",
-    "next": "13.4.5",
+    "next": "13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "shared-ui": "workspace:*"
@@ -22,7 +22,7 @@
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "eslint-config-shared": "workspace:*",
     "tsconfig-shared": "workspace:*",
     "typescript": "5.1.3"
