@@ -85,6 +85,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .append('g')
     .attr('class', 'x-axis x-axis-top')
     .attr('transform', `translate(0,${contentHeight})`)
+    // @ts-expect-error
     .call(xAxisTop)
     .selectAll('text')
     .attr('x', -1)
@@ -92,6 +93,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .append('g')
     .attr('class', 'x-axis x-axis-bottom')
     .attr('transform', `translate(0,${contentHeight})`)
+    // @ts-expect-error
     .call(xAxisBottom)
     .selectAll('text')
     .attr('x', 2)

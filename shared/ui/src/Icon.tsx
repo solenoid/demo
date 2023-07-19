@@ -1,5 +1,5 @@
+import { type SVGProps } from 'react'
 import * as Icons from 'shared-icons'
-import { SVGProps } from 'react'
 
 export type IconNames = keyof typeof Icons
 type Props = {

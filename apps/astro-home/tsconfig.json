@@ -1,6 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    // https://docs.astro.build/en/guides/typescript/#type-imports
+    "importsNotUsedAsValues": "remove",
+    "verbatimModuleSyntax": true,
     "jsx": "react-jsx",
     "jsxImportSource": "react"
   }

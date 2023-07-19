@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "type-check": "astro check && tsc --noEmit",
     "preview": "astro preview",
     "start": "astro dev",
     "clean": "rimraf node_modules dist"
@@ -26,6 +27,7 @@
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "typescript": "5.1.6"
   }
 }

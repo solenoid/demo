@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { CSSProperties, ReactNode } from 'react'
-import { Icon, IconNames } from './Icon'
+import { type CSSProperties, type ReactNode } from 'react'
+import { Icon, type IconNames } from './Icon'
 
 // TODO reconsider design when basePath concerns settle down.
 export type NavbarItems = Array<NavbarItem>

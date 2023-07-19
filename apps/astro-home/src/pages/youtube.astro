@@ -22,7 +22,7 @@ try {
     db.get(
       'SELECT channel_ids FROM channels WHERE user_id=?',
       userId,
-      (err, row) => {
+      (err, row: any) => {
         if (err) {
           reject(err.message)
         }
