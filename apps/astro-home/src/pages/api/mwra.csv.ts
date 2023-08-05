@@ -29,17 +29,18 @@ const csvHeaders = {
 
 // After 3/21/2023 the PDF table parse joined two columns in one
 // this assumes if we see a 6 digit number it should split into two 3 digit readings
-const longDigitPartsRe = /(\d{3})(\d{3})/
+// const longDigitPartsRe = /(\d{3})(\d{3})/
+
 const pdfTableTransform = (d: any) =>
   d.pageTables
     .flatMap((page: any) => page.tables)
     .map((row: any) => {
       // rewrited data for extra long digits
-      const matched = row[1]?.match(longDigitPartsRe)
-      if (matched) {
-        row[1] = matched[1]
-        row[2] = matched[2]
-      }
+      // const matched = row[1]?.match(longDigitPartsRe)
+      // if (matched) {
+      //   row[1] = matched[1]
+      //   row[2] = matched[2]
+      // }
 
       return row
         .slice(0, 5)
