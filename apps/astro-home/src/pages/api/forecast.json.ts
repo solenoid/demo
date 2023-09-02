@@ -8,7 +8,7 @@ const jsonHeaders = {
   'Content-Type': 'application/json',
 }
 
-export const get: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url }) => {
   const cityId = url.searchParams.get('city_id') ?? ''
   if (!cityId) {
     return new Response(

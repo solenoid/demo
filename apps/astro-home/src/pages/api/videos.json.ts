@@ -54,7 +54,7 @@ const jsonHeaders = {
   'Content-Type': 'application/json',
 }
 
-export const get: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url }) => {
   const channelId = url.searchParams.get('channel_id') ?? ''
   if (!channelId) {
     return new Response(

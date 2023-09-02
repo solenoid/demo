@@ -49,7 +49,7 @@ const pdfTableTransform = (d: any) =>
     })
     .join('\n')
 
-export const get: APIRoute = async () => {
+export const GET: APIRoute = async () => {
   const webPage = await fetch(BIOBOT_PAGE).then((res) => res.text())
   const nameMatch = webPage.match(/"([^"]*data\.pdf)"/)
   if (nameMatch === null) {
