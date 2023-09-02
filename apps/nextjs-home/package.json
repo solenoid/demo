@@ -12,19 +12,19 @@
   },
   "dependencies": {
     "fast-xml-parser": "4.2.7",
-    "next": "13.4.13",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "shared-ui": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "7.22.10",
-    "@types/node": "20.4.10",
-    "@types/react": "18.2.20",
+    "@babel/core": "7.22.11",
+    "@types/node": "20.5.8",
+    "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "eslint": "8.47.0",
+    "eslint": "8.48.0",
     "eslint-config-shared": "workspace:*",
     "tsconfig-shared": "workspace:*",
-    "typescript": "5.1.6"
+    "typescript": "5.2.2"
   }
 }

@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "Docs for the whole monorepo, trying out VitePress as the main tech.",
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev docs --port 9997",
     "build": "vitepress build docs",
@@ -10,7 +11,7 @@
     "clean": "rimraf node_modules docs/.vitepress/cache docs/.vitepress/dist"
   },
   "devDependencies": {
-    "vitepress": "1.0.0-rc.4",
+    "vitepress": "1.0.0-rc.10",
     "vue": "3.3.4"
   }
 }
