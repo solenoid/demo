@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+########
+
 # dependencies
 node_modules
 .pnp
@@ -20,11 +22,40 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
+# env files
+.env
+.env.production
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
+########
+
+# Relevant for apps
+
+## Relevant for vitepress
+/apps/vitepress-docs/docs/.vitepress/cache
+/apps/vitepress-docs/docs/.vitepress/dist
+
+## Relevant for typescript mostly nextjs related
+/apps/**/*.tsbuildinfo
+/apps/**/next-env.d.ts
+
+## was next.js app dir workaround, also astro now
+/apps/**/.vscode/
+
+## Relevant for next.js
+/apps/**/.next/
+
+## Relevant for astro and vite
+/apps/**/dist/
+
+# Relevant for shared
+
+## Relevant for icons
+/shared/icons/dist/
+
+########
+
+# Relevant for misc

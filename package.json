@@ -11,8 +11,8 @@
     "dev-apps-docs": "pnpm --filter './apps/*-docs' dev",
     "dev-apps": "pnpm --parallel --filter './apps/**' dev",
     "graph": "pnpm dlx nx graph --groupByFolder --focus shared-ui",
-    "format": "prettier  --write --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
-    "format-check": "prettier -c --plugin-search-dir . '**/*.{mjs,js,json,ts,tsx,md,astro}'",
+    "format": "prettier  --write '**/*.{mjs,js,json,ts,tsx,md,astro}'",
+    "format-check": "prettier -c '**/*.{mjs,js,json,ts,tsx,md,astro}'",
     "format-rome": "rome format . --write",
     "format-like-rome-audit": "prettier --write '**/*.{mjs,js,json,ts,tsx}' | sort | awk '{ print $1 }'",
     "rome-audit": "mv rome.json rome.json.bak; cp rome-audit.json rome.json; rome format . --max-diagnostics=200 --colors=off 2>&1 >/dev/null | rg ' format ━' | sort | awk '{ sub(/.\\//, \"\"); print $1 }'; mv rome.json.bak rome.json",
@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "eslint-config-shared": "workspace:*",
-    "prettier": "2.8.8",
-    "prettier-plugin-astro": "0.9.1",
+    "prettier": "3.0.3",
+    "prettier-plugin-astro": "0.12.0",
     "rimraf": "5.0.1",
     "rome": "12.1.3"
   },

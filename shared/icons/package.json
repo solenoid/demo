@@ -6,7 +6,7 @@
   "main": "./dist/index.ts",
   "types": "./dist/index.ts",
   "scripts": {
-    "code-gen": "svgr --typescript --icon 24 --out-dir dist --jsx-runtime automatic svg-src",
+    "code-gen": "svgr --no-prettier --typescript --icon 24 --out-dir dist --jsx-runtime automatic svg-src",
     "clean": "rimraf node_modules dist"
   },
   "devDependencies": {

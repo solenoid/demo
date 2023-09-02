@@ -1,21 +1,8 @@
 # See https://prettier.io/docs/en/ignore.html for more about ignoring files.
 
+# NOTE prettier@3 also by default uses the .gitignore file in addition to this one.
+
 # exclude files rome.json will auto ignore to ease audits
 # see https://github.com/rome/tools/pull/4133/files#r1060515564
 **/package.json
 **/tsconfig.json
-
-# next.js
-.next/
-out/
-build
-
-# vite.js
-dist
-
-# vitepress
-**/.vitepress/cache
-**/.vitepress/dist
-
-# vscode
-.vscode/
