@@ -19,11 +19,11 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.22.11",
-    "@types/node": "20.5.9",
+    "@babel/core": "7.22.17",
+    "@types/node": "20.6.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "eslint-config-shared": "workspace:*",
     "tsconfig-shared": "workspace:*",
     "typescript": "5.2.2"
