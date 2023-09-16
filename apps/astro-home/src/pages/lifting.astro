@@ -1,0 +1,23 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Lifting</title>
+  </head>
+  <body>
+    <Navbar current="/lifting" items={navItems}>
+      <main>
+        <p>Under Construction</p>
+      </main>
+    </Navbar>
+  </body>
+</html>

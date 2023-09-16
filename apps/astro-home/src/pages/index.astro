@@ -16,7 +16,7 @@ import { navItems } from '../shared/mainNav'
   <body>
     <Navbar current="/" items={navItems}>
       <main>
-        <p>Welcome...</p>
+        <h3>Welcome...</h3>
         <p>
           If it is cold (or hot) outside check out the{' '}
           <a href="/weather">Weather Forecast</a>.
@@ -26,9 +26,23 @@ import { navItems } from '../shared/mainNav'
           <a href="/covid">Wastewater Covid</a>.
         </p>
         <p>
+          Or check some past <a href="/biking">Bike Rides</a>.
+        </p>
+        <p>
+          Or check some stats <a href="/lifting">Lifting Weights</a>.
+        </p>
+        <p>
           Or veg out with some <a href="/youtube">Youtube Videos</a>.
         </p>
       </main>
     </Navbar>
+    <style>
+      p {
+        line-height: 1.08;
+      }
+      h3 {
+        margin-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

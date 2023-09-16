@@ -9,6 +9,8 @@ For now copy any icons, standard or custom, into the `svg-src` directory and
 then they will be available as React Comoponents after the next `npm run build`
 that happens.
 
+The `barbell-solid.svg` is a variation of a similar icon from that set.
+
 ## Builds
 
 Are done at `npm run build` time and use `npx` aka `npm exec` extensively. The

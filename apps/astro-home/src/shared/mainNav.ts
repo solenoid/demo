@@ -17,6 +17,16 @@ export const navItems: NavbarItems = [
     icon: 'PoopSolid',
   },
   {
+    text: 'Biking',
+    path: '/biking',
+    icon: 'BikingSolid',
+  },
+  {
+    text: 'Lifting',
+    path: '/lifting',
+    icon: 'BarbellSolid',
+  },
+  {
     text: 'Youtube',
     path: '/youtube',
     icon: 'Youtube',
