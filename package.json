@@ -30,7 +30,7 @@
     "eslint-config-shared": "workspace:*",
     "prettier": "3.0.3",
     "prettier-plugin-astro": "0.12.0",
-    "rimraf": "5.0.1",
+    "rimraf": "5.0.5",
     "rome": "12.1.3"
   },
   "engines": {
