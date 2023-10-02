@@ -20,6 +20,7 @@
     "audit-diff": "diff -u .tmp/prettier-files .tmp/rome-files || true",
     "lint-check": "pnpm --parallel lint",
     "type-check": "pnpm --parallel type-check",
+    "all-check": "pnpm type-check && pnpm lint-check && pnpm format-check",
     "clean": "pnpm clean-spaces && pnpm clean-self",
     "clean-spaces": "pnpm --parallel clean",
     "clean-self": "rimraf node_modules .tmp",
