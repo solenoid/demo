@@ -62,7 +62,7 @@ export const Navbar = (props: Props) => {
       <h1 style={{ userSelect: 'none' }}>
         {/* rome-ignore lint/a11y/useKeyWithClickEvents: TODO revisit for keyboard */}
         <span
-          style={ItemIconStyle}
+          style={{ ...ItemIconStyle, position: 'fixed' }}
           onClick={() => {
             if (!setExpanded) return
             if (expanded) {
@@ -74,7 +74,7 @@ export const Navbar = (props: Props) => {
         >
           <Icon iconName="BarsSolid" />
         </span>
-        {pageName}
+        <span style={{ paddingLeft: contractedWidth }}>{pageName}</span>
       </h1>
       <div style={{ display: 'flex' }}>
         <nav
@@ -84,7 +84,13 @@ export const Navbar = (props: Props) => {
           }}
           aria-label="Navigation Menu"
         >
-          <ul style={{ listStyle: 'none', paddingInlineStart: 0 }}>
+          <ul
+            style={{
+              listStyle: 'none',
+              paddingInlineStart: 0,
+              position: 'fixed',
+            }}
+          >
             {items.map((item) => (
               <li key={item.path}>
                 {isCurrent(item) ? (
