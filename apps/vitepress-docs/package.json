@@ -11,7 +11,7 @@
     "clean": "rimraf node_modules docs/.vitepress/cache docs/.vitepress/dist"
   },
   "devDependencies": {
-    "vitepress": "1.0.0-rc.21",
-    "vue": "3.3.4"
+    "vitepress": "1.0.0-rc.23",
+    "vue": "3.3.6"
   }
 }
