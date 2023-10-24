@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/node": "6.0.3",
     "@observablehq/plot": "0.6.11",
-    "astro": "3.3.2",
+    "astro": "3.3.3",
     "d3": "7.8.5",
     "fast-xml-parser": "4.3.2",
     "pdf-table-extractor": "1.0.3",
