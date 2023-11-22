@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 
 const sumNumberFormat = d3.format('.2f')
 const sumFormat = (val: number) =>
-  val ? `${sumNumberFormat(val)} Inches Total on` : 'No Precipitation on'
+  val ? `${sumNumberFormat(val)} Inches Total` : 'No Precipitation'
 
 const formatHour = (date: Date) =>
   d3.timeFormat('%-I %p')(date).replace('12 PM', 'noon')
@@ -31,15 +31,13 @@ type Props = d3Props & {
 }
 const d3Magic = (el: HTMLElement, config: d3Props) => {
   const { color, data, sumData } = config
-  const dayOnlyFormat = (date: Date) => {
+  const dayOnlyFormat = (date: Date) =>
+    (d3.timeDay(date) < date ? blank : formatDay)(date)
+  const daySumFormat = (date: Date) => {
     const found = sumData.find((d: any) => {
       return d.date.getTime() === date.getTime()
     })
-    let otherPart = ''
-    if (found) {
-      otherPart = sumFormat(found.value)
-    }
-    return `${otherPart} ${(d3.timeDay(date) < date ? blank : formatDay)(date)}`
+    return found ? sumFormat(found.value) : ''
   }
 
   const HALF_MAGIC_BAR_WIDTH = 9
@@ -48,7 +46,7 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
   const width = 800
   const height = 140
   const margin = {
-    top: 20,
+    top: 35,
     right: 40 + HALF_MAGIC_BAR_WIDTH,
     bottom: 30,
     left: 40 + HALF_MAGIC_BAR_WIDTH,
@@ -83,9 +81,15 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
   const xAxisTop = d3
     .axisTop(xScale)
     .ticks(5)
-    .tickSizeInner(contentHeight + EXTEND_UP_AXIS)
+    .tickSizeInner(contentHeight + EXTEND_UP_AXIS * 2)
     // @ts-expect-error
     .tickFormat(dayOnlyFormat)
+  const xAxisTopper = d3
+    .axisTop(xScale)
+    .ticks(5)
+    .tickSizeInner(0)
+    // @ts-expect-error
+    .tickFormat(daySumFormat)
   const xAxisBottom = d3
     .axisBottom(xScale)
     .ticks(15)
@@ -106,6 +110,15 @@ const d3Magic = (el: HTMLElement, config: d3Props) => {
     .selectAll('text')
     .attr('x', 3)
     .attr('dy', EXTEND_UP_AXIS)
+  vis
+    .append('g')
+    .attr('class', 'x-axis x-axis-topper')
+    // .attr('transform', `translate(0,0)`)
+    // @ts-expect-error
+    .call(xAxisTopper)
+    .selectAll('text')
+    .attr('x', 3)
+  // .attr('dy', EXTEND_UP_AXIS)
   vis
     .append('g')
     .attr('class', 'x-axis x-axis-bottom')
