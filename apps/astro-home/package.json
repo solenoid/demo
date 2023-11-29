@@ -12,9 +12,9 @@
     "clean": "rimraf node_modules dist"
   },
   "dependencies": {
-    "@astrojs/node": "6.0.4",
+    "@astrojs/node": "6.1.0",
     "@observablehq/plot": "0.6.11",
-    "astro": "3.5.7",
+    "astro": "3.6.3",
     "d3": "7.8.5",
     "fast-xml-parser": "4.3.2",
     "pdf-table-extractor": "1.0.3",
@@ -25,7 +25,7 @@
     "@astrojs/check": "0.3.1",
     "@astrojs/react": "3.0.6",
     "@types/d3": "7.4.3",
-    "@types/react": "18.2.38",
+    "@types/react": "18.2.39",
     "@types/react-dom": "18.2.17",
     "react": "18.2.0",
     "react-dom": "18.2.0",
