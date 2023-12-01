@@ -21,4 +21,9 @@ export const navItems: NavbarItems = [
     path: '/youtube',
     icon: 'Youtube',
   },
+  {
+    text: 'Advent 23',
+    path: '/advent-of-code-2023',
+    icon: 'Calendar',
+  },
 ]

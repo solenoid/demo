@@ -23,7 +23,7 @@ const currentColor = '#d882d9'
 const regularColor = '#c6c0e9'
 const iconPad = 10
 const contractedWidth = `calc(2 * ${iconPad}px + 24px)`
-const expandedWidth = `calc(2 * ${iconPad}px + 24px + 75px)`
+const expandedWidth = `calc(2 * ${iconPad}px + 24px + 100px)`
 const ItemIconStyle = {
   paddingLeft: iconPad,
   paddingRight: iconPad,
