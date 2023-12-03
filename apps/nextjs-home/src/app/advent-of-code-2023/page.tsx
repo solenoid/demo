@@ -12,7 +12,10 @@ const AdventOfCode2023 = () => {
           Done for <Link href="/advent-of-code-2023/2">Day 2</Link> both parts.
         </li>
         <li>
-          <Link href="/advent-of-code-2023/3">Day 3</Link> under construction.
+          Done for <Link href="/advent-of-code-2023/3">Day 3</Link> both parts.
+        </li>
+        <li>
+          <Link href="/advent-of-code-2023/4">Day 4</Link> under construction.
         </li>
       </ol>
     </main>
