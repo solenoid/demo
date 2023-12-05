@@ -3,6 +3,7 @@
   "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"],
   "compilerOptions": {
     "moduleResolution": "node",
+    "target": "ES2022",
     "plugins": [
       {
         "name": "next"
