@@ -25,7 +25,7 @@ console.log(part2)
 const CoDeO = () => {
   return (
     <main>
-      <h2>Day 25</h2>
+      <h2>Day 7</h2>
       <p>Part 1: calculated is {part1}, and answer is TBD.</p>
       <p>Part 2: calculated is {part2}, and answer is TBD.</p>
       <p>
