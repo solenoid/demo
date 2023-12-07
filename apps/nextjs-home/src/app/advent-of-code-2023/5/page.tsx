@@ -270,7 +270,7 @@ humidity-to-location map:
 60 56 37
 56 93 4`
 
-type lookup = string[]
+type lookup = [number, number, number]
 const order = [
   'seed',
   'soil',
@@ -290,7 +290,8 @@ let lookups: {
   [mapKey: string]: lookup
 } = {}
 keys.forEach((key) => {
-  lookups[key] = [] as lookup
+  // @ts-expect-error
+  lookups[key] = []
 })
 // console.log(keys)
 let name: string
@@ -309,7 +310,8 @@ input.split('\n\n').forEach((section) => {
     }
     // console.log(name)
     const [dest, src, range] = line.split(' ').map(Number)
-    lookups[name].push(`${src}-${src + range}-${dest}`)
+    // @ts-ignore
+    lookups[name].push([dest, src, src + range])
     // console.log(line)
   })
 })
@@ -321,14 +323,16 @@ const seedToLocation = (seed: number) => {
     const ranges = lookups[key]
     // console.log(ranges)
     const match = ranges.find((range) => {
-      const [start, end] = range.split('-').map(Number)
+      // @ts-ignore
+      const [__, start, end] = range
       // console.log(range)
       // console.log(start, seed, end)
       return start <= item && item < end
     })
     if (match) {
       // console.log(item, match)
-      const [src, __, dest] = match.split('-').map(Number)
+      // @ts-ignore
+      const [dest, src] = match
       item = item - src + dest
     }
     // console.log(item, match)
@@ -345,17 +349,26 @@ const part1 = Math.min(...locations1)
 // console.log(part1)
 
 console.log('start find part 2')
-console.log(lookups)
-
-// const locations2 = findLocations(seeds2)
-// const part2 = Math.min(...locations2)
+let min = Infinity
+let attempts = 0
+seeds1.forEach((d, i, list) => {
+  if (i % 2 === 0) return
+  const prior = list[i - 1]
+  for (let j = 0; j < d; j++) {
+    attempts++
+    min = Math.min(min, seedToLocation(prior + j))
+    if (attempts % 1_000_000 === 0)
+      console.log(`min is: ${min} after ${attempts} attempts at ${new Date()}`)
+  }
+})
+const part2 = min
 
 const CoDeO = () => {
   return (
     <main>
       <h2>Day 5</h2>
       <p>Part 1: calculated is {part1}, and answer is 107430936.</p>
-      {/* <p>Part 2: calculated is {part2}, and answer is TBD.</p> */}
+      <p>Part 2: calculated is {part2}, and answer is 23738616.</p>
       <p>
         <Link href="/advent-of-code-2023">Back to Advent</Link>
       </p>
