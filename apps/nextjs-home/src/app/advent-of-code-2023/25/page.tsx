@@ -2,9 +2,17 @@ import Link from 'next/link'
 
 const input = ``
 
+const sampleInputPart1 = ``
+
+const sampleInputPart2 = ``
+
 const sumIt = (prev: number, item: number) => prev + item
 
-const part1 = input
+const useTestInput = true
+const input1 = useTestInput ? sampleInputPart1 : input
+const input2 = useTestInput ? sampleInputPart2 : input
+
+const part1 = input1
   .split('\n')
   .map((line) => {
     console.log(line)
@@ -13,14 +21,14 @@ const part1 = input
   .reduce(sumIt, 0)
 console.log(part1)
 
-const part2 = input
+const part2 = input2
   .split('\n')
   .map((line) => {
-    console.log(line)
+    // console.log(line)
     return 1
   })
   .reduce(sumIt, 0)
-console.log(part2)
+// console.log(part2)
 
 const CoDeO = () => {
   return (
