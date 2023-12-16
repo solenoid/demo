@@ -119,7 +119,7 @@ console.log(part2)
 const CoDeO = () => {
   return (
     <main>
-      <h2>Day 26</h2>
+      <h2>Day 16</h2>
       <p>Part 1: calculated is {part1}, and answer is 7199.</p>
       <p>Part 2: calculated is {part2}, and answer is 7438.</p>
       <p>
