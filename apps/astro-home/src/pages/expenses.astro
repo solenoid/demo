@@ -1,0 +1,40 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+
+import ExpenseChart from '../shared/ExpenseChart'
+
+const SITE = import.meta.env.SITE
+const API_ENDPOINT = `${SITE}api/expenses.csv`
+const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Expenses</title>
+  </head>
+  <body>
+    <Navbar current="/expenses" items={navItems}>
+      <main>
+        <p>One month in fall 2023 on a card.</p>
+        <ExpenseChart client:load csvData={csvText} />
+      </main>
+    </Navbar>
+    <style>
+      hr {
+        margin: 10px 5px;
+        border: solid 1px #444;
+      }
+      a.external {
+        text-decoration: none;
+        border-bottom: solid 1.5px var(--blue-300-color);
+      }
+    </style>
+  </body>
+</html>
