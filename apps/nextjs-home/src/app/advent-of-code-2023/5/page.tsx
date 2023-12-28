@@ -236,6 +236,7 @@ humidity-to-location map:
 1082510516 3749523110 18833794
 3727956151 3150282471 536984712`
 
+// @ts-ignore
 const sampleInput = `seeds: 79 14 55 13
 
 seed-to-soil map:

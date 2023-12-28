@@ -3,6 +3,7 @@ import Link from 'next/link'
 const input = `Time:        56     71     79     99
 Distance:   334   1135   1350   2430`
 
+// @ts-ignore
 const sampleInput = `Time:      7  15   30
 Distance:  9  40  200`
 

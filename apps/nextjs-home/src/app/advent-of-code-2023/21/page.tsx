@@ -228,6 +228,7 @@ console.time('part2')
 const ONE_SPAN = 131
 const STEPS_TO_GO_ONE_SPAN = (ONE_SPAN - 1) / 2
 // const STEPS_TO_SPAN_ONE_TESSELATION = Math.floor(ONE_SPAN / 2)
+// @ts-ignore
 const TOTAL_STEPS = 26501365
 // const toStep = TOTAL_STEPS - Math.floor(TOTAL_STEPS / ONE_SPAN) * ONE_SPAN
 const toStep = STEPS_TO_GO_ONE_SPAN * 3

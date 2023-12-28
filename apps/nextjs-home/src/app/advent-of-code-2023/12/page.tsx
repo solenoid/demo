@@ -1016,6 +1016,7 @@ const useTestInput = false
 const input1 = useTestInput ? sampleInputPart1 : input
 const input2 = useTestInput ? sampleInputPart2 : input
 
+// @ts-ignore
 const countMatches = (
   count: number,
   remainingRuns: string[]

@@ -731,7 +731,9 @@ const minX = Math.min(...outline.map((d) => d.x))
 const minY = Math.min(...outline.map((d) => d.y))
 const maxX = Math.max(...outline.map((d) => d.x))
 const maxY = Math.max(...outline.map((d) => d.y))
+// @ts-ignore
 const width = maxX - minX
+// @ts-ignore
 const height = maxY - minY
 const adjustedOutline = outline.map((d) => ({
   color: d.color,

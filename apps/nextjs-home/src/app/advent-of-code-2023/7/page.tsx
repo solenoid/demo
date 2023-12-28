@@ -1001,6 +1001,7 @@ Q8Q99 135
 Q2K24 399
 Q7QQJ 572`
 
+// @ts-ignore
 const sampleInput = `32T3K 765
 T55J5 684
 KK677 28
@@ -1051,9 +1052,9 @@ const handRanks = [
   'high-card',
 ]
 
-const getHandRank = (hand: string, useJokers = false) => {
+const getHandRank = (hand: cardList, useJokers = false) => {
   let cards: any = {}
-  const individualCards = hand.split('') as cardType[]
+  const individualCards = (hand as unknown as String).split('') as cardType[]
   individualCards.forEach((card: cardType) => {
     cards[card] = (cards[card] ?? 0) + 1
   })
