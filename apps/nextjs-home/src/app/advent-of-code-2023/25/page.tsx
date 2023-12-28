@@ -1,18 +1,15 @@
 import Link from 'next/link'
 
-const input = ``
+const REAL_INPUT = ``
 
-const sampleInputPart1 = ``
-
-const sampleInputPart2 = ``
+const SAMPLE_INPUT = ``
 
 const sumIt = (prev: number, item: number) => prev + item
 
 const useTestInput = true
-const input1 = useTestInput ? sampleInputPart1 : input
-const input2 = useTestInput ? sampleInputPart2 : input
+const input = useTestInput ? SAMPLE_INPUT : REAL_INPUT
 
-const part1 = input1
+const part1 = input
   .split('\n')
   .map((line) => {
     console.log(line)
@@ -21,7 +18,7 @@ const part1 = input1
   .reduce(sumIt, 0)
 console.log(part1)
 
-const part2 = input2
+const part2 = input
   .split('\n')
   .map((line) => {
     // console.log(line)
