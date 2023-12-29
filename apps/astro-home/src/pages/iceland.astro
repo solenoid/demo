@@ -1,12 +1,12 @@
 ---
-import { Navbar } from 'shared-ui'
-import { navItems } from '../shared/mainNav'
 import { Image } from 'astro:assets'
-import { Icon } from 'shared-ui/src/Icon'
-import { localDate, parseDate } from '../shared/utils/date'
-import { parseUpliftCsvData } from '../shared/utils/csv'
-import UpliftChart from '../shared/UpliftChart'
 import { csvFormat, extent } from 'd3'
+import { Navbar } from 'shared-ui'
+import { Icon } from 'shared-ui/src/Icon'
+import UpliftChart from '../shared/UpliftChart'
+import { navItems } from '../shared/mainNav'
+import { parseUpliftCsvData } from '../shared/utils/csv'
+import { localDate } from '../shared/utils/date'
 
 const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/iceland.csv`
@@ -16,7 +16,7 @@ const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 const DATE_OFFSET = 92
 let early = new Date()
 early.setDate(early.getDate() - DATE_OFFSET)
-const EARLIEST = parseDate(early.toLocaleDateString())
+const EARLIEST = early.toISOString().slice(0, 10)
 
 const parsedData = parseUpliftCsvData(csvText, EARLIEST)
 

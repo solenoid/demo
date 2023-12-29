@@ -42,7 +42,7 @@ export default function UpliftChart({ minY, maxY, minX, maxX, data }: Props) {
           Plot.dot(parsedData, {
             x: 'date',
             y: 'dU',
-            fill: '#8406',
+            fill: '#c40c',
           }),
         ],
         style: {
