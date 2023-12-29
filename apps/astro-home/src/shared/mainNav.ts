@@ -12,6 +12,11 @@ export const navItems: NavbarItems = [
     icon: 'CloudSunRainSolid',
   },
   {
+    text: 'Iceland',
+    path: '/iceland',
+    icon: 'IciclesSolid',
+  },
+  {
     text: 'Covid',
     path: '/covid',
     icon: 'PoopSolid',
@@ -25,6 +30,11 @@ export const navItems: NavbarItems = [
     text: 'Lifting',
     path: '/lifting',
     icon: 'BarbellSolid',
+  },
+  {
+    text: 'Expenses',
+    path: '/expenses',
+    icon: 'CashRegisterSolid',
   },
   {
     text: 'Youtube',

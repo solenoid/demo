@@ -15,6 +15,16 @@ type rowType = {
   southern7DayAvg?: number
 }
 
+type upliftRowType = {
+  date: string
+  dN: number
+  DN: number
+  dE: number
+  DE: number
+  dU: number
+  DU: number
+}
+
 export const parseCsvData = (csv: string, earliestDate: string) =>
   csvParse(csv, (row) => {
     return {
@@ -29,4 +39,21 @@ export const parseCsvData = (csv: string, earliestDate: string) =>
       (d.northernCopies || d.southernCopies) &&
       // drop dates that are farther in the past
       earliestDate <= d.sampleDate
+  )
+
+export const parseUpliftCsvData = (csv: string, earliestDate: string) =>
+  csvParse(csv, (row) => {
+    return {
+      date: row.date.replaceAll('/', '-'),
+      ...numberOrAbsent('dN[mm]', 'dN', row),
+      ...numberOrAbsent('DN[mm]', 'DN', row),
+      ...numberOrAbsent('dE[mm]', 'dE', row),
+      ...numberOrAbsent('DE[mm]', 'DE', row),
+      ...numberOrAbsent('dU[mm]', 'dU', row),
+      ...numberOrAbsent('DU[mm]', 'DU', row),
+    } as upliftRowType
+  }).filter(
+    (d) =>
+      // drop dates that are farther in the past
+      earliestDate <= d.date
   )

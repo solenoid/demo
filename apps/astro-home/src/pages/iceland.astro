@@ -1,0 +1,126 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+import { Image } from 'astro:assets'
+import { Icon } from 'shared-ui/src/Icon'
+import { localDate, parseDate } from '../shared/utils/date'
+import { parseUpliftCsvData } from '../shared/utils/csv'
+import UpliftChart from '../shared/UpliftChart'
+import { csvFormat, extent } from 'd3'
+
+const SITE = import.meta.env.SITE
+const API_ENDPOINT = `${SITE}api/iceland.csv`
+const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
+
+/** 90 days + 2 to match chart shown, but might have timezone switch differences */
+const DATE_OFFSET = 92
+let early = new Date()
+early.setDate(early.getDate() - DATE_OFFSET)
+const EARLIEST = parseDate(early.toLocaleDateString())
+
+const parsedData = parseUpliftCsvData(csvText, EARLIEST)
+
+/** Assume the third data point is what zero should be set at */
+const INDEX_TO_ZERO_AT = 2
+const ZERO_OFFSET = parsedData[INDEX_TO_ZERO_AT].dU
+const data = parsedData.map((row) => {
+  row.dU -= ZERO_OFFSET
+  return row
+})
+
+const csvData = csvFormat(data, ['date', 'dU'])
+const [minY, maxY] = extent(data.map((d) => d.dU))
+
+const minX = Date.parse(localDate(data[0].date))
+const maxX = Date.parse(localDate(data[data.length - 1]?.date))
+
+// TODO consider if dimensions are stable for external png
+const pngWidth = 992
+const pngHeight = 1544
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Iceland</title>
+  </head>
+  <body>
+    <Navbar current="/iceland" items={navItems}>
+      <main>
+        <p>
+          Land uplift at Svartsengi (SENG) aka the power plant next to the Blue
+          Lagoon and near Grindavik. All data is from <a
+            href="http://brunnur.vedur.is/"
+            class="external"
+            target="_blank"
+            >brunnur.vedur.is <Icon
+              style={{ width: 15 }}
+              client:load
+              iconName="ExternalLinkAltSolid"
+            /></a
+          >.
+        </p>
+        <p>
+          Rises are likely due to magma build up, and drops are from pressure
+          release (first drop made a magma dike without eruption, and the second
+          drop there was an eruption).
+        </p>
+        <p>
+          It is likely that getting to a similar Y max would have another event
+          like in the past.
+        </p>
+        <p>
+          <UpliftChart
+            client:load
+            minY={(minY ?? 0) - 10}
+            maxY={(maxY ?? 0) + 10}
+            minX={minX}
+            maxX={maxX}
+            data={csvData}
+          />
+        </p>
+        <p>
+          See the bottom of <a
+            href="http://brunnur.vedur.is/gps/timeseries/SENG-plate-90d.png"
+            class="external"
+            target="_blank"
+            >SENG-plate-90d <Icon
+              style={{ width: 15 }}
+              client:load
+              iconName="ExternalLinkAltSolid"
+            /></a
+          > for the uplift data as part of the 90 day chart provided with North and
+          East shifts.
+        </p>
+        <div style={{ marginLeft: '-45px' }}>
+          <!-- TODO consider if dimensions are stable -->
+          <div style={{ height: '56px', overflow: 'hidden' }}>
+            <div>
+              <Image
+                src="http://brunnur.vedur.is/gps/timeseries/SENG-plate-90d.png"
+                alt="Chart title"
+                width={pngWidth}
+                height={pngHeight}
+              />
+            </div>
+          </div>
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{ marginTop: '-1030px' }}>
+              <Image
+                src="http://brunnur.vedur.is/gps/timeseries/SENG-plate-90d.png"
+                alt="Land uplift chart"
+                width={pngWidth}
+                height={pngHeight}
+              />
+            </div>
+          </div>
+        </div>
+      </main>
+    </Navbar>
+  </body>
+</html>
