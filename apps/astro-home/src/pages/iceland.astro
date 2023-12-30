@@ -21,8 +21,11 @@ const EARLIEST = early.toISOString().slice(0, 10)
 const parsedData = parseUpliftCsvData(csvText, EARLIEST)
 
 /** Assume the third data point is what zero should be set at */
-const INDEX_TO_ZERO_AT = 2
-const ZERO_OFFSET = parsedData[INDEX_TO_ZERO_AT].dU
+// const INDEX_TO_ZERO_AT = 2
+// const ZERO_OFFSET = parsedData[INDEX_TO_ZERO_AT].dU
+/** Experiment with hardcoded offset vs. index based */
+const ZERO_OFFSET = 133
+// console.log(ZERO_OFFSET)
 const data = parsedData.map((row) => {
   row.dU -= ZERO_OFFSET
   return row
