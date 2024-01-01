@@ -35,7 +35,7 @@ export default function UpliftChart({ minY, maxY, minX, maxX, data }: Props) {
           grid: true,
           label: '↑ Up [mm]',
         },
-        width: 976,
+        width: 920,
         height: 400,
         margin: 35,
         marks: [
