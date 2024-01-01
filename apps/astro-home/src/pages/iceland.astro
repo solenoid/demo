@@ -12,20 +12,27 @@ const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/iceland.csv`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 
-/** 90 days + 2 to match chart shown, but might have timezone switch differences */
-const DATE_OFFSET = 92
-let early = new Date()
-early.setDate(early.getDate() - DATE_OFFSET)
-const EARLIEST = early.toISOString().slice(0, 10)
+/**
+ * Offet n (Days) in the past for the d (Date) that defaults to now.
+ */
+const offsetDate = (n: number, d?: string) => {
+  let early = d == null ? new Date() : new Date(d)
+  early.setDate(early.getDate() - n)
+  return early.toISOString().slice(0, 10)
+}
 
-const parsedData = parseUpliftCsvData(csvText, EARLIEST)
+/** Most recent data isn't always yesterday, so we have 5 extra */
+const EARLIEST_GUESS = offsetDate(95)
+
+const partialData = parseUpliftCsvData(csvText, EARLIEST_GUESS)
+const LAST_DATE = partialData[partialData.length - 1].date + 'T00:00Z'
+const EARLIEST = offsetDate(90, LAST_DATE)
+const parsedData = partialData.filter((d) => d.date >= EARLIEST)
 
 /** Assume the third data point is what zero should be set at */
-// const INDEX_TO_ZERO_AT = 2
-// const ZERO_OFFSET = parsedData[INDEX_TO_ZERO_AT].dU
-/** Experiment with hardcoded offset vs. index based */
-const ZERO_OFFSET = 133
-// console.log(ZERO_OFFSET)
+const INDEX_TO_ZERO_AT = 2
+const ZERO_OFFSET = parsedData[INDEX_TO_ZERO_AT].dU
+
 const data = parsedData.map((row) => {
   row.dU -= ZERO_OFFSET
   return row
