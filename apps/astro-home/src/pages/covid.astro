@@ -18,7 +18,7 @@ const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 // Start year for data an Jan 1st and graph at Mar 1st
 const YEAR = '2022'
 // Max System Copies / mL to avoid data blowing the scale
-const maxY = 1500
+const maxY = 4500
 const data = parseCsvData(csvText, `${YEAR}-01-01`)
 const maxX = Date.parse(localDate(data[data.length - 1]?.sampleDate))
 const currentX = Date.parse(localDate(`${YEAR}-03-01`))
