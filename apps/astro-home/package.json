@@ -22,7 +22,7 @@
     "sqlite3": "5.1.7"
   },
   "devDependencies": {
-    "@astrojs/check": "0.3.4",
+    "@astrojs/check": "0.4.1",
     "@astrojs/react": "3.0.9",
     "@types/d3": "7.4.3",
     "@types/react": "18.2.47",
