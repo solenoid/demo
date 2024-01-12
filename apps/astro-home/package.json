@@ -14,9 +14,9 @@
   "dependencies": {
     "@astrojs/node": "7.0.4",
     "@observablehq/plot": "0.6.13",
-    "astro": "4.1.1",
+    "astro": "4.1.2",
     "d3": "7.8.5",
-    "fast-xml-parser": "4.3.2",
+    "fast-xml-parser": "4.3.3",
     "pdf-table-extractor": "1.0.3",
     "shared-ui": "workspace:*",
     "sqlite3": "5.1.7"
