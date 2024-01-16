@@ -51,7 +51,7 @@ const pdfTableTransform = (d: any) =>
 
 export const GET: APIRoute = async () => {
   const webPage = await fetch(BIOBOT_PAGE).then((res) => res.text())
-  const nameMatch = webPage.match(/"([^"]*data\.pdf)"/)
+  const nameMatch = webPage.match(/"([^"]*data[^"]*pdf)"/)
   if (nameMatch === null) {
     return new Response(`No pdf found on ${BIOBOT_PAGE}`, {
       status: 404,
