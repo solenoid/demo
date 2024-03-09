@@ -22,6 +22,11 @@ export const navItems: NavbarItems = [
     icon: 'PoopSolid',
   },
   {
+    text: 'Walking',
+    path: '/walking',
+    icon: 'WalkingSolid',
+  },
+  {
     text: 'Biking',
     path: '/biking',
     icon: 'BikingSolid',
