@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "eslint-config-shared": "workspace:*",
-    "prettier": "3.2.4",
+    "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "rimraf": "5.0.5",
     "rome": "12.1.3"
