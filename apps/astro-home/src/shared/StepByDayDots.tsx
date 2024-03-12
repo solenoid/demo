@@ -34,7 +34,7 @@ export default function StepByDayChart({ csvData }: Props) {
             interval: 'day',
           },
           y: {
-            domain: [0, 10_000],
+            domain: [0, 12_000],
           },
           marks: [
             // Goal line, TBD if always rule or not
