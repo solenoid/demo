@@ -14,7 +14,7 @@
   "dependencies": {
     "@astrojs/node": "8.2.3",
     "@observablehq/plot": "0.6.13",
-    "astro": "4.4.15",
+    "astro": "4.5.1",
     "d3": "7.8.5",
     "fast-xml-parser": "4.3.5",
     "pdf-table-extractor": "1.0.3",
@@ -22,10 +22,10 @@
     "sqlite3": "5.1.7"
   },
   "devDependencies": {
-    "@astrojs/check": "0.5.6",
-    "@astrojs/react": "3.0.10",
+    "@astrojs/check": "0.5.7",
+    "@astrojs/react": "3.1.0",
     "@types/d3": "7.4.3",
-    "@types/react": "18.2.64",
+    "@types/react": "18.2.65",
     "@types/react-dom": "18.2.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
