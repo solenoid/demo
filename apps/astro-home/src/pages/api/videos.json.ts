@@ -27,7 +27,8 @@ const mapper = (entry: EntryXML): Entry => {
   const year = publishDate.getFullYear()
   const month = publishDate.getMonth() + 1
   const day = publishDate.getDate()
-  const href = entry?.link?.at_href
+  // console.log(entry)
+  const href = `https://invidious.drgns.space/watch?v=${entry['yt:videoId']}`
   const title = entry?.title
   const thumbnail = entry?.['media:group']?.['media:thumbnail']
   const src = thumbnail?.at_url
