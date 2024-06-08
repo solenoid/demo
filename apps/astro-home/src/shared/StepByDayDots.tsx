@@ -2,20 +2,23 @@ import * as Plot from '@observablehq/plot'
 import PlotChart from './PlotChart'
 
 import { csvParse } from 'd3'
+import { dateAndSteps } from './utils/csv'
 
 type Props = {
   csvData: string
+  csvGoalData: string
 }
 
-export default function StepByDayChart({ csvData }: Props) {
-  const allData = csvParse(csvData, (row) => {
-    return {
-      ...row,
-      steps: Number(row.steps),
-    } as { [col: string]: number | string | undefined }
-  }).filter((d) => (d.steps as number) > 0)
+export default function StepByDayChart({ csvData, csvGoalData }: Props) {
+  const data = csvParse(csvData, dateAndSteps).filter((d) => d.steps > 0)
 
-  const data = allData
+  // TODO pull this into a different component for total sum and maybe relate to goal changes too
+  const total = data.map((d) => d.steps).reduce((memo, cur) => memo + cur, 0)
+  const dates = data.map((d) => d.date).toSorted()
+  const earliest = dates[0]
+  const latest = dates.toReversed()[0]
+
+  const goalData = csvParse(csvGoalData.replace('LATEST', latest), dateAndSteps)
 
   return data.length > 0 ? (
     <>
@@ -34,19 +37,24 @@ export default function StepByDayChart({ csvData }: Props) {
             interval: 'day',
           },
           y: {
-            domain: [0, 12_000],
+            domain: [0, 15_000], // TODO consider having a yearly max API
           },
           marks: [
-            // Goal line, TBD if always rule or not
-            Plot.ruleY([5000]),
+            // Goal line
+            Plot.lineY(goalData, {
+              y: 'steps',
+              x: 'date',
+              stroke: '#9999',
+              curve: 'step-after',
+            }),
 
             // Daily dots
             Plot.dotY(data, { y: 'steps', x: 'date', stroke: 'steps' }),
 
-            // Rolling 14 day average
+            // Rolling 28 day (4 week) average per day
             Plot.lineY(
               data,
-              Plot.windowY({ k: 14 }, { x: 'date', y: 'steps' })
+              Plot.windowY({ k: 28 }, { x: 'date', y: 'steps' })
             ),
           ],
           style: {
@@ -55,6 +63,9 @@ export default function StepByDayChart({ csvData }: Props) {
           },
         }}
       />
+      <p>
+        {total?.toLocaleString()} total steps from {earliest} through {latest}
+      </p>
     </>
   ) : null
 }

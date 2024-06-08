@@ -57,3 +57,13 @@ export const parseUpliftCsvData = (csv: string, earliestDate: string) =>
       // drop dates that are farther in the past
       earliestDate <= d.date
   )
+
+/**
+ * Returns steps as a number and date as a string assuming incoming strings for both.
+ */
+export const dateAndSteps = (row: { [key: string]: string }) => {
+  return {
+    date: row.date ?? '',
+    steps: Number(row.steps),
+  }
+}

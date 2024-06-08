@@ -7,7 +7,9 @@ import StepByDayDotsCumulative from '../shared/StepByDayDotsCumulative'
 
 const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/walking.csv`
+const API_GOAL_ENDPOINT = `${SITE}api/walking.csv?data_type=goal`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
+const csvGoalText = await fetch(API_GOAL_ENDPOINT).then((r) => r.text())
 ---
 
 <html lang="en">
@@ -23,7 +25,11 @@ const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
   <body>
     <Navbar current="/walking" items={navItems}>
       <main>
-        <StepByDayDots client:load csvData={csvText} />
+        <StepByDayDots
+          client:load
+          csvData={csvText}
+          csvGoalData={csvGoalText}
+        />
         <StepByDayDotsCumulative client:load csvData={csvText} />
       </main>
     </Navbar>
