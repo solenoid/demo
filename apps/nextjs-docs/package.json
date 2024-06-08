@@ -11,21 +11,21 @@
     "clean": "rimraf node_modules .next next-env.d.ts tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "next": "14.1.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "remark": "15.0.1",
     "shared-ui": "workspace:*",
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.24.3",
-    "@types/node": "20.11.30",
-    "@types/react": "18.2.69",
-    "@types/react-dom": "18.2.22",
+    "@babel/core": "7.24.7",
+    "@types/node": "20.14.2",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "eslint": "8.57.0",
     "eslint-config-shared": "workspace:*",
     "tsconfig-shared": "workspace:*",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   }
 }
