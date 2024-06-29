@@ -1,6 +1,7 @@
 - Guides
 
   - [How-To Guides](/guides.md)
+  - [Install mise](/guides/install-mise.md)
   - [Install pnpm](/guides/install-pnpm.md)
   - [Install node](/guides/install-node.md)
   - [Migrate to pnpm](/guides/migrate-to-pnpm.md)
