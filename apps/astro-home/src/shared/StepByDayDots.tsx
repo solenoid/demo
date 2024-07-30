@@ -40,16 +40,16 @@ export default function StepByDayChart({ csvData, csvGoalData }: Props) {
             domain: [0, 15_000], // TODO consider having a yearly max API
           },
           marks: [
+            // Daily dots
+            Plot.dotY(data, { y: 'steps', x: 'date', stroke: 'steps' }),
+
             // Goal line
             Plot.lineY(goalData, {
               y: 'steps',
               x: 'date',
-              stroke: '#9999',
+              stroke: '#999c',
               curve: 'step-after',
             }),
-
-            // Daily dots
-            Plot.dotY(data, { y: 'steps', x: 'date', stroke: 'steps' }),
 
             // Rolling 28 day (4 week) average per day
             Plot.lineY(
