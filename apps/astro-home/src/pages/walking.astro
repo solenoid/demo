@@ -3,13 +3,33 @@ import { Navbar } from 'shared-ui'
 import { navItems } from '../shared/mainNav'
 
 import StepByDayDots from '../shared/StepByDayDots'
-import StepByDayDotsCumulative from '../shared/StepByDayDotsCumulative'
+import StepByMonthBars from '../shared/StepByMonthBars'
+import StepTotal from '../shared/StepTotal'
+
+import { csvParse } from 'd3'
+import { dateAndSteps } from '../shared/utils/csv'
 
 const SITE = import.meta.env.SITE
 const API_ENDPOINT = `${SITE}api/walking.csv`
 const API_GOAL_ENDPOINT = `${SITE}api/walking.csv?data_type=goal`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 const csvGoalText = await fetch(API_GOAL_ENDPOINT).then((r) => r.text())
+const data = csvParse(csvText, dateAndSteps).filter((d) => d.steps > 0)
+
+const dates = data.map((d) => d.date).toSorted()
+const earliest = dates[0]
+let latest = dates[dates.length - 1]
+const parts = /^(\d{4})-(\d{2})/.exec(dates[dates.length - 1])
+if (parts) {
+  const year = parts[1]
+  const month = parts[2]
+  const newMonth = Number.parseInt(month, 10) + 1
+  const rolled = newMonth === 13
+  const newYear = rolled ? Number(year) + 1 : year
+  const newMonthRaw = '' + (rolled ? 1 : newMonth)
+  latest = `${newYear}-${newMonthRaw.padStart(2, '0')}-01`
+}
+const dateExtent = [earliest, latest] as const
 ---
 
 <html lang="en">
@@ -25,12 +45,18 @@ const csvGoalText = await fetch(API_GOAL_ENDPOINT).then((r) => r.text())
   <body>
     <Navbar current="/walking" items={navItems}>
       <main>
+        <StepTotal client:load csvData={csvText} />
         <StepByDayDots
           client:load
           csvData={csvText}
           csvGoalData={csvGoalText}
+          dateExtent={dateExtent}
         />
-        <StepByDayDotsCumulative client:load csvData={csvText} />
+        <StepByMonthBars
+          client:load
+          csvData={csvText}
+          dateExtent={dateExtent}
+        />
       </main>
     </Navbar>
   </body>
