@@ -29,7 +29,10 @@ const mapper = (entry: EntryXML): Entry => {
   const day = publishDate.getDate()
   // console.log(entry)
   // const href = `https://invidious.drgns.space/watch?v=${entry['yt:videoId']}`
-  const href = `https://invidious.perennialte.ch/watch?v=${entry['yt:videoId']}`
+  // const href = `https://invidious.perennialte.ch/watch?v=${entry['yt:videoId']}`
+  // const href = `https://invidious.nerdvpn.de/watch?v=${entry['yt:videoId']}`
+  // const href = `https://invidious.jing.rocks/watch?v=${entry['yt:videoId']}`
+  const href = `https://inv.nadeko.net/watch?v=${entry['yt:videoId']}`
   const title = entry?.title
   const thumbnail = entry?.['media:group']?.['media:thumbnail']
   const src = thumbnail?.at_url
