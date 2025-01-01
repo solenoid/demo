@@ -12,23 +12,23 @@
     "clean": "rimraf node_modules dist"
   },
   "dependencies": {
-    "@astrojs/node": "8.3.2",
-    "@observablehq/plot": "0.6.15",
-    "astro": "4.11.3",
+    "@astrojs/node": "9.0.0",
+    "@observablehq/plot": "0.6.16",
+    "astro": "5.1.1",
     "d3": "7.9.0",
-    "fast-xml-parser": "4.4.0",
+    "fast-xml-parser": "4.5.1",
     "pdf-table-extractor": "1.0.3",
     "shared-ui": "workspace:*",
     "sqlite3": "5.1.7"
   },
   "devDependencies": {
-    "@astrojs/check": "0.7.0",
-    "@astrojs/react": "3.6.0",
+    "@astrojs/check": "0.9.4",
+    "@astrojs/react": "4.1.2",
     "@types/d3": "7.4.3",
-    "@types/react": "18.3.3",
-    "@types/react-dom": "18.3.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "typescript": "5.5.2"
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "typescript": "5.7.2"
   }
 }

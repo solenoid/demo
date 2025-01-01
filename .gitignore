@@ -48,6 +48,9 @@ yarn-error.log*
 ## Relevant for next.js
 /apps/**/.next/
 
+## Relevant for astro
+/apps/**/.astro/
+
 ## Relevant for astro and vite
 /apps/**/dist/
 

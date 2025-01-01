@@ -263,25 +263,25 @@ walk.forEach(([x, y, dir], i) => {
     case 'N':
       right = pipes[y][x + 1] ?? 0
       if (!Number.isFinite(right)) pipes[y][x + 1] = 'x'
-      lastRight = lastDir === 'E' ? pipes[y + 1][x] ?? 0 : 0
+      lastRight = lastDir === 'E' ? (pipes[y + 1][x] ?? 0) : 0
       if (!Number.isFinite(lastRight)) pipes[y + 1][x] = 'x'
       break
     case 'E':
       right = pipes[y + 1][x] ?? 0
       if (!Number.isFinite(right)) pipes[y + 1][x] = 'x'
-      lastRight = lastDir === 'S' ? pipes[y][x - 1] ?? 0 : 0
+      lastRight = lastDir === 'S' ? (pipes[y][x - 1] ?? 0) : 0
       if (!Number.isFinite(lastRight)) pipes[y][x - 1] = 'x'
       break
     case 'S':
       right = pipes[y][x - 1] ?? 0
       if (!Number.isFinite(right)) pipes[y][x - 1] = 'x'
-      lastRight = lastDir === 'W' ? pipes[y - 1][x] ?? 0 : 0
+      lastRight = lastDir === 'W' ? (pipes[y - 1][x] ?? 0) : 0
       if (!Number.isFinite(lastRight)) pipes[y - 1][x] = 'x'
       break
     case 'W':
       right = pipes[y - 1][x] ?? 0
       if (!Number.isFinite(right)) pipes[y - 1][x] = 'x'
-      lastRight = lastDir === 'N' ? pipes[y][x + 1] ?? 0 : 0
+      lastRight = lastDir === 'N' ? (pipes[y][x + 1] ?? 0) : 0
       if (!Number.isFinite(lastRight)) pipes[y][x + 1] = 'x'
       break
   }
