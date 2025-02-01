@@ -1,6 +1,6 @@
 [tools]
 node = "lts"
-pnpm = "9"
+pnpm = "10"
 
 [env]
 # https://mise.jdx.dev/mise-cookbook/nodejs.html#add-node-modules-binaries-to-the-path
