@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@svgr/cli": "8.1.0",
-    "@types/react": "19.0.2"
+    "@types/react": "19.0.8"
   }
 }
