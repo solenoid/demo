@@ -62,3 +62,6 @@ yarn-error.log*
 ########
 
 # Relevant for misc
+
+## Relevant for mise plugin that auto creates settings.json
+/.vscode/

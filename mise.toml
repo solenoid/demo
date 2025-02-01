@@ -1,5 +1,7 @@
 [tools]
-node = "22"
+node = "lts"
+pnpm = "9"
 
 [env]
-MISE_NODE_COREPACK = "1"
+# https://mise.jdx.dev/mise-cookbook/nodejs.html#add-node-modules-binaries-to-the-path
+_.path = ['{{ config_root }}/node_modules/.bin']
