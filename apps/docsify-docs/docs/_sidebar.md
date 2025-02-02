@@ -2,6 +2,8 @@
 
   - [How-To Guides](/guides.md)
   - [Getting Started with mise](/guides/getting-started-with-mise.md)
+  - [Getting Started with node](/guides/getting-started-with-node.md)
+  - [Getting Started with pnpm](/guides/getting-started-with-pnpm.md)
   - [Install mise](/guides/install-mise.md)
   - [Install pnpm](/guides/install-pnpm.md)
   - [Install node](/guides/install-node.md)
