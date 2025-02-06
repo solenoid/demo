@@ -4,8 +4,8 @@
 
 ## Assumptions
 
-This guide is written for macOS users with `zsh` as the shell (macOS has zsh as
-the default shell). Please refer to the `mise` documentation if you use a
+This tutorial is written for macOS users with `zsh` as the shell (macOS has zsh
+as the default shell). Please refer to the `mise` documentation if you use a
 different shell (yes fish is well supported along with bash). See
 [installing mise](https://mise.jdx.dev/installing-mise.html) or
 [getting started](https://mise.jdx.dev/getting-started.html) for all the options
@@ -108,20 +108,6 @@ activated: yes
 ... lots more information about your setup
 No problems found
 ```
-
-## Cheat Sheet
-
-These are the most common commands you will use from `mise`.
-
-```shell
-mise trust # a directory that you know
-mise install # to get configured tools
-mise upgrade # to most recent versions of configured tools
-mise self-update # to update mise itself
-```
-
-They are described in more depth in the following sections respectively with
-supporting commands.
 
 <aside>
 

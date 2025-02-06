@@ -4,7 +4,7 @@
 
 ## Assumptions
 
-This guide requires you have
+This tutorial requires you have
 [gotten started with mise](./getting-started-with-mise.md) and that is working
 on your system. If you run into issues see if it's due to your `mise` setup or
 if it's related to `node` more directly.
