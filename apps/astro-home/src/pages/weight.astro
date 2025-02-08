@@ -1,0 +1,38 @@
+---
+import { Navbar } from 'shared-ui'
+import { navItems } from '../shared/mainNav'
+
+import WeightByDayDots from '../shared/WeightByDayDots'
+import WeightByDayDataOnly from '../shared/WeightByDayDataOnly'
+
+const SITE = import.meta.env.SITE
+const API_ENDPOINT = `${SITE}api/data.csv?category=weight`
+const API_GOAL_ENDPOINT = `${SITE}api/data.csv?category=weight&data_type=goal`
+const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
+const csvGoalText = await fetch(API_GOAL_ENDPOINT).then((r) => r.text())
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Walking</title>
+  </head>
+  <body>
+    <Navbar current="/weight" items={navItems}>
+      <main>
+        <WeightByDayDots
+          client:load
+          csvData={csvText}
+          csvGoalData={csvGoalText}
+        />
+        <p>Data only below including projection above</p>
+        <WeightByDayDataOnly client:load csvData={csvText} />
+      </main>
+    </Navbar>
+  </body>
+</html>

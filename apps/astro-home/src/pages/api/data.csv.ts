@@ -15,8 +15,10 @@ const csvHeaders = {
 const defaultYear = new Date().getFullYear()
 export const GET: APIRoute = async ({ url }) => {
   const year = url.searchParams.get('year') ?? `${defaultYear}`
+  const category = url.searchParams.get('category') ?? 'walking'
   const dataType = url.searchParams.get('data_type') ?? 'data'
-  const csvData = await fs.readFile(`${csvDir}/walking-${year}-${dataType}.csv`)
+  const file = `${csvDir}/${category}-${year}-${dataType}.csv`
+  const csvData = await fs.readFile(file)
   try {
     return new Response(csvData, {
       status: 200,

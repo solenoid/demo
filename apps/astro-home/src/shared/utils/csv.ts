@@ -67,3 +67,13 @@ export const dateAndSteps = (row: { [key: string]: string }) => {
     steps: Number(row.steps),
   }
 }
+
+/**
+ * Returns weight as a number and date as a string assuming incoming strings for both.
+ */
+export const dateAndWeight = (row: { [key: string]: string }) => {
+  return {
+    date: row.date ?? '',
+    weight: Number(row.weight),
+  }
+}

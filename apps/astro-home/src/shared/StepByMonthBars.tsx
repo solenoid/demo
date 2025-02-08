@@ -18,7 +18,7 @@ export default function StepByMonthBars({ csvData, dateExtent }: Props) {
         options={{
           marginLeft: 60,
           width: 450,
-          height: 250,
+          height: 300,
           x: {
             transform: (d: string) => new Date(d + 'Z'),
             type: 'utc',

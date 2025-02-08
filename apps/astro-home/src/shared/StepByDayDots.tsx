@@ -25,7 +25,7 @@ export default function StepByDayChart({
         options={{
           marginLeft: 60,
           width: 450,
-          height: 250,
+          height: 300,
           color: {
             scheme: 'Cool',
           },

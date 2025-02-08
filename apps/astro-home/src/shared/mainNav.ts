@@ -17,8 +17,8 @@ export const navItems: NavbarItems = [
     icon: 'IciclesSolid',
   },
   {
-    text: 'Covid',
-    path: '/covid',
+    text: 'Weight',
+    path: '/weight',
     icon: 'PoopSolid',
   },
   {
@@ -27,14 +27,14 @@ export const navItems: NavbarItems = [
     icon: 'WalkingSolid',
   },
   {
-    text: 'Biking',
-    path: '/biking',
-    icon: 'BikingSolid',
-  },
-  {
     text: 'Lifting',
     path: '/lifting',
     icon: 'BarbellSolid',
+  },
+  {
+    text: 'Biking',
+    path: '/biking',
+    icon: 'BikingSolid',
   },
   {
     text: 'Expenses',

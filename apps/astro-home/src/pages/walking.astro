@@ -10,8 +10,8 @@ import { csvParse } from 'd3'
 import { dateAndSteps } from '../shared/utils/csv'
 
 const SITE = import.meta.env.SITE
-const API_ENDPOINT = `${SITE}api/walking.csv`
-const API_GOAL_ENDPOINT = `${SITE}api/walking.csv?data_type=goal`
+const API_ENDPOINT = `${SITE}api/data.csv?category=walking`
+const API_GOAL_ENDPOINT = `${SITE}api/data.csv?category=walking&data_type=goal`
 const csvText = await fetch(API_ENDPOINT).then((r) => r.text())
 const csvGoalText = await fetch(API_GOAL_ENDPOINT).then((r) => r.text())
 const data = csvParse(csvText, dateAndSteps).filter((d) => d.steps > 0)
